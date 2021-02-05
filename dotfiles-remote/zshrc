@@ -1,0 +1,77 @@
+# Enable colors and change prompt:
+autoload -U colors && colors
+
+# Set default fallback prompt
+PS1="
+%B%{$fg[cyan]%}%n %{$fg[green]%}%~ →%{$reset_color%}%b "
+
+# History in cache directory:
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.cache/zsh/hist
+
+# Basic auto/tab complete:
+zstyle ':completion:*' completer _complete
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' special-dirs true
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit -y
+_comp_options+=(globdots)   # Include hidden files.
+
+# vi mode
+bindkey -v
+export KEYTIMEOUT=1
+
+# Use vim keys in tab complete menu:
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+bindkey -M vicmd 'w' vi-backward-word
+bindkey -M vicmd 'W' vi-backward-blank-word
+bindkey -M vicmd 'H' vi-beginning-of-line
+bindkey -M vicmd 'L' vi-end-of-line
+bindkey -M vicmd 'x' vi-yank
+bindkey -M visual 'x' vi-yank
+bindkey -M menuselect '^[[Z' reverse-menu-complete
+bindkey -M menuselect '\e' end-of-list
+# History finding
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
+# Change cursor shape for different vi modes.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+zle-line-init() {
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
+# Toggle Suspend process and go back to shell
+ctrlz() {
+  if [[ $#BUFFER == 0 ]]; then
+    fg >/dev/null 2>&1 && zle redisplay
+  else
+    zle push-input
+  fi
+}
+zle -N ctrlz
+bindkey '^Z' ctrlz

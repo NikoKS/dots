@@ -79,7 +79,7 @@ augroup MyCocExplorer
   "quit explorer whein it's the last
   autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
   " Make sure nothing opened in coc-explorer buffer
-  autocmd BufEnter * if bufname('#') =~# "\[coc-explorer\]-." && winnr('$') > 1 | b# | endif
+  "autocmd BufEnter * if bufname('#') =~# "\[coc-explorer\]-." && winnr('$') > 1 | b# | endif
   "open if directory specified or if buffer empty
   autocmd VimEnter * let d = expand('%:p')
     \ | if isdirectory(d)

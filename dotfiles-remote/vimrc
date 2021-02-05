@@ -1,0 +1,179 @@
+" Basic Config
+set nu
+set title
+set mouse=a
+set autowrite
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set autoindent
+set smartindent
+set shortmess=atI
+let mapleader = ";"
+
+highlight StatusLineNC cterm=NONE ctermbg=black ctermfg=green
+highlight StatusLine   cterm=bold ctermbg=green ctermfg=black
+highlight VertSplit               ctermfg=black              
+highlight Pmenu        cterm=NONE ctermbg=black ctermfg=green
+highlight PmenuSel     cterm=NONE ctermbg=green ctermfg=236  
+highlight Visual                  ctermbg=green ctermfg=236  
+highlight BadWhitespace           ctermbg=red   ctermfg=red  
+highlight Folded                                ctermfg=white
+highlight Conceal                               ctermfg=250
+
+"Utility and General Shortcuts
+inoremap <C-s> ✩
+nnoremap O J
+nnoremap <CR> gf
+nnoremap v <C-v>
+nnoremap m zz
+nnoremap M m
+"nnoremap <silent> <esc> :noh<return><esc>
+nnoremap <Tab> ;
+vnoremap <Tab> ;
+nnoremap r <C-r>
+nnoremap = :wincmd =<CR>
+nmap '' <C-o>
+
+"toggle comment
+nmap # <leader>c<space>
+vmap # <leader>c<space>
+
+"Better copy paste
+vnoremap y <Nop>
+vnoremap yy y
+vnoremap ya "ay
+vnoremap yb "by
+vnoremap yc "+y
+nnoremap ya "aY
+nnoremap yb "bY
+nnoremap yc "+Y
+nnoremap pp p
+nnoremap p <Nop>
+nnoremap PP P
+nnoremap pa "ap
+nnoremap Pa "aP
+nnoremap pb "bp
+nnoremap Pb "bP
+nnoremap pc "+p
+nnoremap Pc "+P
+nnoremap pd "1p
+nnoremap Pd "1P
+nnoremap py "0p
+nnoremap Py "0P
+
+"More sensible cw dw and yw
+nnoremap cc cl
+nnoremap dc dl
+nnoremap cw ciw
+nnoremap cW ciW
+nnoremap dw daw
+nnoremap dW daW
+nnoremap yw yiw
+nnoremap yW yiW
+nmap ce cia
+nmap de daa
+
+"g remaps
+nmap go <C-]>
+nnoremap gs z=
+nnoremap gw *
+nnoremap gv :vertical wincmd f<CR>
+
+"Quit and write shortcuts
+nnoremap Q :qa<CR>
+nnoremap qw ZZ
+nnoremap qq :q<CR>
+nnoremap qa :qa<CR>
+nnoremap qe :q!<CR>
+command! BW :bn|:bw#
+nnoremap qb :BW<CR>
+nnoremap ;w :w<CR>
+
+"Navigation Remaping
+nnoremap j gj
+nnoremap k gk
+nnoremap J Lzz
+nnoremap K Hzz
+vnoremap J Lzz
+vnoremap K Hzz
+nnoremap H ^
+vnoremap H ^
+nnoremap L $
+vnoremap L $
+nnoremap w b
+nnoremap W B
+vnoremap w b
+vnoremap W B
+
+"buffer navigation
+set wildcharm=<C-z>
+nnoremap bl :ls<CR>
+nnoremap b<Tab> :b <C-z>
+nnoremap <silent> bn :bNext<CR>
+nnoremap <silent> bp :bprevious<CR>
+nnoremap bb :b#<CR>
+nnoremap ba :badd 
+nnoremap bv :vert sb <C-z>
+nnoremap bs :sb <C-z>
+
+"Open Shortcuts
+nnoremap o<Tab> :edit <C-z>
+nnoremap oh :edit ~/
+nnoremap ov :vert split 
+nnoremap os :split 
+nnoremap or :edit ./README.md
+
+"Fold shorcuts
+nnoremap <space> za
+nnoremap <Leader><space>1 zm
+nnoremap <Leader><space>a zM
+nnoremap <Leader><space>o zr
+nnoremap <Leader><space>c zR
+
+"faster indent
+nnoremap > >>
+nnoremap < <<
+
+"split Settings
+set splitbelow
+set splitright
+nnoremap + :vert resize +10<CR>
+nnoremap - :vert resize -10<CR>
+
+"Disable Ex mode
+map q: <Nop>
+map q <Nop>
+
+"Leader Commands ###############################################
+nnoremap <Leader>s :setlocal spell!<CR>
+nnoremap <Leader>t :r! date "+\%a, \%d-\%b-\%Y, \%I:\%M \%p"<CR>
+nnoremap <Leader><Leader> <C-w><C-p>
+nnoremap <Leader>1 1<c-w><c-w>
+nnoremap <Leader>2 2<c-w><c-w>
+nnoremap <Leader>3 3<c-w><c-w>
+
+" Cursorline
+set cursorline
+autocmd WinEnter * setlocal cursorline
+autocmd WinLeave * setlocal nocursorline
+
+" smart case insensitive
+set smartcase
+set ignorecase
+
+"Whitespace flaggin
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h,*.html match BadWhitespace /\s\+$/
+
+"Status line
+set laststatus=2                             " always show statusbar
+set statusline+=%-10.3n\                     " buffer number
+set statusline+=%f\                          " filename
+set statusline+=%y                           " filetype
+set statusline+=%h%m%r%w                     " status flags
+set statusline+=%=                           " right align remainder
+set statusline+=%-14(%l,%c%V%)               " line, character
+set statusline+=%<%P                         " file position
+set fillchars+=vert:\ 
+
+au FileType python set shiftwidth=4 | set tabstop=4

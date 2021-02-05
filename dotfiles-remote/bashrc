@@ -1,0 +1,21 @@
+# Aliases
+alias e='exit'
+alias c='clear'
+alias tmux='tmux -f $HOME/.config/tmux/tmux.conf'
+
+THEIP=$(ifconfig | awk '/inet / { print $2 }' | grep -v '127.0.0.1' | cut -d: -f2 | head -n 1)
+export PS1='
+\[\033[1;36m\]\u@$THEIP: \[\033[1;32m\]\w \[\033[0;39m\]$ '
+
+# Kitty Terminal settings
+export PATH=$PATH:~/.local/kitty.app/bin/
+if [ $SSH_TTY ] && ! [ -n "$TMUX" ]; then
+  export KITTY_PORT=`kitty @ ls 2>/dev/null | grep 'KITTY_LISTEN_ON' | head -n 1 | grep -P -o '\d{5}'`
+fi
+
+# Kitty Terminal Navigation
+bind -x '"\C-h": kitty @ kitten neighboring_window.py left'
+bind -x '"\C-j": kitty @ kitten neighboring_window.py top'
+bind -x '"\C-k": kitty @ kitten neighboring_window.py bottom'
+bind -x '"\C-l": kitty @ kitten neighboring_window.py right'
+

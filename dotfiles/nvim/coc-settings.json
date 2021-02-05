@@ -13,6 +13,7 @@
   "explorer.git.icon.status.modified": "",
   "explorer.git.icon.status.ignored": "",
   "explorer.git.icon.status.untracked": "",
+  "explorer.git.icon.status.deleted": "",
   "explorer.filename.colored.enable": false,
   "explorer.keyMappings.global": {
     "v": "open:vsplit",

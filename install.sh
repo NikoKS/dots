@@ -6,7 +6,8 @@
 # Only works for macos for now
 
 # Source colored echo functions
-source ./echos.sh
+source ./lib/echos.sh
+source ./lib/requires.sh
 
 fullname=`osascript -e "long user name of (system info)"`
 if [[ -n "$fullname" ]];then
@@ -23,7 +24,7 @@ bot "Hi ${firstname}! I'm going to install tooling and tweak your system setting
 # ####################################################################
 
 grep -q 'NOPASSWD:     ALL' /etc/sudoers.d/$LOGNAME > /dev/null 2>&1
-if [ $? -ne 0 ]; then
+if [[ $? != 0 ]]; then
   info "sudo not set as passwordless. Please enter password"
   sudo -v
 
@@ -134,7 +135,7 @@ if [[ $response =~ (yes|y|Y) ]];then
 
   # check zshenv
   grep "ZDOTDIR" $HOME/.zshenv > /dev/null 2>&1
-  if [[ $? -ne 0 ]];then
+  if [[ $? != 0 ]];then
     info "ZDOTDIR not found on zshenv. Adding ${COL_YELLOW}export ZDOTDIR=~/.config/zsh$COL_RESET to ~/.zshenv"
     echo "export ZDOTDIR=~/.config/zsh" > ~/.zshenv
   fi
