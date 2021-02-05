@@ -1,0 +1,152 @@
+# move prompt to bottom
+printf '\n%.0s' {1..100}
+ls -G
+# Instant Prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+printf '\n'
+
+################# PLUGINS ####################
+source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.config/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+[[ -s /Users/nsetiawan/.autojump/etc/profile.d/autojump.sh ]] && source /Users/nsetiawan/.autojump/etc/profile.d/autojump.sh
+source ~/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh
+# Consider https://github.com/softmoth/zsh-vim-mode#installation when needed
+
+# Enable colors and change prompt:
+autoload -U colors && colors
+
+# eval "$(pyenv init -)"
+# Set default fallback prompt
+PS1="
+%B%{$fg[cyan]%}%n %{$fg[green]%}%~ →%{$reset_color%}%b "
+
+# History in cache directory:
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.cache/zsh/hist
+
+############### COMPLETIONS ###################
+# poetry completion
+poetry completions zsh > $(brew --prefix)/share/zsh/site-functions/_poetry
+# Basic auto/tab complete:
+zstyle ':completion:*' completer _complete
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' special-dirs true
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit -y
+_comp_options+=(globdots)   # Include hidden files.
+# Kitty completion
+kitty + complete setup zsh | source /dev/stdin
+
+############## KEYBINDS #######################
+# vi mode
+bindkey -v
+export KEYTIMEOUT=1
+
+# Use vim keys in tab complete menu:
+bindkey -v '^?' backward-delete-char
+bindkey -M visual 'x' vi-yank
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -M menuselect '^[[Z' reverse-menu-complete
+bindkey -M menuselect '\e' end-of-list
+bindkey -M vicmd 'w' vi-backward-word
+bindkey -M vicmd 'W' vi-backward-blank-word
+bindkey -M vicmd 'H' vi-beginning-of-line
+bindkey -M vicmd 'L' vi-end-of-line
+bindkey -M vicmd 'x' vi-yank
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+bindkey -M viopp -s w iw
+bindkey -M viopp -s W iW
+# History finding
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+#setopt noautomenu
+#setopt nomenucomplete
+
+################ FUNCTIONS ###################
+# FZF git diff
+gd()
+{
+if [ -d .git ]; then
+preview="git diff $@ --color=always -- {-1}"
+execute="enter:execute(git difftool {} < /dev/tty)"
+git diff $@ --name-only | fzf -m --ansi --bind $execute \
+--preview $preview
+else
+echo "It's not a git repository"
+fi;
+}
+
+# Toggle Suspend process and go back to shell
+ctrlz() {
+  if [[ $#BUFFER == 0 ]]; then
+    fg >/dev/null 2>&1 && zle redisplay
+  else
+    zle push-input
+  fi
+}
+zle -N ctrlz
+bindkey '^Z' ctrlz
+
+# Change cursor shape for different vi modes.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+zle-line-init() {
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
+################# EXPORTS ####################
+export PATH=$PATH:$HOME/Software/recording_tools/venv/bin
+export PATH=$PATH:$HOME/Software/datasets_cli/bin
+export PATH=$PATH:$HOME/Software/datalab/bin
+export FZF_DEFAULT_OPTS='--bind=shift-tab:up,tab:down'
+export MYPY_CACHE_DIR=$HOME/.cache/mypy/
+
+################ ALIASES #####################
+alias vim='NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim'
+alias vim='nvim'
+alias vimdiff='nvim -d'
+alias vrc="vim ~/.config/nvim/init.vim"
+alias zrc="vim ~/.zshrc"
+alias trc="vim ~/.tmux.conf"
+alias krc="vim ~/.config/kitty/kitty.conf"
+alias vw="vim ~/Drive/vimwiki/index.md"
+alias ls='ls -G'
+alias sshi='kitty +kitten ssh'
+alias ssh='ssh -R ${KITTY_LISTEN_ON#*-}:${KITTY_LISTEN_ON#*:}'
+alias clear="printf '\n%.0s' {1..100}"
+alias e="exit"
+alias tmux="tmux -f ~/.config/tmux/tmux.conf"
+alias t="tmux"
+alias tn="tmux new -s"
+alias ta="tmux a -t"
+alias d="tmux detach"
+alias c="clear && ls"
+alias vip="pipenv run nvim"
+alias rmt="trash"
+
+export PATH="$HOME/.poetry/bin:$PATH"

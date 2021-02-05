@@ -1,0 +1,5 @@
+# List of pip packages to install
+git+https://github.com/NikoKS/auto-nvr.git
+flake8
+mypy
+termdown

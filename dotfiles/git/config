@@ -1,18 +1,13 @@
 [user]
-	name = NikoKS
-	email = nikolas.kur@gmail.com
-
+	name = nsetiawan
+	email = nsetiawan@magicleap.com
 [merge]
 	tool = nvim -d
-
 [mergetool]
 	keepBackup = false
-
 [core]
 	excludesFile = ~/.config/git/gitignore
-
 [diff]
   tool = vimdiff
-
 [mergetool "vimdiff"]
   cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'

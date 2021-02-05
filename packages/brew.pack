@@ -1,0 +1,18 @@
+# List of brew packages to install
+arp-scan
+bat
+cmake
+ctags
+ffmpeg
+fzf
+go
+htop
+neovim
+node
+poetry
+pyenv
+python3
+ripgrep
+stow
+tmux
+trash-cli
