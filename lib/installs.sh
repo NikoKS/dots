@@ -4,13 +4,25 @@ function version_greater_equal() {
   printf '%s\n' "$2" "$1" | sort -V -C
 }
 
+function clone_or_pull() {
+  if [[ -d $1 ]]; then
+    info "$1 exist, updating"
+    pushd $1
+    git pull
+    popd
+  else
+    info "cloning $2 to $1"
+    git clone --depth=1 $2 $1
+  fi
+}
+
 function install_nvim() {
   function install() {
     mkdir -p $1
     info "entering $1"
     pushd $1
     info "removing apt installation of neovim"
-    sudo apt purge neovim
+    sudo apt purge neovim 2> /dev/null
     lastversion --asset neovim/neovim --filter appimage$ -d
     chmod u+x nvim.appimage
     sudo mv nvim.appimage /usr/local/bin/nvim
@@ -55,7 +67,7 @@ function install_tmux() {
     require_apt libncurses5-dev
     require_apt libncursesw5-dev
     info "removing apt installation of tmux"
-    sudo apt purge tmux
+    sudo apt purge tmux 2> /dev/null
     lastversion --asset tmux/tmux -d
     tar --strip-components=1 -xvzf tmux*.tar.gz
     ./configure
@@ -96,9 +108,9 @@ function install_kitty() {
     require_apt libglib2.0-dev
     require_apt libcairo2-dev
     info "removing apt installation of kitty"
-    sudo apt purge kitty
+    sudo apt purge kitty 2> /dev/null
     curl -L https://sw.kovidgoyal.net/kitty/installer.sh \
-      | sh /dev/stdin
+      | sh /dev/stdin 2> /dev/null
     git clone --depth 1 https://github.com/harfbuzz/harfbuzz.git /tmp/harfbuzz
     cd /tmp/harfbuzz
     ./autogen.sh && ./configure && make
@@ -120,7 +132,7 @@ function install_kitty() {
       install $1
     fi
   else
-    info "kitty not dtected"
+    info "kitty not detected"
     running "installing kitty from source"
     install $1
   fi

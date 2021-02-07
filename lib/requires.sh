@@ -34,7 +34,7 @@ function require_cask() {
 
 function require_apt() {
     running "apt $1"
-    apt list $1 2> /dev/null | grep $1
+    apt list $1 2> /dev/null | grep $1 > /dev/null
     if [[ $? != 0 ]]; then
         action "sudo apt install $1"
         sudo apt install $1

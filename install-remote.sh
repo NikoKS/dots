@@ -8,8 +8,8 @@ bot "Seems that you're on a remote machine. Doing environment setup for remote m
 
 # Latest ubuntu LTS version
 lts="20.04"
-`lsb_release -a 2> /dev/null | grep $lts > /dev/null` 2>&1
-if [[ $? = 0 ]]; then
+lsb_release -a 2> /dev/null | grep $lts > /dev/null
+if [[ $? = 1 ]]; then
   latest=0
 else
   latest=1
@@ -49,14 +49,16 @@ if [[ $response =~ (yes|y|Y) ]];then
   ok
   running "copying zshrc to ~/.zshrc"
   cp dotfiles-remote/zshrc ~/.zshrc
+  mkdir -p ~/.config/zsh
+  cp dotfiles/zsh/p10k.zsh ~/.config/zsh
   ok
   running "copying neighboring_window.py to ~/.config/kitty/"
   mkdir -p ~/.config/kitty
-  cp dotfiles-remtote/neighboring_window.py ~/.config/kitty/
+  cp dotfiles-remote/neighboring_window.py ~/.config/kitty/
   ok
   running "copying vimrc to ~/.config/nvim/init.vim"
   mkdir -p ~/.config/nvim
-  cp dotfiles-remtote/vimrc ~/.config/nvim/init.vim
+  cp dotfiles-remote/vimrc ~/.config/nvim/init.vim
   ok
   running "copying tmux.conf to ~/.config/tmux/"
   mkdir -p ~/.config/tmux
@@ -76,7 +78,33 @@ else
   ok "skipped copying dotfiles"
 fi
 
+# Install Plugins
+bot "We can now install Plugins for tmux, nvim, and zsh"
+read -r -p "Continue plugin installation? [y|N] " response
+if [[ $response =~ (yes|y|Y) ]];then
 
+  action "Installing tmux plugins"
+  TPM="~/.config/tmux/plugins/tpm"
+  clone_or_pull $TPM https://github.com/tmux-plugins/tpm.git
+  ${TPM}/bin/install_plugins
 
+  action "Installing neovim plugins"
+  MIN="~/.config/nvim/pack/minpac/opt/minpac"
+  clone_or_pull $MIN https://github.com/k-takata/minpac.git
+  nvim +PackUpdate +qall >/dev/null 2>&1
+  
+  action "Installing zsh plugins"
+  ZSH="~/.config/zsh"
+  clone_or_pull $ZSH/zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting.git
+  clone_or_pull $ZSH/zsh-history-substring-search https://github.com/zsh-users/zsh-history-substring-search.git
+  clone_or_pull $ZSH/powerlevel10k https://github.com/romkatv/powerlevel10k.git 
+  if [[ `uname -s` == 'Darwin' ]]; then
+    require_brew autojump
+  elif [[ `uname -s` == 'Linux' ]]; then
+    require_apt autojump
+  fi
 
+else
+  ok "skipped installing pugins"
+fi
 
