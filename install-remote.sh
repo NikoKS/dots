@@ -16,7 +16,7 @@ else
 fi
 
 bot "First, let's install the essential software"
-read -r -p "Check and install tmux nvim zsh and kitty? [y|N]"
+read -r -p "Check and install tmux nvim zsh and kitty? [y|N]" response
 if [[ $response =~ (yes|y|Y) ]];then
   if [[ $latest = 1 ]]; then
     bot "Nice your Ubuntu machine already running latest LTS version"

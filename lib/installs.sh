@@ -1,8 +1,5 @@
 # Compilation of script to install software from source
 
-source ./echos.sh
-source ./requires.sh
-
 function version_greater_equal() {
   printf '%s\n' "$2" "$1" | sort -V -C
 }
