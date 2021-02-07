@@ -102,7 +102,7 @@ let g:indentLine_fileTypeExclude = ['startify', 'json', 'coc-explorer', 'help', 
 " Vimwiki Settings
 let g:vimwiki_hl_headers=1
 let g:vimwiki_list = [{'path': '~/Drive/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
-let g:vimwiki_folding = 'expr'
+"let g:vimwiki_folding = 'expr'
 let g:vimwiki_listsyms='    x'
 let g:vimwiki_map_prefix='<Leader>v'
 let g:vimwiki_key_mappings = {'headers': 0}

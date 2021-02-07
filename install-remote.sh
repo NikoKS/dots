@@ -15,24 +15,29 @@ else
   latest=1
 fi
 
-
-if [[ $latest = 1 ]]; then
-  bot "Nice your Ubuntu machine already running latest LTS version"
-  info "intalling zsh, tmux, and neovim from apt"
-  require_apt tmux
-  require_apt neovim
-  require_apt zsh
-  require_apt kitty
+bot "First, let's install the essential software"
+read -r -p "Check and install tmux nvim zsh and kitty? [y|N]"
+if [[ $response =~ (yes|y|Y) ]];then
+  if [[ $latest = 1 ]]; then
+    bot "Nice your Ubuntu machine already running latest LTS version"
+    info "intalling zsh, tmux, and neovim from apt"
+    require_apt tmux
+    require_apt neovim
+    require_apt zsh
+    require_apt kitty
+  else
+    bot "Your Ubuntu is outdated, needs to install packages from source"
+    info "installing zsh, tmux, and neovim from source"
+    install_dir=$HOME/Software
+    mkdir -p $install_dir
+    require_pip lastversion
+    install_tmux $install_dir/tmux
+    install_nvim $install_dir/nvim
+    install_kitty $install_dir/kitty
+    require_apt zsh
+  fi
 else
-  bot "Your Ubuntu is outdated, needs to install packages from source"
-  info "installing zsh, tmux, and neovim from source"
-  install_dir=$HOME/Software
-  mkdir -p $install_dir
-  require_pip lastversion
-  install_tmux $install_dir/tmux
-  install_nvim $install_dir/nvim
-  install_kitty $install_dir/kitty
-  require_apt zsh
+  ok "skipped installing software"
 fi
 
 # Copy dotfiles

@@ -65,6 +65,7 @@ bindkey -M vicmd 'L' vi-end-of-line
 bindkey -M vicmd 'x' vi-yank
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
+bindkey -M vicmd '^I' vi-repeat-find
 bindkey -M viopp -s w iw
 bindkey -M viopp -s W iW
 # History finding
@@ -127,12 +128,11 @@ export FZF_DEFAULT_OPTS='--bind=shift-tab:up,tab:down'
 export MYPY_CACHE_DIR=$HOME/.cache/mypy/
 
 ################ ALIASES #####################
-alias vim='NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim'
 alias vim='nvim'
 alias vimdiff='nvim -d'
 alias vrc="vim ~/.config/nvim/init.vim"
-alias zrc="vim ~/.zshrc"
-alias trc="vim ~/.tmux.conf"
+alias zrc="vim ~/.config/zsh/.zshrc"
+alias trc="vim ~/.config/tmux/tmux.conf"
 alias krc="vim ~/.config/kitty/kitty.conf"
 alias vw="vim ~/Drive/vimwiki/index.md"
 alias ls='ls -G'
@@ -140,13 +140,9 @@ alias sshi='kitty +kitten ssh'
 alias ssh='ssh -R ${KITTY_LISTEN_ON#*-}:${KITTY_LISTEN_ON#*:}'
 alias clear="printf '\n%.0s' {1..100}"
 alias e="exit"
-alias tmux="tmux -f ~/.config/tmux/tmux.conf"
 alias t="tmux"
 alias tn="tmux new -s"
 alias ta="tmux a -t"
 alias d="tmux detach"
 alias c="clear && ls"
-alias vip="pipenv run nvim"
 alias rmt="trash"
-
-export PATH="$HOME/.poetry/bin:$PATH"

@@ -9,7 +9,7 @@ export PS1='
 
 # Kitty Terminal settings
 export PATH=$PATH:~/.local/kitty.app/bin/
-if [ $SSH_TTY ] && ! [ -n "$TMUX" ]; then
+if [[ $SSH_TTY ]] && ! [ -n "$TMUX" ]; then
   export KITTY_PORT=`kitty @ ls 2>/dev/null | grep 'KITTY_LISTEN_ON' | head -n 1 | grep -P -o '\d{5}'`
 fi
 
