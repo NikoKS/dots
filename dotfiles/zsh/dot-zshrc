@@ -19,7 +19,7 @@ fi
 source ~/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh
-# Consider https://github.com/softmoth/zsh-vim-mode#installation when needed
+# Consider https://github.com/softmoth/zsh-vim-mode#installation if needed
 
 # Enable colors and change prompt:
 autoload -U colors && colors

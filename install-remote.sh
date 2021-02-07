@@ -84,17 +84,17 @@ read -r -p "Continue plugin installation? [y|N] " response
 if [[ $response =~ (yes|y|Y) ]];then
 
   action "Installing tmux plugins"
-  TPM="~/.config/tmux/plugins/tpm"
+  TPM="$HOME/.config/tmux/plugins/tpm"
   clone_or_pull $TPM https://github.com/tmux-plugins/tpm.git
   ${TPM}/bin/install_plugins
 
   action "Installing neovim plugins"
-  MIN="~/.config/nvim/pack/minpac/opt/minpac"
+  MIN="$HOME/.config/nvim/pack/minpac/opt/minpac"
   clone_or_pull $MIN https://github.com/k-takata/minpac.git
   nvim +PackUpdate +qall >/dev/null 2>&1
   
   action "Installing zsh plugins"
-  ZSH="~/.config/zsh"
+  ZSH="$HOME/.config/zsh"
   clone_or_pull $ZSH/zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting.git
   clone_or_pull $ZSH/zsh-history-substring-search https://github.com/zsh-users/zsh-history-substring-search.git
   clone_or_pull $ZSH/powerlevel10k https://github.com/romkatv/powerlevel10k.git 

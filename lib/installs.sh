@@ -7,8 +7,8 @@ function version_greater_equal() {
 function clone_or_pull() {
   if [[ -d $1 ]]; then
     info "$1 exist, updating"
-    pushd $1
-    git pull
+    pushd $1 > /dev/null
+    git pull --ff-only
     popd
   else
     info "cloning $2 to $1"
