@@ -61,7 +61,7 @@ if [[ $response =~ (yes|y|Y) ]];then
   ok
 
   running "generating vimrc in ~/.config/nvim/init.vim"
-  nvim_dir='$HOME/.config/nvim'
+  nvim_dir=$HOME/.config/nvim
   mkdir -p $nvim_dir
   copy_vimrc $nvim_dir/init.vim
   cp -r dotfiles/nvim/ftplugin $nvim_dir

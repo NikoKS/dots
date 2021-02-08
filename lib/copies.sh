@@ -18,8 +18,8 @@ function exclude() {
 
 function copy_vimrc() {
   vimrc=$1
-  init='dotfiles/nvim/init.vim'
-  dotvim='dotfiles/nvim/dotvim' 
+  init=dotfiles/nvim/init.vim
+  dotvim=dotfiles/nvim/dotvim 
   exclude 'Heavier Plugins' $dotvim/minpac.vim > $vimrc
   extract 'Basic Config' $init >> $vimrc
   extract 'Core Plugin' $init >> $vimrc
