@@ -1,7 +1,7 @@
 " Minpac Plugin Manager
 source $HOME/.config/nvim/dotvim/minpac.vim
 
-" Basic Config
+" Basic Config {{{
 set nu
 set title
 set mouse=a
@@ -11,6 +11,7 @@ set tabstop=2
 set shiftwidth=2
 set shortmess=atI
 let mapleader = ";"
+" }}}
 
 " Colorscheme ============================================================={{{
 set termguicolors
@@ -42,7 +43,7 @@ colorscheme afterglow
 " Source External Plugins Configs
 source $HOME/.config/nvim/dotvim/coc.vim
 
-" Global Plugins Settings
+" Core Plugin Settings {{{
 " Python setting
 let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
@@ -51,6 +52,32 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 let g:rooter_silent_chdir = 1
 let g:rooter_change_directory_for_non_project_files = 'current'
 
+" Vim Sneak
+let g:sneak#label = 1
+let g:sneak#use_ic_scs = 1
+let g:sneak#prompt = '🔎'
+let g:sneak#target_labels = 'fjeiwoa;dkslqpurvncmzxbtyASDFGHJKLZXCVBNMQWERTYUIOP,./<>?:"[]{}\|1234567890-=!@#$%^&*()_+`~'
+
+" Nerd Commenter align
+let g:NERDDefaultAlign = 'left'
+
+"Guttentags Settings
+let g:gutentags_cache_dir = expand('~/.cache/vim/ctags/')           " put tags in one directory
+let g:gutentags_generate_on_new = 1
+let g:gutentags_generate_on_missing = 1         " Makes sure guttentag generate tags
+let g:gutentags_generate_on_write = 1
+let g:gutentags_generate_on_empty_buffer = 0
+let g:gutentags_ctags_extra_args = [            
+      \ '--tag-relative=yes',
+      \ '--fields=+ailmnS',
+      \ ]
+
+" SimpylFold setting
+let g:SimpylFold_fold_docstring = 0
+let g:SimpylFold_fold_import = 0
+
+" }}}
+
 " fzf related settings
 let g:fzf_colors = {
   \ 'bg+':     ['bg', 'CursorColumn'],
@@ -58,12 +85,6 @@ let g:fzf_colors = {
 let g:fzf_action = {
       \ 'enter': 'buffer'}
 let g:coc_fzf_preview =  'right:50%'
-
-" Vim Sneak
-let g:sneak#label = 1
-let g:sneak#use_ic_scs = 1
-let g:sneak#prompt = '🔎'
-let g:sneak#target_labels = 'fjeiwoa;dkslqpurvncmzxbtyASDFGHJKLZXCVBNMQWERTYUIOP,./<>?:"[]{}\|1234567890-=!@#$%^&*()_+`~'
 
 " Vim Marks
 let g:SignatureMap = {
@@ -83,13 +104,6 @@ let g:tagbar_map_close = 'M'
 let g:tagbar_sort = 0
 let g:tagbar_width = 35
 
-" Nerd Commenter align
-let g:NERDDefaultAlign = 'left'
-
-" SimpylFold setting
-let g:SimpylFold_fold_docstring = 0
-let g:SimpylFold_fold_import = 0
-
 " Hexokinase Setting
 let g:Hexokinase_highlighters = [ 'backgroundfull' ]
 
@@ -107,17 +121,6 @@ let g:vimwiki_listsyms='    x'
 let g:vimwiki_map_prefix='<Leader>v'
 let g:vimwiki_key_mappings = {'headers': 0}
 autocmd BufRead,BufNewFile diary.md VimwikiDiaryGenerateLinks
-
-"Guttentags Settings
-let g:gutentags_cache_dir = expand('~/.cache/vim/ctags/')           " put tags in one directory
-let g:gutentags_generate_on_new = 1
-let g:gutentags_generate_on_missing = 1         " Makes sure guttentag generate tags
-let g:gutentags_generate_on_write = 1
-let g:gutentags_generate_on_empty_buffer = 0
-let g:gutentags_ctags_extra_args = [            
-      \ '--tag-relative=yes',
-      \ '--fields=+ailmnS',
-      \ ]
 
 "multicursor
 let g:VM_maps = {}

@@ -9,7 +9,7 @@ function clone_or_pull() {
     info "$1 exist, updating"
     pushd $1 > /dev/null
     git pull --ff-only
-    popd
+    popd > /dev/null
   else
     info "cloning $2 to $1"
     git clone --depth=1 $2 $1

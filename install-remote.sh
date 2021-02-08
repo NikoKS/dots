@@ -3,6 +3,7 @@
 source ./lib/echos.sh
 source ./lib/installs.sh
 source ./lib/requires.sh
+source ./lib/copies.sh
 
 bot "Seems that you're on a remote machine. Doing environment setup for remote machine"
 
@@ -16,7 +17,7 @@ else
 fi
 
 bot "First, let's install the essential software"
-read -r -p "Check and install tmux nvim zsh and kitty? [y|N]" response
+read -r -p "Check and install tmux nvim zsh and kitty? [y|N] " response
 if [[ $response =~ (yes|y|Y) ]];then
   if [[ $latest = 1 ]]; then
     bot "Nice your Ubuntu machine already running latest LTS version"
@@ -47,19 +48,25 @@ if [[ $response =~ (yes|y|Y) ]];then
   running "copying bashrc to ~/.extrabashrc"
   cp dotfiles-remote/bashrc ~/.extrabashrc
   ok
+
   running "copying zshrc to ~/.zshrc"
   cp dotfiles-remote/zshrc ~/.zshrc
   mkdir -p ~/.config/zsh
   cp dotfiles/zsh/p10k.zsh ~/.config/zsh
   ok
+
   running "copying neighboring_window.py to ~/.config/kitty/"
   mkdir -p ~/.config/kitty
   cp dotfiles-remote/neighboring_window.py ~/.config/kitty/
   ok
-  running "copying vimrc to ~/.config/nvim/init.vim"
-  mkdir -p ~/.config/nvim
-  cp dotfiles-remote/vimrc ~/.config/nvim/init.vim
+
+  running "generating vimrc in ~/.config/nvim/init.vim"
+  nvim_dir='$HOME/.config/nvim'
+  mkdir -p $nvim_dir
+  copy_vimrc $nvim_dir/init.vim
+  cp -r dotfiles/nvim/ftplugin $nvim_dir
   ok
+
   running "copying tmux.conf to ~/.config/tmux/"
   mkdir -p ~/.config/tmux
   cp dotfiles/tmux/tmux.conf ~/.config/tmux/tmux.conf

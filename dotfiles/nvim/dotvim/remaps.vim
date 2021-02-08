@@ -1,3 +1,4 @@
+" Core Remaps {{{
 "Utility and General Shortcuts
 nnoremap <silent> <esc> :noh<return><esc>
 nnoremap = :wincmd =<CR>
@@ -139,12 +140,6 @@ onoremap <silent> f :<C-U>call sneak#wrap(v:operator,   1, 0, 1, 1)<CR>
 onoremap <silent> F :<C-U>call sneak#wrap(v:operator,   1, 1, 1, 1)<CR>
 map <tab> <Plug>Sneak_;
 
-" Kitty Navigation
-inoremap <silent> <C-h> <Esc>:KittyNavigateLeft<CR>
-inoremap <silent> <C-j> <Esc>:KittyNavigateDown<CR>
-inoremap <silent> <C-k> <Esc>:KittyNavigateUp<CR>
-inoremap <silent> <C-l> <Esc>:KittyNavigateRight<CR>
-
 " Vim Surround
 nmap ysw ysiw
 nmap s ys
@@ -153,6 +148,14 @@ vmap s S
 "toggle comment
 nmap # <leader>c<space>
 vmap # <leader>c<space>
+
+" }}}
+
+" Kitty Navigation
+inoremap <silent> <C-h> <Esc>:KittyNavigateLeft<CR>
+inoremap <silent> <C-j> <Esc>:KittyNavigateDown<CR>
+inoremap <silent> <C-k> <Esc>:KittyNavigateUp<CR>
+inoremap <silent> <C-l> <Esc>:KittyNavigateRight<CR>
 
 "CocActions
 nmap <Leader>d<space> :call CocAction('diagnosticToggle')<CR>
