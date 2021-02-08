@@ -1,18 +1,18 @@
 # Compilation of functions to copy dotfiles
 
 function extract() {
-  if [[ uname -s = 'Darwin' ]]; then
-    sed -En '/'$1'/, /" ?}}}/p' $2
+  if [[ `uname -s` = 'Darwin' ]]; then
+    sed -En '/'"$1"'/, /" ?}}}/p' $2
   else
-    sed -rn '/'$1'/, /" ?}}}/p' $2
+    sed -rn '/'"$1"'/, /" ?}}}/p' $2
   fi
 }
 
 function exclude() {
-  if [[ uname -s = 'Darwin' ]]; then
-    sed -E '/'$1'/, /" ?}}}/d' $2
+  if [[ `uname -s` = 'Darwin' ]]; then
+    sed -E '/'"$1"'/, /" ?}}}/d' $2
   else
-    sed -r '/'$1'/, /" ?}}}/d' $2
+    sed -r '/'"$1"'/, /" ?}}}/d' $2
   fi
 }
 
