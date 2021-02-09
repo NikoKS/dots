@@ -5,6 +5,9 @@
 # Depending if you're on a personal or remote machine, this scirpt would install
 # A full or lite version
 
+# always run from the script dir
+cd "${0%/*}"
+
 # Source library
 source ./lib/echos.sh
 source ./lib/requires.sh
