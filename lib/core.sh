@@ -121,7 +121,7 @@ function link_dotfiles() {
 }
 
 function get_software_ubuntu() {
-  bot "First, let's install the essential software"
+  bot "OK, let's install the essential software"
   lts="20.04"
   read -r -p "Check and install tmux nvim zsh and kitty? [y|N] " response
   if [[ $response =~ (yes|y|Y) ]];then
@@ -182,7 +182,7 @@ function copy_dotfiles() {
     grep -q "source.*extrabashrc" $HOME/.bashrc
     if [[ $? != 0 ]]; then
       info "not sourced yet, adding source to .bashrc"
-      cat "source $HOME/.extrabashrc" >> $HOME/.bashrc
+      echo "source $HOME/.extrabashrc" >> $HOME/.bashrc
     else
       ok "Already sourced"
     fi
