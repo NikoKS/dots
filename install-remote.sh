@@ -45,12 +45,8 @@ fi
 bot "Copying dotfiles to your remote system"
 read -r -p "Continue ? [y|N] " response
 if [[ $response =~ (yes|y|Y) ]];then
-  running "copying bashrc to ~/.extrabashrc"
-  cp dotfiles-remote/bashrc ~/.extrabashrc
-  ok
-
   running "copying zshrc to ~/.zshrc"
-  cp dotfiles-remote/zshrc ~/.zshrc
+  cp dotfiles/zsh/dot-zshrc ~/.zshrc
   mkdir -p ~/.config/zsh
   cp dotfiles/zsh/p10k.zsh ~/.config/zsh
   ok
@@ -69,7 +65,12 @@ if [[ $response =~ (yes|y|Y) ]];then
 
   running "copying tmux.conf to ~/.config/tmux/"
   mkdir -p ~/.config/tmux
+  touch ~/.tmux.conf
   cp dotfiles/tmux/tmux.conf ~/.config/tmux/tmux.conf
+  ok
+
+  running "copying bashrc to ~/.extrabashrc"
+  cp dotfiles/remote/bashrc ~/.extrabashrc
   ok
 
   # sourcing extrabashrc
@@ -91,18 +92,23 @@ read -r -p "Continue plugin installation? [y|N] " response
 if [[ $response =~ (yes|y|Y) ]];then
 
   action "Installing tmux plugins"
-  TPM="$HOME/.config/tmux/plugins/tpm"
+  TP=$HOME/.config/tmux/plugins
+  KT=$HOME/.config/kitty
+  TPM=$TP/tpm
   clone_or_pull $TPM https://github.com/tmux-plugins/tpm.git
   ${TPM}/bin/install_plugins
+  cp $TP/kitty-vim-tmux-navigator/neighboring_window.py $KT
+  cp $TP/kitty-vim-tmux-navigator/pass_keys.py $KT
 
   action "Installing neovim plugins"
   require_apt ctags
-  MIN="$HOME/.config/nvim/pack/minpac/opt/minpac"
+  MIN=$HOME/.config/nvim/pack/minpac/opt/minpac
   clone_or_pull $MIN https://github.com/k-takata/minpac.git
   nvim +PackUpdate +qall >/dev/null 2>&1
   
   action "Installing zsh plugins"
-  ZSH="$HOME/.config/zsh"
+  ZSH=$HOME/.config/zsh
+  mkdir -p $HOME/.cache/zsh
   clone_or_pull $ZSH/zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting.git
   clone_or_pull $ZSH/zsh-history-substring-search https://github.com/zsh-users/zsh-history-substring-search.git
   clone_or_pull $ZSH/powerlevel10k https://github.com/romkatv/powerlevel10k.git 
@@ -115,4 +121,3 @@ if [[ $response =~ (yes|y|Y) ]];then
 else
   ok "skipped installing pugins"
 fi
-

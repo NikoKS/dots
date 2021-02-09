@@ -1,7 +1,9 @@
 # Aliases
 alias e='exit'
 alias c='clear'
-alias tmux='tmux -f $HOME/.config/tmux/tmux.conf'
+alias vim='nvim'
+alias tmux='tmux -f $HOME/.tmux.conf'
+alias t='tmux -f $HOME/.config/tmux/tmux.conf'
 
 THEIP=$(ifconfig | awk '/inet / { print $2 }' | grep -v '127.0.0.1' | cut -d: -f2 | head -n 1)
 export PS1='
