@@ -51,11 +51,6 @@ if [[ $response =~ (yes|y|Y) ]];then
   cp dotfiles/zsh/p10k.zsh ~/.config/zsh
   ok
 
-  running "copying neighboring_window.py to ~/.config/kitty/"
-  mkdir -p ~/.config/kitty
-  cp dotfiles-remote/neighboring_window.py ~/.config/kitty/
-  ok
-
   running "generating vimrc in ~/.config/nvim/init.vim"
   nvim_dir=$HOME/.config/nvim
   mkdir -p $nvim_dir
