@@ -21,6 +21,7 @@ function copy_vimrc() {
   init=dotfiles/nvim/init.vim
   dotvim=dotfiles/nvim/dotvim 
   exclude 'Heavier Plugins' $dotvim/minpac.vim > $vimrc
+  extract 'Colorscheme' $init >> $vimrc
   extract 'Basic Config' $init >> $vimrc
   extract 'Core Plugin' $init >> $vimrc
   extract 'Additional Settings' $init >> $vimrc

@@ -20,7 +20,7 @@ function! PackInit() abort
   call minpac#add('tmhedberg/SimpylFold')
   call minpac#add('preservim/nerdcommenter')
   " Navigating
-  call minpac#add('knubie/vim-kitty-navigator')
+  call minpac#add('NikoKS/vim-kitty-navigator')
   call minpac#add('ludovicchabant/vim-gutentags')
   call minpac#add('justinmk/vim-sneak')
   " Feature
