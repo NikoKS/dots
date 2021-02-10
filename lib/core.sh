@@ -198,7 +198,7 @@ function install_plugins() {
   if [[ $response =~ (yes|y|Y) ]];then
 
     action "Installing tmux plugins"
-    TP=$HOME/.config/tmux/plugin
+    TP=$HOME/.config/tmux/plugins
     KT=$HOME/.config/kitty
     TPM=$TP/tpm
     clone_or_pull $TPM https://github.com/tmux-plugins/tpm.git
