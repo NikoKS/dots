@@ -74,7 +74,7 @@ function install_brew_casks() {
 function link_dotfiles() {
   # Link dotfiles to .config  
   bot "Time to link your dotfiles! Are you ready?"
-  read -r -p "link dotfiles to your ~/.config folder?\n(This will move your existing config to a backup folder if they exist) [y|N] " response
+  read -r -p "link dotfiles to your ~/.config folder? (This will move your existing config to a backup folder if they exist) [y|N] " response
   if [[ $response =~ (yes|y|Y) ]];then
 
     #Setting config and backup dir
@@ -207,12 +207,14 @@ function install_plugins() {
     mkdir -p $KT
     cp $TP/kitty-vim-tmux-navigator/neighboring_window.py $KT
     cp $TP/kitty-vim-tmux-navigator/pass_keys.py $KT
+    print_success "finished installing tmux plugins"
 
     action "Installing neovim plugins"
-    require_apt ctags
+    apt_or_brew ctags
     MIN=$HOME/.config/nvim/pack/minpac/opt/minpac
     clone_or_pull $MIN https://github.com/k-takata/minpac.git
-    nvim --headless -c 'PackClean' -c 'call PackInit()' -c 'call minpac#update("", {"do": "qa"})'   
+    nvim --headless -c 'call PackInit()' -c 'call minpac#update("", {"do": "qa"})'   
+    print_success "finished installing neovim plugins"
 
     action "Installing zsh plugins"
     ZSH=$HOME/.config/zsh
@@ -228,6 +230,7 @@ function install_plugins() {
     elif [[ `uname -s` == 'Linux' ]]; then
       require_apt autojump
     fi
+    print_success "finished installing zsh plugins"
 
   else
     ok "skipped installing pugins"

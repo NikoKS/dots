@@ -17,7 +17,8 @@ function! PackInit() abort
   " Looks
   call minpac#add('kshenoy/vim-signature')
   call minpac#add('danilo-augusto/vim-afterglow')
-  " Folding Commenting
+  " Folding Commenting Indenting
+  call minpac#add('sheerun/vim-polyglot')
   call minpac#add('tmhedberg/SimpylFold')
   call minpac#add('preservim/nerdcommenter')
   " Navigating

@@ -46,6 +46,14 @@ function require_apt() {
     ok
 }
 
+function apt_or_brew() {
+    if [[ `uname -s` = 'Darwin' ]]; then
+        require_brew $1 $2
+    elif [[ `uname -s` = 'Linux' ]]; then
+        require_apt $1 $2
+    fi
+}
+
 function require_pip() {
     running "pip $1"
     pip show $1 > /dev/null 2>&1
