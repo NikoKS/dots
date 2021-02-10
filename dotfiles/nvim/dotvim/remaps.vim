@@ -6,7 +6,9 @@ nnoremap v <C-v>
 nnoremap r <C-r>
 nnoremap <Tab> ;
 vnoremap <Tab> ;
-nmap '' <C-o>
+"nmap '' <C-o>
+nmap <BS> <C-o>
+nmap <DEL> <C-o>
 nnoremap m zz
 nnoremap M m
 nnoremap O J

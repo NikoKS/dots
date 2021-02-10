@@ -198,11 +198,13 @@ function install_plugins() {
   if [[ $response =~ (yes|y|Y) ]];then
 
     action "Installing tmux plugins"
-    TP=$HOME/.config/tmux/plugins
+    TP=$HOME/.config/tmux/plugin
     KT=$HOME/.config/kitty
     TPM=$TP/tpm
     clone_or_pull $TPM https://github.com/tmux-plugins/tpm.git
-    ${TPM}/bin/install_plugins
+    tmux source ~/.config/tmux/tmux.conf
+    $TPM/bin/install_plugins
+    mkdir -p $KT
     cp $TP/kitty-vim-tmux-navigator/neighboring_window.py $KT
     cp $TP/kitty-vim-tmux-navigator/pass_keys.py $KT
 

@@ -16,6 +16,7 @@ function! PackInit() abort
   " Additional plugins here.
   " Looks
   call minpac#add('kshenoy/vim-signature')
+  call minpac#add('danilo-augusto/vim-afterglow')
   " Folding Commenting
   call minpac#add('tmhedberg/SimpylFold')
   call minpac#add('preservim/nerdcommenter')
@@ -31,7 +32,6 @@ function! PackInit() abort
 
   " Heavier Plugins {{{
   call minpac#add('Yggdroot/indentLine')
-  call minpac#add('danilo-augusto/vim-afterglow')
   call minpac#add('TaDaa/vimade')
   call minpac#add('RRethy/vim-hexokinase', { 'do': 'make hexokinase' })
 
