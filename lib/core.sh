@@ -212,8 +212,8 @@ function install_plugins() {
     require_apt ctags
     MIN=$HOME/.config/nvim/pack/minpac/opt/minpac
     clone_or_pull $MIN https://github.com/k-takata/minpac.git
-    nvim +PackUpdate +qall >/dev/null 2>&1
-    
+    nvim --headless -c 'PackClean' -c 'call PackInit()' -c 'call minpac#update("", {"do": "qa"})'   
+
     action "Installing zsh plugins"
     ZSH=$HOME/.config/zsh
     mkdir -p $HOME/.cache/zsh

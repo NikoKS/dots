@@ -36,7 +36,7 @@ autocmd ColorScheme afterglow
   \ highlight CocFloating                   guibg=#505050               |
   \ highlight CocExplorerIndentLine                       guifg=#919191 |
   \ highlight SignatureMarkText                           guifg=#7e8d50 
-colorscheme afterglow
+silent! colorscheme afterglow
 " }}}
 
 " Plugins settings ========================================================{{{
