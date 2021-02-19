@@ -23,3 +23,12 @@
 #		endsnippet
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+# Minimal Link
+snippet a "Minimal Link" w
+<a href="${1:http://www.${4:url.com}}">${3:Anchor Text}</a>
+endsnippet
+
+snippet ac "Link with class" w
+<a class="$1" href="${2:http://www.${3:url.com}}">${4:Anchor Text}</a>
+endsnippet

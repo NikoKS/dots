@@ -17,25 +17,30 @@ let mapleader = ";"
 set termguicolors
 let g:afterglow_inherit_background=1
 autocmd ColorScheme afterglow 
-  \ highlight StatusLineNC gui=NONE         guibg=#505050 guifg=#7e8d50 |
-  \ highlight StatusLine   gui=bold         guibg=#7e8d50 guifg=#111213 |
-  \ highlight Pmenu        gui=NONE         guibg=#505050 guifg=#7e8d50 |
-  \ highlight PmenuSel     gui=NONE         guibg=#7e8d50 guifg=#111213 |
-  \ highlight Comment      gui=NONE                       guifg=#7dd5cf |
-  \ highlight VertSplit                     guibg=#505050               |
-  \ highlight Visual                        guibg=#7e8d50 guifg=#111213 |
-  \ highlight BadWhitespace                 guibg=#919191 guifg=#919191 |
-  \ highlight Folded                                      guifg=#f5f5f5 |
-  \ highlight Conceal                                     guifg=#919191 |
-  \ highlight Sneak        gui=bold         guibg=#111213 guifg=#8ec43d |
-  \ highlight SneakScope                    guibg=#ffa460 guifg=#d0d0d0 |
-  \ highlight CocErrorSign                                guifg=#ac4142 |
-  \ highlight NonText                                     guifg=#111213 |
-  \ highlight CursorColumn                  guibg=#505050               |
-  \ highlight CocExplorerNormalFloat        guibg=#111213               |
-  \ highlight CocFloating                   guibg=#505050               |
-  \ highlight CocExplorerIndentLine                       guifg=#919191 |
-  \ highlight SignatureMarkText                           guifg=#7e8d50 
+  \ hi StatusLineNC gui=NONE         guibg=#505050 guifg=#7e8d50 |
+  \ hi StatusLine   gui=bold         guibg=#7e8d50 guifg=#111213 |
+  \ hi Pmenu        gui=NONE         guibg=#505050 guifg=#7e8d50 |
+  \ hi PmenuSel     gui=NONE         guibg=#7e8d50 guifg=#111213 |
+  \ hi Comment      gui=NONE                       guifg=#7dd5cf |
+  \ hi VertSplit                     guibg=#505050               |
+  \ hi Visual                        guibg=#7e8d50 guifg=#111213 |
+  \ hi BadWhitespace                 guibg=#919191 guifg=#919191 |
+  \ hi Folded                                      guifg=#f5f5f5 |
+  \ hi Conceal                                     guifg=#919191 |
+  \ hi NonText                                     guifg=#111213 |
+  \ hi Sneak        gui=bold         guibg=#111213 guifg=#8ec43d |
+  \ hi SneakScope                    guibg=#ffa460 guifg=#d0d0d0 |
+  \ hi CursorColumn                  guibg=#505050               |
+  \ hi CocFloating                   guibg=#505050               |
+  \ hi CocErrorSign                                guifg=#ac4142 |
+  \ hi CocExplorerNormalFloat        guibg=#111213               |
+  \ hi CocExplorerIndentLine                       guifg=#919191 |
+  \ hi CocExplorerFileGitUnstaged                  guifg=#7e8d50 |
+  \ hi CocExplorerFileGitRootUnstaged              guifg=#7e8d50 |
+  \ hi CocExplorerFileRoot                         guifg=#7e8d50 |
+  \ hi CocExplorerBufferRoot                       guifg=#7e8d50 |
+  \ hi CocExplorerFileRootName                     guifg=#6c99bb |
+  \ hi SignatureMarkText                           guifg=#7e8d50 
 silent! colorscheme afterglow
 " }}}
 
@@ -86,6 +91,9 @@ let g:fzf_action = {
       \ 'enter': 'buffer'}
 let g:coc_fzf_preview =  'right:50%'
 
+" Vim-snippet settings
+ let g:ultisnips_python_style='google'
+
 " Vim Marks
 let g:SignatureMap = {
   \ 'Leader'             :  "M",
@@ -111,7 +119,7 @@ let g:Hexokinase_highlighters = [ 'backgroundfull' ]
 let g:indentLine_concealcursor = 'n'
 let g:indentLine_conceallevel = '1'
 let g:indentLine_char_list = ['│','|', '¦', '┆', '┊']
-let g:indentLine_fileTypeExclude = ['startify', 'json', 'coc-explorer', 'help', 'text', 'vimwiki', 'markdown', 'vim']
+let g:indentLine_fileTypeExclude = ['startify', 'json', 'coc-explorer', 'help', 'text', 'vimwiki', 'markdown', 'vim', 'man']
 
 " Vimwiki Settings
 let g:vimwiki_hl_headers=1

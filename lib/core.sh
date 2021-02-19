@@ -202,6 +202,7 @@ function install_plugins() {
     KT=$HOME/.config/kitty
     TPM=$TP/tpm
     clone_or_pull $TPM https://github.com/tmux-plugins/tpm.git
+    tmux source $HOME/.config/tmux/tmux.conf
     TMUX_PLUGIN_MANAGER_PATH=$TP
     $TPM/bin/install_plugins
     mkdir -p $KT

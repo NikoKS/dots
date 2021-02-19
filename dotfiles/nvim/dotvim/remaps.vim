@@ -81,7 +81,7 @@ vnoremap W B
 set wildcharm=<C-z>
 nnoremap bl :ls<CR>
 nnoremap b<Tab> :b <C-z>
-nnoremap <silent> bn :bNext<CR>
+nnoremap <silent> bn :bnext<CR>
 nnoremap <silent> bp :bprevious<CR>
 nnoremap bb :b#<CR>
 nnoremap ba :badd 

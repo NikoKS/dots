@@ -43,3 +43,14 @@ if args:
 `
 		$0
 endsnippet
+
+#Yaml
+snippet yamll "Load yaml file"
+with open('yaml_file', 'r') as f:
+	data = yaml.safe_load(f, Loader=yaml.FullLoader)
+endsnippet
+
+snippet yamld "Dump dictionary to yaml file"
+with open('yaml_file', 'w') as f:
+	data = yaml.dump(dictionary, f)
+endsnippet

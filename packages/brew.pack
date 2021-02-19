@@ -1,4 +1,5 @@
 # List of brew packages to install
+archiver
 arp-scan
 bat
 cmake

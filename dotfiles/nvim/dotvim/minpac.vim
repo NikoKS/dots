@@ -17,15 +17,18 @@ function! PackInit() abort
   " Looks
   call minpac#add('kshenoy/vim-signature')
   call minpac#add('danilo-augusto/vim-afterglow')
-  " Folding Commenting Indenting
-  call minpac#add('sheerun/vim-polyglot')
+  " Folding Commenting Indenting Syntax Utilities
+  "call minpac#add('sheerun/vim-polyglot')
   call minpac#add('tmhedberg/SimpylFold')
   call minpac#add('preservim/nerdcommenter')
+  "call minpac#add('Glench/Vim-Jinja2-Syntax')
   " Navigating
   call minpac#add('NikoKS/kitty-vim-tmux-navigator')
   call minpac#add('ludovicchabant/vim-gutentags')
   call minpac#add('justinmk/vim-sneak')
   " Feature
+  "call minpac#add('jez/vim-superman')
+  call minpac#add('lambdalisue/vim-manpager')
   call minpac#add('airblade/vim-rooter')
   call minpac#add('tpope/vim-surround')
   call minpac#add('wellle/targets.vim')
