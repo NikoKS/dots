@@ -202,8 +202,8 @@ function install_plugins() {
     KT=$HOME/.config/kitty
     TPM=$TP/tpm
     clone_or_pull $TPM https://github.com/tmux-plugins/tpm.git
+    tmux new-session -d "sleep 1" && sleep 0.1
     tmux source $HOME/.config/tmux/tmux.conf
-    TMUX_PLUGIN_MANAGER_PATH=$TP
     $TPM/bin/install_plugins
     mkdir -p $KT
     cp $TP/kitty-vim-tmux-navigator/neighboring_window.py $KT
