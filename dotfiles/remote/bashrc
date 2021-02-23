@@ -19,8 +19,8 @@ if [[ $SSH_TTY ]] && ! [ -n "$TMUX" ] && [[ $TERM = 'xterm-kitty' ]]; then
 
   # Kitty Terminal Navigation
   bind -x '"\C-h": kitty @ kitten neighboring_window.py left'
-  bind -x '"\C-j": kitty @ kitten neighboring_window.py top'
-  bind -x '"\C-k": kitty @ kitten neighboring_window.py bottom'
+  bind -x '"\C-j": kitty @ kitten neighboring_window.py bottom'
+  bind -x '"\C-k": kitty @ kitten neighboring_window.py top'
   bind -x '"\C-l": kitty @ kitten neighboring_window.py right'
 fi
 
