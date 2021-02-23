@@ -202,7 +202,7 @@ function install_plugins() {
     KT=$HOME/.config/kitty
     TPM=$TP/tpm
     clone_or_pull $TPM https://github.com/tmux-plugins/tpm.git
-    tmux new-session -d "sleep 1" && sleep 0.1
+    tmux new-session -d "sleep 5" && sleep 1
     tmux source $HOME/.config/tmux/tmux.conf
     $TPM/bin/install_plugins
     mkdir -p $KT
