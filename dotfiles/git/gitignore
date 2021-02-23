@@ -6,6 +6,9 @@ __pycache__
 .mypy*
 *.lock
 
+# Node
+node_modules
+
 # Other Development cache
 .vim*
 *.log

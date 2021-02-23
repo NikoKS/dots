@@ -14,12 +14,13 @@ export PS1='
 
 # Kitty Terminal settings
 export PATH=$PATH:~/.local/kitty.app/bin/
-if [[ $SSH_TTY ]] && ! [ -n "$TMUX" ]; then
+if [[ $SSH_TTY ]] && ! [ -n "$TMUX" ] && [[ $TERM = 'xterm-kitty' ]]; then
   export KITTY_PORT=`kitty @ ls 2>/dev/null | grep "[0-9]:/tmp/mykitty" | head -n 1 | cut -d : -f 1 | cut -d \" -f 2`
+
+  # Kitty Terminal Navigation
+  bind -x '"\C-h": kitty @ kitten neighboring_window.py left'
+  bind -x '"\C-j": kitty @ kitten neighboring_window.py top'
+  bind -x '"\C-k": kitty @ kitten neighboring_window.py bottom'
+  bind -x '"\C-l": kitty @ kitten neighboring_window.py right'
 fi
 
-# Kitty Terminal Navigation
-bind -x '"\C-h": kitty @ kitten neighboring_window.py left'
-bind -x '"\C-j": kitty @ kitten neighboring_window.py top'
-bind -x '"\C-k": kitty @ kitten neighboring_window.py bottom'
-bind -x '"\C-l": kitty @ kitten neighboring_window.py right'

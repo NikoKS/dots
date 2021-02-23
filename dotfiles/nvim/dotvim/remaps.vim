@@ -4,6 +4,7 @@ nnoremap <silent> <esc> :noh<return><esc>
 nnoremap = :wincmd =<CR>
 nnoremap v <C-v>
 nnoremap r <C-r>
+nnoremap R :e!<CR>
 nnoremap <Tab> ;
 vnoremap <Tab> ;
 "nmap '' <C-o>
