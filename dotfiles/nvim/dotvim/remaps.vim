@@ -145,6 +145,7 @@ map <tab> <Plug>Sneak_;
 
 " Vim Surround
 nmap ysw ysiw
+nmap ysW ysiW
 nmap s ys
 vmap s S
 

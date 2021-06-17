@@ -13,3 +13,7 @@ Run the install script to setup environment
 ```
 
 ![dots_demo](docs/dots_demo.gif)
+
+## TODO
+- Create option to install lite version on Macos
+- Create option to install full version on Ubuntu

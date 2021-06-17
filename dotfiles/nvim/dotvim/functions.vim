@@ -14,7 +14,7 @@ function! BufferWipe()
   if &modified
     echo "Buffer is modified! Save it first."
   else
-    b#
+    bnext
     bw#
   endif
 endfunc

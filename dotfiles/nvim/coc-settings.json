@@ -5,6 +5,7 @@
   "python.linting.mypyEnabled": true,
   "explorer.width": 30,
   "explorer.floating.border.title": "File Explorer",
+  "explorer.file.showHiddenFiles": true,
   "explorer.icon.enableNerdfont": true,
   "explorer.toggle": false,
   "explorer.buffer.child.template": "[selection | 1] [bufnr] [name][readonly] [modified] ",
@@ -40,7 +41,6 @@
   ],
   "coc.preferences.extensionUpdateCheck" : "daily",
   "coc.preferences.formatOnType" : true,
-  "snippets.snipmate.enable": false,
   "suggest.maxCompleteItemCount": 10,
   "suggest.minTriggerInputLength": 1,
   "suggest.completionItemKindLabels": {
@@ -70,6 +70,11 @@
     "operator": "operator",
     "typeParameter": "type",
     "default": "default"
+  },
+  "snippets.snipmate.enable": false,
+  "snippets.triggerCharacters": ["/"],
+  "snippets.extends": {
+    "javascript": ["javascript-jsdoc"]
   }
 }
 

@@ -57,7 +57,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 "User Added ========================================================
 
 " Install these
-let g:coc_global_extensions = ['coc-pyright', 'coc-css', 'coc-html', 'coc-json', 'coc-yaml', 'coc-snippets', 'coc-explorer', 'coc-git', 'coc-sh', 'https://github.com/rodrigore/coc-tailwind-intellisense']
+let g:coc_global_extensions = ['coc-pyright', 'coc-css', 'coc-html', 'coc-json', 'coc-yaml', 'coc-snippets', 'coc-explorer', 'coc-git', 'coc-sh', 'https://github.com/rodrigore/coc-tailwind-intellisense', 'coc-tsserver', 'coc-eslint']
 
 " Check if there's any selection
 "inoremap <expr> <cr> pumvisible() ? coc#rpc#request('hasSelected', []) ? "\<C-y>" : "<CR>" : "\<C-g>u\<CR>"

@@ -17,20 +17,29 @@ function! PackInit() abort
   " Looks
   call minpac#add('kshenoy/vim-signature')
   call minpac#add('danilo-augusto/vim-afterglow')
+  "call minpac#add('itchyny/lightline.vim')
+  "call minpac#add('vim-airline/vim-airline')
+  "call minpac#add('vim-airline/vim-airline-themes')
   " Folding Commenting Indenting Syntax Utilities
-  "call minpac#add('sheerun/vim-polyglot')
   call minpac#add('tmhedberg/SimpylFold')
   call minpac#add('preservim/nerdcommenter')
-  "call minpac#add('Glench/Vim-Jinja2-Syntax')
+  call minpac#add('pangloss/vim-javascript')
+  call minpac#add('leafgarland/typescript-vim')
+  call minpac#add('maxmellon/vim-jsx-pretty')
+  call minpac#add('cespare/vim-toml')
   " Navigating
   call minpac#add('NikoKS/kitty-vim-tmux-navigator')
   call minpac#add('ludovicchabant/vim-gutentags')
   call minpac#add('justinmk/vim-sneak')
+  "call minpac#add('kyazdani42/nvim-web-devicons')
+  "call minpac#add('romgrk/barbar.nvim')
   " Feature
   "call minpac#add('jez/vim-superman')
   call minpac#add('lambdalisue/vim-manpager')
+  call minpac#add('tpope/vim-fugitive')
   call minpac#add('airblade/vim-rooter')
   call minpac#add('tpope/vim-surround')
+  call minpac#add('jiangmiao/auto-pairs')
   call minpac#add('wellle/targets.vim')
   call minpac#add('mhinz/vim-startify')
 
@@ -46,8 +55,13 @@ function! PackInit() abort
 
   call minpac#add('preservim/tagbar')
   call minpac#add('vimwiki/vimwiki')
+  call minpac#add('tools-life/taskwiki', {'do': {-> system('python3 -m pip install -U -r requirements.txt')}})
+  call minpac#add('iamcco/markdown-preview.nvim', {'do': 'packloadall! | call mkdp#util#install()'})
   call minpac#add('neoclide/coc.nvim')
   call minpac#add('honza/vim-snippets')
+
+  call minpac#add('ianding1/leetcode.vim')
+  call minpac#add('itchyny/calendar.vim')
   " }}}
 
 endfunction

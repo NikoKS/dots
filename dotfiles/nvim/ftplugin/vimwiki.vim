@@ -7,6 +7,7 @@ setlocal cole=1
 setlocal cocu=n
 setlocal wrap
 setlocal linebreak
+setlocal nu!
 
 "Vimwiki Table Mapping
 nnoremap tg :VimwikiTableMoveColumnLeft<CR>
@@ -34,11 +35,9 @@ hi MyConceal guibg=NONE guifg=#e5b566
 " Buffer Specific settings
 au BufEnter * if &ft ==# 'vimwiki'
       \ | set winhl=Conceal:MyConceal
-      \ | execute "silent! CocDisable"
+      "\ | execute 'silent! CocDisable'
       \ | endif
 au BufLeave * if &ft ==# 'vimwiki'
       \ | set winhl=Conceal:Conceal
-      \ | execute "silent! CocEnable"
+      "\ | execute 'silent! CocEnable'
       \ | endif
-
-

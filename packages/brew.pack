@@ -17,3 +17,5 @@ ripgrep
 stow
 tmux
 trash-cli
+task
+rename

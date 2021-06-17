@@ -2,12 +2,12 @@
 	name = nsetiawan
 	email = nsetiawan@magicleap.com
 [merge]
-	tool = nvim -d
+	tool = nvim
 [mergetool]
-	keepBackup = false
+  keepBackup = false
+[mergetool "nvim"]
+  cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
 [core]
 	excludesFile = ~/.config/git/gitignore
 [diff]
   tool = vimdiff
-[mergetool "vimdiff"]
-  cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'

@@ -5,3 +5,9 @@ setlocal textwidth=80
 setlocal foldmethod=indent
 setlocal foldnestmax=2
 setlocal foldlevel=2
+
+set filetype=jsonc
+
+hi link jsonCommentError Comment
+hi link jsonNoQuotesError Comment
+hi link jsonStringSQError Comment

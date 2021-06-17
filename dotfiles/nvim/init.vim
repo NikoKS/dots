@@ -17,28 +17,30 @@ let mapleader = ";"
 set termguicolors
 let g:afterglow_inherit_background=1
 autocmd ColorScheme afterglow 
-  \ hi StatusLineNC gui=NONE         guibg=#505050 guifg=#7e8d50 |
-  \ hi StatusLine   gui=bold         guibg=#7e8d50 guifg=#111213 |
+  \ hi StatusLineNC gui=NONE         guibg=#222222 guifg=#7e8d50 |
+  \ hi StatusLine   gui=NONE         guibg=#222222 guifg=#7e8d50 |
   \ hi Pmenu        gui=NONE         guibg=#505050 guifg=#7e8d50 |
-  \ hi PmenuSel     gui=NONE         guibg=#7e8d50 guifg=#111213 |
+  \ hi PmenuSel     gui=NONE         guibg=#7e8d50 guifg=#202020 |
   \ hi Comment      gui=NONE                       guifg=#7dd5cf |
-  \ hi VertSplit                     guibg=#505050               |
-  \ hi Visual                        guibg=#7e8d50 guifg=#111213 |
+  \ hi javaScriptComment                           guifg=#e5b566 |
+  \ hi javaScriptLineComment                       guifg=#7dd5cf |
+  \ hi VertSplit    gui=bold         guibg=#202020 guifg=#000000 |
+  \ hi Visual                        guibg=#7e8d50 guifg=#202020 |
   \ hi BadWhitespace                 guibg=#919191 guifg=#919191 |
   \ hi Folded                                      guifg=#f5f5f5 |
   \ hi Conceal                                     guifg=#919191 |
-  \ hi NonText                                     guifg=#111213 |
-  \ hi Sneak        gui=bold         guibg=#111213 guifg=#8ec43d |
+  \ hi NonText                                     guifg=#202020 |
+  \ hi Sneak        gui=bold         guibg=#202020 guifg=#8ec43d |
   \ hi SneakScope                    guibg=#ffa460 guifg=#d0d0d0 |
   \ hi CursorColumn                  guibg=#505050               |
   \ hi CocFloating                   guibg=#505050               |
   \ hi CocErrorSign                                guifg=#ac4142 |
-  \ hi CocExplorerNormalFloat        guibg=#111213               |
+  \ hi CocExplorerNormalFloat        guibg=#202020               |
   \ hi CocExplorerIndentLine                       guifg=#919191 |
-  \ hi CocExplorerFileGitUnstaged                  guifg=#7e8d50 |
-  \ hi CocExplorerFileGitRootUnstaged              guifg=#7e8d50 |
   \ hi CocExplorerFileRoot                         guifg=#7e8d50 |
-  \ hi CocExplorerBufferRoot                       guifg=#7e8d50 |
+  \ hi link CocExplorerFileGitRootUnstaged   CocExplorerFileRoot |
+  \ hi link CocExplorerFileGitUnstaged       CocExplorerFileRoot |
+  \ hi link CocExplorerBufferRoot            CocExplorerFileRoot |
   \ hi CocExplorerFileRootName                     guifg=#6c99bb |
   \ hi SignatureMarkText                           guifg=#7e8d50 
 silent! colorscheme afterglow
@@ -61,7 +63,7 @@ let g:rooter_change_directory_for_non_project_files = 'current'
 let g:sneak#label = 1
 let g:sneak#use_ic_scs = 1
 let g:sneak#prompt = '🔎'
-let g:sneak#target_labels = 'fjeiwoa;dkslqpurvncmzxbtyASDFGHJKLZXCVBNMQWERTYUIOP,./<>?:"[]{}\|1234567890-=!@#$%^&*()_+`~'
+let g:sneak#target_labels = 'fjewo;dkslqpurvncmzxbtySDFGHJKLZXCVBNMQWERTYUOP,./<>?:"[]{}\|1234567890-=!@#$%^&*()_+`~'
 
 " Nerd Commenter align
 let g:NERDDefaultAlign = 'left'
@@ -119,7 +121,7 @@ let g:Hexokinase_highlighters = [ 'backgroundfull' ]
 let g:indentLine_concealcursor = 'n'
 let g:indentLine_conceallevel = '1'
 let g:indentLine_char_list = ['│','|', '¦', '┆', '┊']
-let g:indentLine_fileTypeExclude = ['startify', 'json', 'coc-explorer', 'help', 'text', 'vimwiki', 'markdown', 'vim', 'man']
+let g:indentLine_fileTypeExclude = ['startify', 'json', 'coc-explorer', 'help', 'text', 'vimwiki', 'markdown', 'vim', 'man', 'calendar']
 
 " Vimwiki Settings
 let g:vimwiki_hl_headers=1
@@ -145,6 +147,17 @@ let g:vimade = {}
 let g:vimade.fadelevel = 0.7
 let g:vimade.rowbufsize = 1
 autocmd FileType coc-explorer,tagbar VimadeBufDisable 
+
+" Vim Airline Settings
+"set noshowmode
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#formatter = 'unique_tail'
+"let g:airline_theme='term'
+
+" LeetCode
+let g:leetcode_browser = 'firefox'
+"let g:leetcode_solution_filetype = 'javascript'
+let g:leetcode_solution_filetype = 'python'
 "}}}
 
 " Additional Settings ====================================================={{{
@@ -169,7 +182,10 @@ set statusline+=%h%m%r%w                     " status flags
 set statusline+=%=                           " right align remainder
 set statusline+=%-14(%l,%c%V%)               " line, character
 set statusline+=%<%P                         " file position
-set fillchars+=vert:\ 
+set fillchars+=vert:│
+
+"filetype modification
+autocmd BufRead,BufNewFile *.ejs set filetype=html
 " }}}
 
 " Functions
