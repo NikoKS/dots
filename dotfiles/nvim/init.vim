@@ -53,7 +53,7 @@ source $HOME/.config/nvim/dotvim/coc.vim
 " Core Plugin Settings {{{
 " Python setting
 let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python3_host_prog = '/opt/homebrew/bin/python3'
 
 " vim rooter
 let g:rooter_silent_chdir = 1

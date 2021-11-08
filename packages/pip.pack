@@ -1,5 +1,6 @@
 # List of pip packages to install
 git+https://github.com/NikoKS/auto-nvr.git
+pynvim
 flake8
 mypy
 termdown

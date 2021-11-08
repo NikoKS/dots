@@ -1,6 +1,6 @@
 [user]
-	name = nsetiawan
-	email = nsetiawan@magicleap.com
+	name = nikolasetiawan
+	email = nikolas.setiawan@tokopedia.com
 [merge]
 	tool = nvim
 [mergetool]
@@ -11,3 +11,5 @@
 	excludesFile = ~/.config/git/gitignore
 [diff]
   tool = vimdiff
+[credential]
+	helper = store

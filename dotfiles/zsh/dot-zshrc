@@ -7,6 +7,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 printf '\n'
 
+# Source brew
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/nikolas.setiawan/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
@@ -26,7 +30,7 @@ kernel=`uname -s`
 source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.config/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 if [[ $kernel == 'Darwin' ]]; then
-  [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+  [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 elif [[ $kernel == 'Linux' ]]; then
   [ -f /usr/share/autojump/autojump.sh ] && . /usr/share/autojump/autojump.sh
 fi
@@ -160,6 +164,7 @@ elif [[ $kernel == 'Linux' ]]; then
   alias ls='ls --color=always'
 fi
 alias vim='nvim'
+alias lvim='~/.local/bin/lvim'
 alias vimdiff='nvim -d'
 alias vrc="vim ~/.config/nvim/init.vim"
 alias zrc="vim ~/.config/zsh/.zshrc"

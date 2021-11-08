@@ -42,6 +42,8 @@ function! PackInit() abort
   call minpac#add('jiangmiao/auto-pairs')
   call minpac#add('wellle/targets.vim')
   call minpac#add('mhinz/vim-startify')
+  call minpac#add('APZelos/blamer.nvim')
+
 
   " Heavier Plugins {{{
   call minpac#add('Yggdroot/indentLine')
@@ -57,7 +59,7 @@ function! PackInit() abort
   call minpac#add('vimwiki/vimwiki')
   call minpac#add('tools-life/taskwiki', {'do': {-> system('python3 -m pip install -U -r requirements.txt')}})
   call minpac#add('iamcco/markdown-preview.nvim', {'do': 'packloadall! | call mkdp#util#install()'})
-  call minpac#add('neoclide/coc.nvim')
+  call minpac#add('neoclide/coc.nvim', {'branch': 'release'} )
   call minpac#add('honza/vim-snippets')
 
   call minpac#add('ianding1/leetcode.vim')
