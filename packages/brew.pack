@@ -3,7 +3,7 @@ archiver
 arp-scan
 bat
 cmake
-ctags
+universal-ctags
 ffmpeg
 fzf
 go
@@ -19,3 +19,4 @@ tmux
 trash-cli
 task
 rename
+tree

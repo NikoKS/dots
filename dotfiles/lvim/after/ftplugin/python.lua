@@ -1,0 +1,8 @@
+vim.cmd('unmap <buffer> [[')
+vim.cmd('unmap <buffer> []')
+vim.cmd('unmap <buffer> [M')
+vim.cmd('unmap <buffer> [m')
+vim.cmd('unmap <buffer> ][')
+vim.cmd('unmap <buffer> ]M')
+vim.cmd('unmap <buffer> ]]')
+vim.cmd('unmap <buffer> ]m')

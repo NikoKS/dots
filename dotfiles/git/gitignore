@@ -5,6 +5,7 @@ DEVNOTE.md
 __pycache__
 .mypy*
 *.lock
+venv*/
 
 # Node
 node_modules

@@ -9,6 +9,7 @@
   cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
 [core]
 	excludesFile = ~/.config/git/gitignore
+	editor = lvim
 [diff]
   tool = vimdiff
 [credential]

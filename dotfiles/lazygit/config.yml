@@ -1,0 +1,18 @@
+gui:
+  scrollHeight: 3
+  expandFocusedSidePanel: true
+os:
+  editCommand: 'nvr --nostart --servername $NVIM_LISTEN_ADDRESS --remote-silent -l'
+quitOnTopLevelReturn: true
+notARepository: 'skip'
+keybinding:
+  universal:
+    gotoTop: 'g'
+    gotoBottom: 'G'
+    goInto: '<space>'
+    select: '<enter>'
+  commits:
+    checkoutCommit: '<enter>'
+    viewResetOptions: 'b'
+  stash:
+    popStash: 'p'
