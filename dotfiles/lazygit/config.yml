@@ -1,6 +1,9 @@
 gui:
   scrollHeight: 3
   expandFocusedSidePanel: true
+  theme:
+    inactiveBorderColor:
+      - blue
 os:
   editCommand: 'nvr --nostart --servername $NVIM_LISTEN_ADDRESS --remote-silent -l'
 quitOnTopLevelReturn: true

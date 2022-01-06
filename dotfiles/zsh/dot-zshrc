@@ -9,7 +9,7 @@ fi
 printf '\n'
 
 # Source brew
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/nikolas.setiawan/.zprofile
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # setup pyenv
@@ -68,6 +68,9 @@ compdef _git gd="git-diff"
 
 # Enable colors and change prompt:
 autoload -U colors && colors
+
+# gcloud completion
+if [ -f ~/Software/google-cloud-sdk/completion.zsh.inc ]; then source ~/Software/google-cloud-sdk/completion.zsh.inc; fi
 ###############################################}}}
 
 ############## KEYBINDS #######################{{{
@@ -114,6 +117,15 @@ gd()
   echo "It's not a git repository"
   fi;
 }
+
+escape()
+{
+  if [[ -v VIMRUNTIME ]]; then
+    exit
+  fi
+}
+zle -N escape
+bindkey -M vicmd '^[' escape
 
 # change tmux layout to horizontal
 tmux_horizontal()
@@ -166,10 +178,13 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 ################# EXPORTS ####################{{{
 export EDITOR=lvim
-export MANPAGER="nvim -c MANPAGER -"
+export MANPAGER="lvim +Man!"
 export FZF_DEFAULT_OPTS='--bind=shift-tab:up,tab:down'
 export PATH=$HOME/.local/bin:$PATH
 export MYPY_CACHE_DIR=$HOME/.cache/mypy/
+export GOPATH=$HOME/Software/go
+export PATH=$GOPATH/bin:$PATH
+export PATH=$HOME/Software/google-cloud-sdk/bin:$PATH
 ###############################################}}}
 
 ################ ALIASES #####################{{{
@@ -183,7 +198,7 @@ alias vimdiff='vim -d'
 alias vrc="vim ~/.config/lvim/config.lua"
 alias zrc="vim ~/.config/zsh/.zshrc"
 alias trc="vim ~/.config/tmux/tmux.conf"
-alias gg="lvim -c \"lua require('lvim.core.terminal')._exec_toggle('lazygit -ucd ~/.config/lazygit')\""
+alias gg="lvim -c \":exe 'normal ;gg'\""
 # alias krc="vim ~/.config/kitty/kitty.conf"
 # alias vw="vim ~/Drive/vimwiki/index.md"
 # alias sshi='kitty +kitten ssh'
@@ -203,7 +218,7 @@ alias tlv="tmux select-layout main-vertical"
 # alias taskt="taskwarrior-tui -c $HOME/.config/taskwarrior/.taskrc"
 ###############################################}}}
 
-########### ADDED BY SCRIPTS #################
+########### ADDED EXTERNALLY ##################
 
 # To customize prompt, run `p10k configure` or edit ~/Software/dots/dotfiles/zsh/p10k.zsh.
 [[ ! -f ~/Software/dots/dotfiles/zsh/p10k.zsh ]] || source ~/Software/dots/dotfiles/zsh/p10k.zsh
