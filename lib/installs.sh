@@ -33,6 +33,7 @@ function install_nvim_appimage() {
   pushd $1
   lastversion --asset neovim/neovim --filter appimage$ -d nvim.AppImage
   chmod u+x nvim.AppImage
+  ./nvim.AppImage --appimage-extract
   info "linking nvim binary to local bin"
   local_bin=$HOME/.local/bin
   mkdir -p $local_bin
@@ -59,6 +60,7 @@ function install_tmux_appimage() {
   pushd $1
   lastversion tmux --pre --having-asset "~\.AppImage" --assets --filter AppImage -d tmux.AppImage
   chmod u+x tmux.AppImage
+  ./tmux.AppImage --appimage-extract
   info "linking tmux binary to local bin"
   local_bin=$HOME/.local/bin
   mkdir -p $local_bin
