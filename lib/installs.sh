@@ -18,6 +18,10 @@ function clone_or_pull() {
 
 # install lunarvim rolling branch
 function install_lvim_rolling() {
+  require_package node
+  require_package python3
+  require_package cargo
+  require_pip3 pynvim
   LV_BRANCH=rolling bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/rolling/utils/installer/install.sh)
 }
 

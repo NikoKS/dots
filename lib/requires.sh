@@ -72,10 +72,29 @@ function require_pip() {
     ok
 }
 
-function apt_or_brew() {
+function require_pip3() {
+    running "pip3 $1"
+    pip show $1 > /dev/null 2>&1
+    if [[ $? != 0 ]]; then
+        action "pip3 install $1"
+        python3 -m pip install $1
+        if [[ $? != 0 ]]; then
+            error "failed to install $1! aborting..."
+            turn_off
+        fi
+    fi
+    ok
+}
+
+function require_package() {
     if [[ `uname -s` = 'Darwin' ]]; then
         require_brew $1 $2
     elif [[ `uname -s` = 'Linux' ]]; then
+      distro=`cat /etc/*-release | grep '^ID=' | cut -d = -f2 | sed 's/"//g'`
+      if [[ $distro == 'centos' ]]; then
+        require_yum $1 $2
+      else [[ $distro == 'debian' ]]
         require_apt $1 $2
+      fi
     fi
 }
