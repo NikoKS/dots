@@ -126,6 +126,7 @@ function get_software_ubuntu() {
   if [[ $response =~ (yes|y|Y) ]];then
     install_dir=$HOME/Software
     mkdir -p $install_dir
+    require_pip lastversion
     info 'removing apt instalation of tmux'
     sudo apt purge tmux 2> /dev/null
     install_tmux $install_dir/tmux
@@ -144,6 +145,7 @@ function get_software_centos() {
   if [[ $response =~ (yes|y|Y) ]];then
     install_dir=$HOME/Software
     mkdir -p $install_dir
+    require_pip lastversion
     info 'removing yum installation of tmux'
     sudo yum purge tmux 2> /dev/null
     install_tmux_appimage $install_dir/tmux

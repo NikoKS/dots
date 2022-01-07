@@ -28,15 +28,14 @@ function install_lvim_stable() {
 # install latest nvim appimage
 # argument: nvim install directory
 function install_nvim_appimage() {
-  require_pip lastversion
   mkdir -p $1
   info "installing nvim in $1"
   pushd $1
   lastversion --asset neovim/neovim --filter appimage$ -d nvim.AppImage
   chmod u+x nvim.AppImage
   info "linking nvim binary to local bin"
-  local_bin='~/.local/bin'
-  mkdir $local_bin
+  local_bin='$HOME/.local/bin'
+  mkdir -p $local_bin
   ln -fs `pwd`/squashfs-root/AppRun $local_bin/tmux
   popd
   ok
@@ -55,15 +54,14 @@ function install_lvim_plugin() {
 # install latest tmux appimage
 # argument: tmux install directory
 function install_tmux_appimage() {
-  require_pip lastversion
   mkdir -p $1
   info "installing tmux in $1"
   pushd $1
   lastversion tmux --pre --having-asset "~\.AppImage" --assets --filter AppImage -d tmux.AppImage
   chmod u+x tmux.AppImage
   info "linking tmux binary to local bin"
-  local_bin='~/.local/bin'
-  mkdir $local_bin
+  local_bin='$HOME/.local/bin'
+  mkdir -p $local_bin
   ln -fs `pwd`/squashfs-root/AppRun ~/.local/bin/tmux
   popd
   ok
