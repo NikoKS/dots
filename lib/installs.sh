@@ -28,7 +28,7 @@ function install_lvim_stable() {
 # install latest nvim appimage
 # argument: nvim install directory
 function install_nvim_appimage() {
-  require_apt lastversion
+  require_pip lastversion
   mkdir -p $1
   info "installing nvim in $1"
   pushd $1
@@ -55,7 +55,7 @@ function install_lvim_plugin() {
 # install latest tmux appimage
 # argument: tmux install directory
 function install_tmux_appimage() {
-  require_apt lastversion
+  require_pip lastversion
   mkdir -p $1
   info "installing tmux in $1"
   pushd $1

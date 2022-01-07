@@ -10,7 +10,7 @@ function require_brew() {
         brew install $1 $2
         if [[ $? != 0 ]]; then
             error "failed to install $1! aborting..."
-            # exit -1
+            turn_off
         fi
     fi
     ok
@@ -24,7 +24,7 @@ function require_cask() {
         brew install --cask $1
         if [[ $? != 0 ]]; then
             error "failed to install $1! aborting..."
-            # exit -1
+            turn_off
         fi
     fi
     ok
@@ -38,7 +38,7 @@ function require_apt() {
         sudo apt install $1
         if [[ $? != 0 ]]; then
             error "failed to install $1! aborting..."
-            # exit -1
+            turn_off
         fi
     fi
     ok
@@ -52,7 +52,21 @@ function require_yum() {
         sudo yum install -y $1
         if [[ $? != 0 ]]; then
             error "failed to install $1! aborting..."
-            # exit -1
+            turn_off
+        fi
+    fi
+    ok
+}
+
+function require_pip() {
+    running "pip $1"
+    pip show $1 > /dev/null 2>&1
+    if [[ $? != 0 ]]; then
+        action "pip install $1"
+        python -m pip install $1
+        if [[ $? != 0 ]]; then
+            error "failed to install $1! aborting..."
+            turn_off
         fi
     fi
     ok
@@ -64,18 +78,4 @@ function apt_or_brew() {
     elif [[ `uname -s` = 'Linux' ]]; then
         require_apt $1 $2
     fi
-}
-
-function require_pip() {
-    running "pip $1"
-    pip show $1 > /dev/null 2>&1
-    if [[ $? != 0 ]]; then
-        action "pip install $1"
-        python -m pip install $1
-        if [[ $? != 0 ]]; then
-            error "failed to install $1! aborting..."
-            kill -s TERM $TOP_PID
-        fi
-    fi
-    ok
 }

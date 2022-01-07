@@ -19,6 +19,11 @@ source ./lib/installs.sh
 source ./lib/copies.sh
 source ./lib/core.sh
 
+function turn_off() {
+  bot "Goodbye"
+  kill -s TERM $TOP_PID
+}
+
 bot "Hi! I'm going to install tools and tweak your system settings. Here I go..."
 
 if [[ $SSH_TTY ]]; then
