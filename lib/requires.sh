@@ -74,7 +74,7 @@ function require_pip() {
         python -m pip install $1
         if [[ $? != 0 ]]; then
             error "failed to install $1! aborting..."
-            # exit -1
+            exit -1
         fi
     fi
     ok
