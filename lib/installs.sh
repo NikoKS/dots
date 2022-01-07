@@ -34,7 +34,7 @@ function install_nvim_appimage() {
   lastversion --asset neovim/neovim --filter appimage$ -d nvim.AppImage
   chmod u+x nvim.AppImage
   info "linking nvim binary to local bin"
-  local_bin='$HOME/.local/bin'
+  local_bin=$HOME/.local/bin
   mkdir -p $local_bin
   ln -fs `pwd`/squashfs-root/AppRun $local_bin/tmux
   popd
@@ -60,9 +60,9 @@ function install_tmux_appimage() {
   lastversion tmux --pre --having-asset "~\.AppImage" --assets --filter AppImage -d tmux.AppImage
   chmod u+x tmux.AppImage
   info "linking tmux binary to local bin"
-  local_bin='$HOME/.local/bin'
+  local_bin=$HOME/.local/bin
   mkdir -p $local_bin
-  ln -fs `pwd`/squashfs-root/AppRun ~/.local/bin/tmux
+  ln -fs `pwd`/squashfs-root/AppRun $local_bin/tmux
   popd
   ok
 }
