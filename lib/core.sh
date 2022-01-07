@@ -121,29 +121,37 @@ function link_dotfiles() {
 }
 
 function get_software_ubuntu() {
-  bot "OK, let's install the essential software"
-  lts="20.04"
-  read -r -p "Check and install tmux nvim zsh and kitty? [y|N] " response
+  bot "OK, let's install the essential software for ubuntu"
+  read -r -p "Check and install tmux, nvim, and zsh? [y|N] " response
   if [[ $response =~ (yes|y|Y) ]];then
-    lsb_release -a 2> /dev/null | grep $lts > /dev/null
-    if [[ $? != 0 ]]; then
-      bot "Your Ubuntu is outdated, needs to install packages from source"
-      info "installing zsh, tmux, and neovim from source"
-      install_dir=$HOME/Software
-      mkdir -p $install_dir
-      require_pip lastversion
-      install_tmux $install_dir/tmux
-      install_nvim $install_dir/nvim
-      install_kitty $install_dir/kitty
-      require_apt zsh
-    else
-      bot "Nice your Ubuntu machine already running latest LTS version"
-      info "intalling zsh, tmux, and neovim from apt"
-      require_apt tmux
-      require_apt neovim
-      require_apt zsh
-      require_apt kitty
-    fi
+    install_dir=$HOME/Software
+    mkdir -p $install_dir
+    info 'removing apt instalation of tmux'
+    sudo apt purge tmux 2> /dev/null
+    install_tmux $install_dir/tmux
+    info 'removing apt installation of neovim'
+    sudo apt purge neovim 2> /dev/null
+    install_nvim $install_dir/nvim
+    require_apt zsh
+  else
+    ok "skipped installing software"
+  fi
+}
+
+function get_software_centos() {
+  bot "OK, let's install the software for centos"
+  read -r -p "Check and install tmux, nvim, and zsh? [y|N] " response
+  if [[ $response =~ (yes|y|Y) ]];then
+    install_dir=$HOME/Software
+    mkdir -p $install_dir
+    info 'removing yum installation of tmux'
+    sudo yum purge tmux 2> /dev/null
+    install_tmux_appimage $install_dir/tmux
+    info 'removing yum installation of neovim'
+    sudo yum purge neovim 2> /dev/null
+    install_nvim_appimage $install_dir/nvim
+    install_lvim_rolling
+    require_yum zsh
   else
     ok "skipped installing software"
   fi
@@ -196,43 +204,9 @@ function install_plugins() {
   bot "We can now install Plugins for tmux, nvim, and zsh"
   read -r -p "Continue plugin installation? [y|N] " response
   if [[ $response =~ (yes|y|Y) ]];then
-
-    action "Installing tmux plugins"
-    TP=$HOME/.config/tmux/plugins
-    KT=$HOME/.config/kitty
-    TPM=$TP/tpm
-    clone_or_pull $TPM https://github.com/tmux-plugins/tpm.git
-    tmux new-session -d "sleep 5" && sleep 1
-    tmux source $HOME/.config/tmux/tmux.conf
-    $TPM/bin/install_plugins
-    mkdir -p $KT
-    cp $TP/kitty-vim-tmux-navigator/neighboring_window.py $KT
-    cp $TP/kitty-vim-tmux-navigator/pass_keys.py $KT
-    print_success "finished installing tmux plugins"
-
-    action "Installing neovim plugins"
-    apt_or_brew ctags
-    MIN=$HOME/.config/nvim/pack/minpac/opt/minpac
-    clone_or_pull $MIN https://github.com/k-takata/minpac.git
-    nvim --headless -c 'call PackInit()' -c 'call minpac#update("", {"do": "qa"})'   
-    print_success "finished installing neovim plugins"
-
-    action "Installing zsh plugins"
-    ZSH=$HOME/.config/zsh
-    mkdir -p $HOME/.cache/zsh
-    clone_or_pull $ZSH/zsh-syntax-highlighting \
-      https://github.com/zsh-users/zsh-syntax-highlighting.git
-    clone_or_pull $ZSH/zsh-history-substring-search \
-      https://github.com/zsh-users/zsh-history-substring-search.git
-    clone_or_pull $ZSH/powerlevel10k \
-      https://github.com/romkatv/powerlevel10k.git 
-    if [[ `uname -s` == 'Darwin' ]]; then
-      require_brew autojump
-    elif [[ `uname -s` == 'Linux' ]]; then
-      require_apt autojump
-    fi
-    print_success "finished installing zsh plugins"
-
+    install_tmux_plugin
+    install_lvim_plugin
+    install_zsh_plugin
   else
     ok "skipped installing pugins"
   fi

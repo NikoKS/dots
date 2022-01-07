@@ -1,8 +1,6 @@
 # Compilation of function that check and install packages
-
-###
 # Inspired by: https://github.com/atomantic/dotfiles/blob/master/lib_sh/requires.sh
-###
+#----------------------------------------------------------------------------------
 
 function require_brew() {
     running "brew $1 $2"
@@ -38,6 +36,20 @@ function require_apt() {
     if [[ $? != 0 ]]; then
         action "sudo apt install -y $1"
         sudo apt install $1
+        if [[ $? != 0 ]]; then
+            error "failed to install $1! aborting..."
+            # exit -1
+        fi
+    fi
+    ok
+}
+
+function require_yum() {
+    running "yum $1"
+    yum list installed $1 2> /dev/null | grep $1 > /dev/null
+    if [[ $? != 0 ]]; then
+        action "sudo yum install -y $1"
+        sudo yum install -y $1
         if [[ $? != 0 ]]; then
             error "failed to install $1! aborting..."
             # exit -1
