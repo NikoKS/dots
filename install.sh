@@ -8,6 +8,10 @@
 # always run from the script dir
 cd "${0%/*}"
 
+# register TERM signal to exit
+trap "exit 1" TERM
+export TOP_PID=$$
+
 # Source library
 source ./lib/echos.sh
 source ./lib/requires.sh
