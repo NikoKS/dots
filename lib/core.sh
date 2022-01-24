@@ -130,6 +130,9 @@ function get_software_ubuntu() {
     info 'removing apt instalation of tmux'
     sudo apt purge tmux 2> /dev/null
     install_tmux $install_dir/tmux
+    info 'installing fzf'
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
     info 'removing apt installation of neovim'
     sudo apt purge neovim 2> /dev/null
     install_nvim $install_dir/nvim
@@ -149,6 +152,9 @@ function get_software_centos() {
     info 'removing yum installation of tmux'
     sudo yum purge tmux 2> /dev/null
     install_tmux_appimage $install_dir/tmux
+    info 'installing fzf'
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
     info 'removing yum installation of neovim'
     sudo yum purge neovim 2> /dev/null
     install_nvim_appimage $install_dir/nvim

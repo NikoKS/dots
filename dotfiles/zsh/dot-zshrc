@@ -184,37 +184,35 @@ export MYPY_CACHE_DIR=$HOME/.cache/mypy/
 export GOPATH=$HOME/Software/go
 export PATH=$GOPATH/bin:$PATH
 export PATH=$HOME/Software/google-cloud-sdk/bin:$PATH
+export PYTHONPYCACHEPREFIX=/tmp
 ###############################################}}}
 
 ################ ALIASES #####################{{{
+# General
 if [[ $kernel == 'Darwin' ]]; then
   alias ls='ls -G'
 elif [[ $kernel == 'Linux' ]]; then
   alias ls='ls --color=always'
 fi
-alias vim=lvim
-alias vimdiff='vim -d'
-alias vrc="vim ~/.config/lvim/config.lua"
-alias zrc="vim ~/.config/zsh/.zshrc"
-alias trc="vim ~/.config/tmux/tmux.conf"
-alias gg="lvim -c \":exe 'normal ;gg'\""
-# alias krc="vim ~/.config/kitty/kitty.conf"
-# alias vw="vim ~/Drive/vimwiki/index.md"
-# alias sshi='kitty +kitten ssh'
-# alias ssh='ssh -R 55555:${KITTY_LISTEN_ON#*:}'
 alias clear="printf '\n%.0s' {1..100}"
 alias c="clear && ls"
 alias e="exit"
-alias t="tmux -CC"
+alias zrc="vim ~/Software/dots/dotfiles/zsh/dot-zshrc"
+# VIM
+alias vrc="vim ~/Software/dots/dotfiles/lvim/config.lua"
+alias vim=lvim
+alias vimdiff='vim -d'
+alias gg="lvim -c \":exe 'normal ;gg'\""
+# TMUX
+alias trc="vim ~/Software/dots/dotfiles/tmux/tmux.conf"
+alias t="tmux"
 alias tls="tmux ls"
-alias tn="tmux -CC new -s"
-alias ta="tmux -CC a -t"
+alias tn="tmux new -s"
+alias ta="tmux a -t"
 alias d="tmux detach"
 alias tlh="tmux select-layout main-horizontal"
 alias tlv="tmux select-layout main-vertical"
 # alias rmt="trash"
-# alias task="task rc:$HOME/.config/taskwarrior/.taskrc"
-# alias taskt="taskwarrior-tui -c $HOME/.config/taskwarrior/.taskrc"
 ###############################################}}}
 
 ########### ADDED EXTERNALLY ##################

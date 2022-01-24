@@ -16,16 +16,32 @@ function clone_or_pull() {
   fi
 }
 
+# Install poetry
+
+function install_poetry() {
+  curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+}
+
 # install lunarvim rolling branch
 function install_lvim_rolling() {
-  require_package node
+  require_package nodejs
   require_package python3
   require_package cargo
   require_pip3 pynvim
+  NPM_PACKAGES="$HOME/.npm-packages"
+  mkdir -p "$NPM_PACKAGES"
+  echo "prefix = $NPM_PACKAGES" >> ~/.npmrc
   LV_BRANCH=rolling bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/rolling/utils/installer/install.sh)
 }
 
 function install_lvim_stable() {
+  require_package nodejs
+  require_package python3
+  require_package cargo
+  require_pip3 pynvim
+  NPM_PACKAGES="$HOME/.npm-packages"
+  mkdir -p "$NPM_PACKAGES"
+  echo "prefix = $NPM_PACKAGES" >> ~/.npmrc
   bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 }
 

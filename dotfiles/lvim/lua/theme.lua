@@ -15,22 +15,28 @@ nightfox.setup({
     match_paren = true, -- inverse the highlighting of match_parens
   },
   hlgroups = {
+    -- Sneak
     Sneak = { bg = colors.none, fg = colors.yellow },
     SneakLabel = { bg = colors.none, fg = colors.yellow },
     SneakScope = { fg = colors.white, style = 'reverse'},
+    -- NvimTree
     NvimTreeEndOfBuffer = { fg = colors.fg },
     NvimTreeRootFolder = { fg = colors.fg , style = colors.none},
     NvimTreeGitDirty = { fg = colors.yellow },
     NvimTreeGitNew = { fg = colors.green },
-    BufferCurrent = { bg = colors.none },
-    BufferCurrentMod = { bg = colors.none },
-    BufferCurrentSign = { bg = colors.none, fg = colors.green },
-    BufferVisible = { bg = colors.active },
-    BufferVisibleSign = { bg = colors.active, fg = colors.green },
-    BufferVisibleMod = { bg = colors.active, fg = colors.yellow },
+    -- BarBar
+    BufferOffset = { bg = colors.fg_gutter },
+    -- BufferCurrent = { bg = colors.none },
+    -- BufferCurrentMod = { bg = colors.none },
+    -- BufferCurrentSign = { fg = colors.green },
+    -- BufferVisible = { bg = colors.active },
+    -- BufferVisibleSign = { bg = colors.active, fg = colors.green },
+    -- BufferVisibleMod = { bg = colors.active, fg = colors.yellow },
+    --GitSigns
     GitSignsAdd = { fg = colors.green },
     GitSignsChange = { fg = colors.yellow },
-    VertSplit = { fg = colors.active, style = 'bold' }
+    --
+    VertSplit = { fg = colors.fg_gutter, style = 'bold' }
   }
 })
 

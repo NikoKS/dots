@@ -508,106 +508,6 @@
 			<key>Text</key>
 			<string></string>
 		</dict>
-		<key>0x5b-0x40000-0x21</key>
-		<dict>
-			<key>Action</key>
-			<integer>2</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string></string>
-			<key>Version</key>
-			<integer>1</integer>
-		</dict>
-		<key>0x5d-0x40000-0x1e</key>
-		<dict>
-			<key>Action</key>
-			<integer>0</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string></string>
-			<key>Version</key>
-			<integer>1</integer>
-		</dict>
-		<key>0x68-0x40000-0x4</key>
-		<dict>
-			<key>Action</key>
-			<integer>60</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string>vim_aware_select_pane(direction: "h")</string>
-			<key>Version</key>
-			<integer>1</integer>
-		</dict>
-		<key>0x6a-0x40000-0x26</key>
-		<dict>
-			<key>Action</key>
-			<integer>60</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string>vim_aware_select_pane(direction: "j")</string>
-			<key>Version</key>
-			<integer>1</integer>
-		</dict>
-		<key>0x6b-0x40000-0x28</key>
-		<dict>
-			<key>Action</key>
-			<integer>60</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string>vim_aware_select_pane(direction: "k")</string>
-			<key>Version</key>
-			<integer>1</integer>
-		</dict>
-		<key>0x6c-0x40000-0x25</key>
-		<dict>
-			<key>Action</key>
-			<integer>60</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string>vim_aware_select_pane(direction: "l")</string>
-			<key>Version</key>
-			<integer>1</integer>
-		</dict>
-		<key>0x73-0x40000-0x1</key>
-		<dict>
-			<key>Action</key>
-			<integer>29</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string>A39A1F26-E866-41E7-B65F-80598AB9E763</string>
-			<key>Version</key>
-			<integer>1</integer>
-		</dict>
-		<key>0x74-0x40000-0x11</key>
-		<dict>
-			<key>Action</key>
-			<integer>27</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string>A39A1F26-E866-41E7-B65F-80598AB9E763</string>
-			<key>Version</key>
-			<integer>1</integer>
-		</dict>
-		<key>0x78-0x40000-0x7</key>
-		<dict>
-			<key>Action</key>
-			<integer>25</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string>Copy Mode
-Copy Mode</string>
-			<key>Version</key>
-			<integer>1</integer>
-		</dict>
 		<key>0x9-0x40000</key>
 		<dict>
 			<key>Action</key>
@@ -1087,6 +987,17 @@ Maximize Active Pane</string>
 					<key>Text</key>
 					<string>0x7f</string>
 				</dict>
+				<key>0x5b-0x40000-0x21</key>
+				<dict>
+					<key>Action</key>
+					<integer>11</integer>
+					<key>Label</key>
+					<string></string>
+					<key>Text</key>
+					<string>0x00</string>
+					<key>Version</key>
+					<integer>1</integer>
+				</dict>
 				<key>0xf700-0x220000</key>
 				<dict>
 					<key>Action</key>
@@ -1386,7 +1297,7 @@ Maximize Active Pane</string>
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Transparency</key>
-			<real>0.27126163563829803</real>
+			<real>0.5003291223404257</real>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
