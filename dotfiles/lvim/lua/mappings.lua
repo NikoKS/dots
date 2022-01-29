@@ -8,6 +8,7 @@ lvim.keys.visual_block_mode["K"] = nil
 lvim.lsp.buffer_mappings.normal_mode["K"] = nil
 vim.api.nvim_set_keymap('n', '[%', '<nop>', {})
 vim.api.nvim_set_keymap('n', ']%', '<nop>', {})
+vim.cmd([[map Q <Nop>]])
 lvim.builtin.which_key.setup.triggers_blacklist = {
   n = {"[", "]"}
 }
@@ -37,6 +38,7 @@ vim.cmd([[
 ]])
 lvim.builtin.which_key.mappings["v"] = { ":vs<CR>" , "VerticalSplit"}
 lvim.builtin.which_key.mappings["r"] = {":w<cr>:TermExec cmd='python3 %'<cr>" , "RunPython"}
+lvim.builtin.which_key.mappings["q"] = {":q<cr>", "Quit"}
 
 -- Sensible selection
 vim.cmd([[
@@ -88,4 +90,8 @@ vim.cmd([[
   nnoremap <silent> <nowait> ] :BufferNext<cr>
   nnoremap <silent> <nowait> { :BufferMovePrevious<cr>
   nnoremap <silent> <nowait> } :BufferMoveNext<cr>
+  imap <C-h> <esc><C-h>
+  imap <C-j> <esc><C-j>
+  imap <C-k> <esc><C-k>
+  imap <C-l> <esc><C-l>
 ]])

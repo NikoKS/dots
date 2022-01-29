@@ -20,9 +20,10 @@ vim.cmd([[
 ]])
 
 -- Tagbar
-lvim.builtin.which_key.mappings["m"] = { ":TagbarToggle<cr>" , "Map"}
+lvim.builtin.which_key.mappings["m"] = { ":TagbarOpen<cr>" , "Map"}
 vim.g['tagbar_map_togglefold'] = '<space>'
 vim.g['tagbar_compact'] = 1
+vim.g['tagbar_autoclose'] = true
 
 -- blankline
 vim.g['indent_blankline_show_current_context'] = vim.v['true']
@@ -34,3 +35,6 @@ vim.g['indent_blankline_filetype_exclude'] = {'help', 'NvimTree', 'vista_kind', 
 lvim.builtin.terminal.float_opts.border = 'shadow'
 lvim.builtin.terminal.float_opts.width = 200
 lvim.builtin.terminal.float_opts.height = 100
+
+-- lsp_signature
+require "lsp_signature".setup()

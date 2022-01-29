@@ -6,6 +6,8 @@
 	<array/>
 	<key>AdjustWindowForFontSizeChange</key>
 	<false/>
+	<key>AllowClipboardAccess</key>
+	<true/>
 	<key>AutoHideTmuxClientSession</key>
 	<true/>
 	<key>Command</key>
@@ -515,18 +517,6 @@
 			<key>Text</key>
 			<string></string>
 		</dict>
-		<key>0xd-0x40000-0x24</key>
-		<dict>
-			<key>Action</key>
-			<integer>25</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string>Maximize Active Pane
-Maximize Active Pane</string>
-			<key>Version</key>
-			<integer>1</integer>
-		</dict>
 		<key>0xf700-0x300000</key>
 		<dict>
 			<key>Action</key>
@@ -998,6 +988,17 @@ Maximize Active Pane</string>
 					<key>Version</key>
 					<integer>1</integer>
 				</dict>
+				<key>0xd-0x40000-0x24</key>
+				<dict>
+					<key>Action</key>
+					<integer>11</integer>
+					<key>Label</key>
+					<string></string>
+					<key>Text</key>
+					<string>0x01</string>
+					<key>Version</key>
+					<integer>1</integer>
+				</dict>
 				<key>0xf700-0x220000</key>
 				<dict>
 					<key>Action</key>
@@ -1297,7 +1298,7 @@ Maximize Active Pane</string>
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Transparency</key>
-			<real>0.5003291223404257</real>
+			<real>0.40000000000000002</real>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
@@ -1374,7 +1375,7 @@ Maximize Active Pane</string>
 	<key>SeparateStatusBarsPerPane</key>
 	<true/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>ShowNewOutputIndicator</key>
 	<true/>
 	<key>ShowPaneTitles</key>

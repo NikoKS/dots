@@ -203,6 +203,9 @@ alias vrc="vim ~/Software/dots/dotfiles/lvim/config.lua"
 alias vim=lvim
 alias vimdiff='vim -d'
 alias gg="lvim -c \":exe 'normal ;gg'\""
+# Poetry
+alias pvim="poetry run lvim"
+alias pshell="poetry shell"
 # TMUX
 alias trc="vim ~/Software/dots/dotfiles/tmux/tmux.conf"
 alias t="tmux"

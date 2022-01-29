@@ -18,7 +18,8 @@ lvim.plugins = {
   { "preservim/tagbar" },
   { "lukas-reineke/indent-blankline.nvim" },
   { "vimpostor/vim-tpipeline" },
-  { "christoomey/vim-tmux-navigator" }
+  { "christoomey/vim-tmux-navigator" },
+  { "ray-x/lsp_signature.nvim" }
   -- { "NikoKS/vim-iterm2-navigator", run = 'make install'},
   -- { "liuchengxu/vista.vim" },
   -- { "svermeulen/vim-macrobatics" }
