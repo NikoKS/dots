@@ -16,7 +16,6 @@ export TOP_PID=$$
 source ./lib/echos.sh
 source ./lib/requires.sh
 source ./lib/installs.sh
-source ./lib/copies.sh
 source ./lib/core.sh
 
 function turn_off() {

@@ -149,16 +149,24 @@ function get_software_centos() {
     install_dir=$HOME/Software
     mkdir -p $install_dir
     require_pip lastversion
+    # Tmux
     info 'removing yum installation of tmux'
-    sudo yum purge tmux 2> /dev/null
+    sudo yum erase -y tmux 2> /dev/null
     install_tmux_appimage $install_dir/tmux
+    # fzf
     info 'installing fzf'
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
+    # gcc 7
+    info 'installing gcc 7'
+    require_yum centos-release-scl
+    require_yum devtoolset-7
+    # nvim
     info 'removing yum installation of neovim'
     sudo yum purge neovim 2> /dev/null
     install_nvim_appimage $install_dir/nvim
     install_lvim_rolling
+    # zsh
     require_yum zsh
   else
     ok "skipped installing software"
@@ -174,19 +182,24 @@ function copy_dotfiles() {
     cp dotfiles/zsh/dot-zshrc ~/.zshrc
     mkdir -p ~/.config/zsh
     cp dotfiles/zsh/p10k.zsh ~/.config/zsh
+    if [[ $distro == 'centos' ]]; then
+      echo 'export PATH="/opt/rh/devtoolset-7/root/usr/bin/:$PATH"' >> ~/.zshrc
+    fi
     ok
 
-    running "generating vimrc in ~/.config/nvim/init.vim"
-    nvim_dir=$HOME/.config/nvim
-    mkdir -p $nvim_dir
-    copy_vimrc $nvim_dir/init.vim
-    cp -r dotfiles/nvim/ftplugin $nvim_dir
+    running "generating vimrc in ~/.config/lvim/config.lua"
+    lvim_dir=$HOME/.config/lvim
+    mkdir -p $lvim_dir
+    cp dotfiles/lvim/config.lua $lvim_dir/config.lua
+    mkdir -p $lvim_dir/lua
+    cp -r dotfiles/lvim/lua/* $lvim_dir/lua/
+    cp -r dotfiles/lvim/after $nvim_dir
     ok
 
     running "copying tmux.conf to ~/.config/tmux/"
     mkdir -p ~/.config/tmux
     touch ~/.tmux.conf
-    cp dotfiles/tmux/tmux.conf ~/.config/tmux/tmux.conf
+    cp dotfiles/tmux/remote_tmux.conf ~/.config/tmux/tmux.conf
     ok
 
     running "copying bashrc to ~/.extrabashrc"
@@ -209,12 +222,12 @@ function copy_dotfiles() {
 
 function install_plugins() {
   # Install Plugins
-  bot "We can now install Plugins for tmux, nvim, and zsh"
+  bot "We can now install Plugins for tmux, lvim, and zsh"
   read -r -p "Continue plugin installation? [y|N] " response
   if [[ $response =~ (yes|y|Y) ]];then
     install_tmux_plugin
-    install_lvim_plugin
     install_zsh_plugin
+    info "Install lvim plugin directly inside lvim"
   else
     ok "skipped installing pugins"
   fi

@@ -6,6 +6,7 @@ lvim.format_on_save = true
 lvim.leader = ";"
 lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
+lvim.builtin.notify.active = true
 vim.cmd('set cmdheight=1')
 vim.cmd("set timeoutlen=300")
 vim.opt.clipboard = ''

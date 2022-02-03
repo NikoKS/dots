@@ -29,6 +29,7 @@ vim.cmd([[
   nmap <tab> %
   nmap # ;/
   vmap # ;/
+  nmap M zz
 ]])
 
 -- Extra commands
@@ -50,8 +51,8 @@ vim.cmd([[
   nnoremap cN cgN
   nnoremap yw yiw
   nnoremap yW yiW
-  nnoremap ca ggVGc
-  nnoremap da ggVGd
+  nnoremap cf ggVGc
+  nnoremap df ggVGd
 ]])
 
 -- Remap copy paste
@@ -65,7 +66,7 @@ vim.cmd([[
   nnoremap 'p "zp
   nnoremap 'P "zP
   noremap 'x "zy
-  nnoremap xa ggVG"+y
+  nnoremap xf ggVG"+y
 ]])
 
 -- Navigation keymappings

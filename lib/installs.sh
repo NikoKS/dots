@@ -62,16 +62,6 @@ function install_nvim_appimage() {
   ok
 }
 
-# install lunarvim plugin
-function install_lvim_plugin() {
-  action "Installing neovim plugins"
-  apt_or_brew ctags
-  MIN=$HOME/.config/nvim/pack/minpac/opt/minpac
-  clone_or_pull $MIN https://github.com/k-takata/minpac.git
-  nvim --headless -c 'call PackInit()' -c 'call minpac#update("", {"do": "qa"})'   
-  print_success "finished installing neovim plugins"
-}
-
 # install latest tmux appimage
 # argument: tmux install directory
 function install_tmux_appimage() {
@@ -93,15 +83,11 @@ function install_tmux_appimage() {
 function install_tmux_plugin() {
   action "Installing tmux plugins"
   TP=$HOME/.config/tmux/plugins
-  KT=$HOME/.config/kitty
   TPM=$TP/tpm
   clone_or_pull $TPM https://github.com/tmux-plugins/tpm.git
   tmux new-session -d "sleep 5" && sleep 1
   tmux source $HOME/.config/tmux/tmux.conf
   $TPM/bin/install_plugins
-  mkdir -p $KT
-  cp $TP/kitty-vim-tmux-navigator/neighboring_window.py $KT
-  cp $TP/kitty-vim-tmux-navigator/pass_keys.py $KT
   print_success "finished installing tmux plugins"
 }
 
@@ -116,11 +102,7 @@ function install_zsh_plugin() {
     https://github.com/zsh-users/zsh-history-substring-search.git
   clone_or_pull $ZSH/powerlevel10k \
     https://github.com/romkatv/powerlevel10k.git 
-  if [[ `uname -s` == 'Darwin' ]]; then
-    require_brew autojump
-  elif [[ `uname -s` == 'Linux' ]]; then
-    require_apt autojump
-  fi
+  require_package autojump
   print_success "finished installing zsh plugins"
 }
 

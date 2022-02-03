@@ -1,7 +1,7 @@
 # List of brew packages to install
 archiver
 arp-scan
-bat
+# bat
 cmake
 universal-ctags
 ffmpeg
@@ -17,6 +17,6 @@ ripgrep
 stow
 tmux
 trash-cli
-task
+# task
 rename
 tree

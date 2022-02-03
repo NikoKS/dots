@@ -1,26 +1,9 @@
 # Aliases
 alias e='exit'
 alias c='clear'
-alias vim='nvim'
+alias vim='lvim'
 alias tmux='tmux -f $HOME/.tmux.conf'
 alias t='tmux -f $HOME/.config/tmux/tmux.conf'
 
 # Autojump
 [ -f /usr/share/autojump/autojump.sh ] && . /usr/share/autojump/autojump.sh
-
-THEIP=$(ifconfig | awk '/inet / { print $2 }' | grep -v '127.0.0.1' | cut -d: -f2 | head -n 1)
-export PS1='
-\[\033[1;36m\]\u@$THEIP: \[\033[1;32m\]\w \[\033[0;39m\]$ '
-
-# Kitty Terminal settings
-export PATH=$PATH:~/.local/kitty.app/bin/
-if [[ $SSH_TTY ]] && ! [ -n "$TMUX" ] && [[ $TERM = 'xterm-kitty' ]]; then
-  export KITTY_PORT=`kitty @ ls 2>/dev/null | grep "[0-9]:/tmp/mykitty" | head -n 1 | cut -d : -f 1 | cut -d \" -f 2`
-
-  # Kitty Terminal Navigation
-  bind -x '"\C-h": kitty @ kitten neighboring_window.py left'
-  bind -x '"\C-j": kitty @ kitten neighboring_window.py bottom'
-  bind -x '"\C-k": kitty @ kitten neighboring_window.py top'
-  bind -x '"\C-l": kitty @ kitten neighboring_window.py right'
-fi
-
