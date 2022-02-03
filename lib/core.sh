@@ -168,7 +168,7 @@ function get_software_centos() {
     install_lvim_rolling
     # zsh
     info 'installing zsh 5.8 from source'
-    install_tmux_source $install_dir/zsh
+    install_zsh_source $install_dir/zsh
 
   else
     ok "skipped installing software"
