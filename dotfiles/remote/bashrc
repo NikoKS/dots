@@ -1,7 +1,7 @@
 # Aliases
 alias e='exit'
 alias c='clear'
-alias vim='lvim'
+# alias vim='lvim'
 alias tmux='tmux -f $HOME/.tmux.conf'
 alias t='tmux -f $HOME/.config/tmux/tmux.conf'
 

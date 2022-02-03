@@ -163,11 +163,13 @@ function get_software_centos() {
     require_yum devtoolset-7
     # nvim
     info 'removing yum installation of neovim'
-    sudo yum purge neovim 2> /dev/null
+    sudo yum erase -y neovim 2> /dev/null
     install_nvim_appimage $install_dir/nvim
     install_lvim_rolling
     # zsh
-    require_yum zsh
+    info 'installing zsh 5.8 from source'
+    install_tmux_source $install_dir/zsh
+
   else
     ok "skipped installing software"
   fi
@@ -193,7 +195,7 @@ function copy_dotfiles() {
     cp dotfiles/lvim/config.lua $lvim_dir/config.lua
     mkdir -p $lvim_dir/lua
     cp -r dotfiles/lvim/lua/* $lvim_dir/lua/
-    cp -r dotfiles/lvim/after $nvim_dir
+    cp -r dotfiles/lvim/after $lvim_dir
     ok
 
     running "copying tmux.conf to ~/.config/tmux/"

@@ -91,6 +91,23 @@ function install_tmux_plugin() {
   print_success "finished installing tmux plugins"
 }
 
+# install zsh 5.8 from source
+function install_zsh_source() {
+  mkdir -p $1
+  info "installing zsh in $1"
+  pushd $1
+  require_yum ncurses-devel
+  curl -L https://www.zsh.org/pub/zsh-5.8.tar.xz -o zsh-5.8.tar.xz
+  tar -xf zsh-5.8.tar.xz
+  cd zsh-5.8
+  ./configure > /dev/null
+  sudo make > /dev/null
+  sudo make install > /dev/null
+  sudo make clean > /dev/null
+  popd
+  ok
+}
+
 # install zsh plugin
 function install_zsh_plugin() {
   action "Installing zsh plugins"
