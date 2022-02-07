@@ -23,7 +23,7 @@ vim.cmd([[
   map <silent> <space> @@
   nnoremap v <C-v>
   nnoremap r <C-r>
-  nnoremap <BS> J
+  nnoremap o J
   nnoremap gm %
   nmap ;n <c-g>
   nmap <tab> %
@@ -71,8 +71,8 @@ vim.cmd([[
 
 -- Navigation keymappings
 vim.cmd([[
-  nmap t ;bb
-  nmap T ;bf
+  nmap <BS> ;bb
+  nmap <C-o> ;bf
   nnoremap J Lzz
   vnoremap J Lzz
   nnoremap K Hzz
