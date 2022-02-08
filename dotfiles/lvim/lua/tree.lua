@@ -6,6 +6,7 @@ lvim.builtin.nvimtree.setup.hijack_cursor = true
 lvim.builtin.nvimtree.setup.update_cwd = true
 lvim.builtin.nvimtree.setup.update_focused_file.update_cwd = true
 lvim.builtin.nvimtree.setup.diagnostics.enable = false
+lvim.builtin.nvimtree.setup.auto_close = true
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 lvim.builtin.nvimtree.setup.view.mappings.list = {
   { key = {"<space>"}, cb = tree_cb("edit") },
