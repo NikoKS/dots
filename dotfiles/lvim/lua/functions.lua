@@ -2,7 +2,8 @@
 lvim.autocommands.custom_groups = {
   { "WinEnter", "*", "setlocal cursorline" },
   { "WinLeave", "*", "if &ft !=# 'NvimTree' | setlocal nocursorline | endif" },
-  { "TermLeave", "*", "if (winnr('$') == 1 && len(expand('%')) == 0) | nmap <buffer> <esc> :quit<cr>| endif" }
+  { "TermLeave", "*", "if (winnr('$') == 1 && len(expand('%')) == 0) | nmap <buffer> <esc> :quit<cr>| endif" },
+  { "CursorHold", "*", "lua vim.diagnostic.open_float(nil, {focus=false, scope='cursor'})"}
 }
 
 -- Smart Enter

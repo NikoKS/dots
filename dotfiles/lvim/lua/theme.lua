@@ -25,19 +25,18 @@ nightfox.setup({
     NvimTreeGitDirty = { fg = colors.yellow },
     NvimTreeGitNew = { fg = colors.green },
     -- BarBar
-    BufferOffset = { bg = colors.fg_gutter },
-    -- BufferCurrent = { bg = colors.none },
-    -- BufferCurrentMod = { bg = colors.none },
-    -- BufferCurrentSign = { fg = colors.green },
-    -- BufferVisible = { bg = colors.active },
-    -- BufferVisibleSign = { bg = colors.active, fg = colors.green },
-    -- BufferVisibleMod = { bg = colors.active, fg = colors.yellow },
+    BufferOffset = { bg = colors.bg_alt },
     --GitSigns
     GitSignsAdd = { fg = colors.green },
     GitSignsChange = { fg = colors.yellow },
     --
-    VertSplit = { fg = colors.fg_gutter, style = 'bold' }
+    VertSplit = { fg = colors.bg_alt },
+    NormalFloat = { bg= colors.none },
+    IndentBlanklineContextChar = { fg = colors.blue }
   }
 })
 
 nightfox.load()
+
+-- ⃒⎥⎟⎜┃▏▎▍
+-- ⎥⎟ ┃▏▎▍

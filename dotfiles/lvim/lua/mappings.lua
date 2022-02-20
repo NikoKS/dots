@@ -6,6 +6,7 @@ lvim.keys.normal_mode["]q"] = nil
 lvim.keys.visual_block_mode["J"] = nil
 lvim.keys.visual_block_mode["K"] = nil
 lvim.lsp.buffer_mappings.normal_mode["K"] = nil
+lvim.lsp.buffer_mappings.normal_mode["gI"] = nil
 vim.api.nvim_set_keymap('n', '[%', '<nop>', {})
 vim.api.nvim_set_keymap('n', ']%', '<nop>', {})
 vim.cmd([[map Q <Nop>]])
@@ -17,6 +18,11 @@ lvim.builtin.which_key.setup.triggers_blacklist = {
 lvim.builtin.terminal.execs = {
   {"lazygit -ucd ~/.config/lazygit", ";gg", "LazyGit"}
 }
+
+-- change lsp functions to use telescope
+lvim.lsp.buffer_mappings.normal_mode["gd"] = {  ":Telescope lsp_definitions<CR>", "Goto Definition"}
+lvim.lsp.buffer_mappings.normal_mode["gi"] = {  ":Telescope lsp_implementations<CR>", "Goto Implemetation"}
+lvim.lsp.buffer_mappings.normal_mode["gr"] = {  ":Telescope lsp_references<CR>", "Goto References"}
 
 -- General Keymaps
 vim.cmd([[
@@ -71,6 +77,7 @@ vim.cmd([[
 
 -- Navigation keymappings
 vim.cmd([[
+  nnoremap 'i gi
   nmap <BS> ;bb
   nmap <C-o> ;bf
   nnoremap J Lzz

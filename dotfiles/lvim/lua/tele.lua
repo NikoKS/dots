@@ -28,12 +28,12 @@ end
 
 lvim.builtin.telescope.defaults.mappings = {
   i = {
-    ["<cr>"] = telescope_custom_actions.multi_selection_open,
+    -- ["<cr>"] = telescope_custom_actions.multi_selection_open,
     ["<Tab>"] = actions.move_selection_next,
     ["<S-Tab>"] = actions.move_selection_previous,
   },
   n = {
-    ["<cr>"] = telescope_custom_actions.multi_selection_open,
+    -- ["<cr>"] = telescope_custom_actions.multi_selection_open,
     ["<Tab>"] = actions.move_selection_next,
     ["<S-Tab>"] = actions.move_selection_previous,
     ["<S-j>"] = actions.preview_scrolling_down,

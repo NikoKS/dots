@@ -2,13 +2,13 @@
 
 -- general
 lvim.log.level = "warn"
-lvim.format_on_save = true
 lvim.leader = ";"
 lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.notify.active = true
-vim.cmd('set cmdheight=1')
-vim.cmd("set timeoutlen=300")
+vim.o.cmdheight = 1
+vim.o.timeoutlen = 300
+vim.o.updatetime = 250
 vim.opt.clipboard = ''
 
 -- Additional Plugins
@@ -34,6 +34,6 @@ require('treesit')  -- Treesitter settings
 require('tree')     -- lua tree (left sidebar) settings
 require('tele')     -- telescope settings
 require('luali')    -- lualine setting
-require('lint')     -- linter settings
+require('lsp-conf') -- lsp, diagnostics, formater, linter settings
 require('plugconf') -- Additional Plugins settings
 require('functions')-- Additional functions
