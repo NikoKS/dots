@@ -26,13 +26,14 @@ nightfox.setup({
     NvimTreeGitNew = { fg = colors.green },
     -- BarBar
     BufferOffset = { bg = colors.bg_alt },
-    --GitSigns
+    -- GitSigns
     GitSignsAdd = { fg = colors.green },
     GitSignsChange = { fg = colors.yellow },
-    --
+    -- General
     VertSplit = { fg = colors.bg_alt },
     NormalFloat = { bg= colors.none },
-    IndentBlanklineContextChar = { fg = colors.blue }
+    IndentBlanklineContextChar = { fg = colors.blue },
+    MatchParen = { bg = colors.black, fg = colors.none}
   }
 })
 

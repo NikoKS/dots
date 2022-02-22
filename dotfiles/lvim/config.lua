@@ -16,11 +16,13 @@ lvim.plugins = {
   { "EdenEast/nightfox.nvim" },
   { "justinmk/vim-sneak" },
   { "tpope/vim-surround" },
-  { "preservim/tagbar" },
   { "lukas-reineke/indent-blankline.nvim" },
   { "vimpostor/vim-tpipeline" },
   { "NikoKS/vim-tmux-navigator" },
-  { "ray-x/lsp_signature.nvim" }
+  { "ray-x/lsp_signature.nvim" },
+  { "michaeljsmith/vim-indent-object" },
+  { "jenterkin/vim-autosource" },
+  { "jpalardy/vim-slime" }
   -- { "NikoKS/vim-iterm2-navigator", run = 'make install'},
   -- { "liuchengxu/vista.vim" },
   -- { "svermeulen/vim-macrobatics" }

@@ -19,11 +19,30 @@ vim.cmd([[
   vmap s S
 ]])
 
+-- vim indentation block selection
+vim.cmd([[
+  nmap xb yai
+  nmap cb cai
+  nmap db dai
+  nmap vb vai
+]])
+
+-- vim slime
+vim.cmd([[
+  let g:slime_target = "tmux"
+  let g:slime_paste_file = tempname()
+  let g:slime_default_config = {"socket_name": "default", "target_pane": "{down-of}"}
+  let g:slime_dont_ask_default = 1
+  xmap r <Plug>SlimeRegionSend
+  nmap ;rl Vr
+]])
+lvim.builtin.which_key.mappings["rl"] = 'Send Line'
+
 -- Tagbar
-lvim.builtin.which_key.mappings["m"] = { ":TagbarOpen<cr>" , "Map"}
-vim.g['tagbar_map_togglefold'] = '<space>'
-vim.g['tagbar_compact'] = 1
-vim.g['tagbar_autoclose'] = true
+-- lvim.builtin.which_key.mappings["m"] = { ":TagbarOpen<cr>" , "Map"}
+-- vim.g['tagbar_map_togglefold'] = '<space>'
+-- vim.g['tagbar_compact'] = 1
+-- vim.g['tagbar_autoclose'] = true
 
 -- blankline
 vim.g['indent_blankline_show_current_context'] = vim.v['true']
@@ -37,7 +56,7 @@ local function width ()
   return math.floor(tonumber(vim.o.columns) * 1)
 end
 local function height ()
-  return math.floor(tonumber(vim.o.lines) * 0.9)
+  return math.floor(tonumber(vim.o.lines) * 1)
 end
 lvim.builtin.terminal.float_opts.width = width
 lvim.builtin.terminal.float_opts.height = height

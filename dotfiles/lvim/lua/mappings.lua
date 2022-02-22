@@ -14,15 +14,31 @@ lvim.builtin.which_key.setup.triggers_blacklist = {
   n = {"[", "]"}
 }
 
--- change lazygit exec
-lvim.builtin.terminal.execs = {
-  {"lazygit -ucd ~/.config/lazygit", ";gg", "LazyGit"}
-}
-
 -- change lsp functions to use telescope
 lvim.lsp.buffer_mappings.normal_mode["gd"] = {  ":Telescope lsp_definitions<CR>", "Goto Definition"}
 lvim.lsp.buffer_mappings.normal_mode["gi"] = {  ":Telescope lsp_implementations<CR>", "Goto Implemetation"}
 lvim.lsp.buffer_mappings.normal_mode["gr"] = {  ":Telescope lsp_references<CR>", "Goto References"}
+
+-- Extra commands
+vim.cmd([[
+  nnoremap <silent> <esc> :noh<return><esc>
+  nnoremap <silent> R :e<CR>
+]])
+lvim.builtin.which_key.mappings["v"] = { ":vs<CR>" , "VerticalSplit"}
+lvim.builtin.which_key.mappings[";"] = {":Telescope resume<cr>" , "Resume last search"}
+lvim.builtin.which_key.mappings["q"] = {":q<cr>", "Quit"}
+lvim.builtin.which_key.mappings["Q"] = {":q!<cr>", "Quit Without Saving"}
+lvim.builtin.which_key.mappings["sm"] = {":Telescope marks <CR>", "Search Marks"}
+lvim.builtin.which_key.mappings["ss"] = {":Telescope lsp_document_symbols <CR>", "Search Symbols"}
+lvim.builtin.which_key.mappings["r"] = {
+  name = "Run",
+  -- p = { ":w<cr>:TermExec cmd='python3 %'<cr>" , "Run Python" }
+}
+
+-- change lazygit exec
+lvim.builtin.terminal.execs = {
+  {"lazygit -ucd ~/.config/lazygit", ";gg", "LazyGit"}
+}
 
 -- General Keymaps
 vim.cmd([[
@@ -32,20 +48,11 @@ vim.cmd([[
   nnoremap o J
   nnoremap gm %
   nmap ;n <c-g>
-  nmap <tab> %
   nmap # ;/
   vmap # ;/
   nmap M zz
 ]])
-
--- Extra commands
-vim.cmd([[
-  nnoremap <silent> <esc> :noh<return><esc>
-  nnoremap <silent> R :e<CR>
-]])
-lvim.builtin.which_key.mappings["v"] = { ":vs<CR>" , "VerticalSplit"}
-lvim.builtin.which_key.mappings["r"] = {":w<cr>:TermExec cmd='python3 %'<cr>" , "RunPython"}
-lvim.builtin.which_key.mappings["q"] = {":q<cr>", "Quit"}
+lvim.builtin.which_key.mappings["n"] = 'Print File Name'
 
 -- Sensible selection
 vim.cmd([[
@@ -77,6 +84,12 @@ vim.cmd([[
 
 -- Navigation keymappings
 vim.cmd([[
+  nmap <silent> <tab> *<esc>
+  vmap <silent> <tab> *<esc>
+  nnoremap <silent> <s-tab> #:noh<return><esc>
+  vnoremap <silent> <s-tab> #:noh<return><esc>
+  nnoremap ( %
+  vnoremap ( %
   nnoremap 'i gi
   nmap <BS> ;bb
   nmap <C-o> ;bf
