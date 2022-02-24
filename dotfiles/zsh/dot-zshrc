@@ -81,7 +81,6 @@ export KEYTIMEOUT=1
 
 # Use vim keys in tab complete menu:
 bindkey -v '^?' backward-delete-char
-bindkey -M visual 'x' vi-yank
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
@@ -175,6 +174,15 @@ zle-line-init() {
 zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
+# Yank to the system clipboard
+function vi-yank-xclip {
+    zle vi-yank
+   echo "$CUTBUFFER" | pbcopy -i
+}
+
+zle -N vi-yank-xclip
+bindkey -M vicmd 'x' vi-yank-xclip
 ###############################################}}}
 
 ################# EXPORTS ####################{{{

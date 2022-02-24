@@ -1,9 +1,12 @@
 # Aliases
 alias e='exit'
 alias c='clear'
-# alias vim='lvim'
+alias vim='lvim'
 alias tmux='tmux -f $HOME/.tmux.conf'
 alias t='tmux -f $HOME/.config/tmux/tmux.conf'
+alias tls="t ls"
+alias tn="t new -s"
+alias ta="t a -t"
 
 # Autojump
 [ -f /usr/share/autojump/autojump.sh ] && . /usr/share/autojump/autojump.sh

@@ -7,42 +7,45 @@ lvim.keys.visual_block_mode["J"] = nil
 lvim.keys.visual_block_mode["K"] = nil
 lvim.lsp.buffer_mappings.normal_mode["K"] = nil
 lvim.lsp.buffer_mappings.normal_mode["gI"] = nil
-vim.api.nvim_set_keymap('n', '[%', '<nop>', {})
-vim.api.nvim_set_keymap('n', ']%', '<nop>', {})
-vim.cmd([[map Q <Nop>]])
+vim.api.nvim_set_keymap("n", "[%", "<nop>", {})
+vim.api.nvim_set_keymap("n", "]%", "<nop>", {})
+vim.cmd([[map Q <nop>]])
+vim.cmd([[map q <nop>]])
 lvim.builtin.which_key.setup.triggers_blacklist = {
-  n = {"[", "]"}
+	n = { "[", "]" },
 }
 
 -- change lsp functions to use telescope
-lvim.lsp.buffer_mappings.normal_mode["gd"] = {  ":Telescope lsp_definitions<CR>", "Goto Definition"}
-lvim.lsp.buffer_mappings.normal_mode["gi"] = {  ":Telescope lsp_implementations<CR>", "Goto Implemetation"}
-lvim.lsp.buffer_mappings.normal_mode["gr"] = {  ":Telescope lsp_references<CR>", "Goto References"}
+lvim.lsp.buffer_mappings.normal_mode["gd"] = { ":Telescope lsp_definitions<CR>", "Goto Definition" }
+lvim.lsp.buffer_mappings.normal_mode["gi"] = { ":Telescope lsp_implementations<CR>", "Goto Implemetation" }
+lvim.lsp.buffer_mappings.normal_mode["gr"] = { ":Telescope lsp_references<CR>", "Goto References" }
 
 -- Extra commands
 vim.cmd([[
   nnoremap <silent> <esc> :noh<return><esc>
   nnoremap <silent> R :e<CR>
 ]])
-lvim.builtin.which_key.mappings["v"] = { ":vs<CR>" , "VerticalSplit"}
-lvim.builtin.which_key.mappings[";"] = {":Telescope resume<cr>" , "Resume last search"}
-lvim.builtin.which_key.mappings["q"] = {":q<cr>", "Quit"}
-lvim.builtin.which_key.mappings["Q"] = {":q!<cr>", "Quit Without Saving"}
-lvim.builtin.which_key.mappings["sm"] = {":Telescope marks <CR>", "Search Marks"}
-lvim.builtin.which_key.mappings["ss"] = {":Telescope lsp_document_symbols <CR>", "Search Symbols"}
+lvim.builtin.which_key.mappings["v"] = { ":vs<CR>", "VerticalSplit" }
+lvim.builtin.which_key.mappings[";"] = { ":Telescope resume<cr>", "Resume last search" }
+lvim.builtin.which_key.mappings["q"] = { ":q<cr>", "Quit" }
+lvim.builtin.which_key.mappings["Q"] = { ":q!<cr>", "Quit Without Saving" }
+lvim.builtin.which_key.mappings["sm"] = { ":Telescope marks <CR>", "Search Marks" }
+lvim.builtin.which_key.mappings["ss"] = { ":Telescope lsp_document_symbols <CR>", "Search Symbols" }
 lvim.builtin.which_key.mappings["r"] = {
-  name = "Run",
-  -- p = { ":w<cr>:TermExec cmd='python3 %'<cr>" , "Run Python" }
+	name = "Run",
+	-- p = { ":w<cr>:TermExec cmd='python3 %'<cr>" , "Run Python" }
 }
 
 -- change lazygit exec
 lvim.builtin.terminal.execs = {
-  {"lazygit -ucd ~/.config/lazygit", ";gg", "LazyGit"}
+	{ "lazygit -ucd ~/.config/lazygit", ";gg", "LazyGit" },
 }
 
 -- General Keymaps
 vim.cmd([[
-  map <silent> <space> @@
+  nnoremap T @
+  nnoremap t q
+  map <space> za
   nnoremap v <C-v>
   nnoremap r <C-r>
   nnoremap o J
@@ -52,7 +55,16 @@ vim.cmd([[
   vmap # ;/
   nmap M zz
 ]])
-lvim.builtin.which_key.mappings["n"] = 'Print File Name'
+lvim.builtin.which_key.mappings["n"] = "Print File Name"
+
+-- Quit and write shortcuts
+vim.cmd([[
+  nnoremap qw ZZ
+  nnoremap qq :q<CR>
+  nnoremap qa :qa<CR>
+  nnoremap qe :q!<CR>
+  nnoremap qt <Cmd>BufferClose!<CR>
+]])
 
 -- Sensible selection
 vim.cmd([[
@@ -116,3 +128,30 @@ vim.cmd([[
   imap <C-k> <esc><C-k>
   imap <C-l> <esc><C-l>
 ]])
+
+-- diff keymappings
+vim.cmd([[
+  nmap dg :diffget<cr> 
+  nmap dp :diffput<cr> 
+]])
+
+-- which_key labeling
+local wk = require("which-key")
+wk.register({
+	w = "Delete word",
+	W = "Delete Word",
+	b = "Delete indent block",
+	f = "Delete file buffer",
+	p = "paste from delete buffer",
+	P = "Paste from delete buffer",
+	s = "Delete surround",
+}, { prefix = "d" })
+
+wk.register({
+	w = "Change word",
+	W = "Change Word",
+	b = "Change indent block",
+	f = "Change file buffer",
+	n = "Change next highlighted word",
+	N = "Change previous highlighted word",
+}, { prefix = "c" })
