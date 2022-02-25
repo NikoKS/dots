@@ -4,6 +4,10 @@ gui:
   theme:
     inactiveBorderColor:
       - blue
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
 os:
   editCommand: 'nvr --nostart --servername $NVIM_LISTEN_ADDRESS --remote-silent -l'
 quitOnTopLevelReturn: true

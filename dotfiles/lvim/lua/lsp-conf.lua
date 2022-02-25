@@ -20,6 +20,10 @@ formatter.setup({
 		extra_args = { "--fast" },
 		filetypes = { "python" },
 	},
+  {
+    exe = "isort",
+    filetypes = { "python" }
+  },
 	{
 		command = "stylua",
 		filetypes = { "lua" },

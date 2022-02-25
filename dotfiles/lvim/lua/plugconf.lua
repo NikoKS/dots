@@ -36,7 +36,7 @@ vim.cmd([[
   xmap r <Plug>SlimeRegionSend
   nmap ;rl Vr
 ]])
-lvim.builtin.which_key.mappings["rl"] = 'Send Line'
+lvim.builtin.which_key.mappings["rl"] = "Send Line"
 
 -- Tagbar
 -- lvim.builtin.which_key.mappings["m"] = { ":TagbarOpen<cr>" , "Map"}
@@ -45,24 +45,36 @@ lvim.builtin.which_key.mappings["rl"] = 'Send Line'
 -- vim.g['tagbar_autoclose'] = true
 
 -- blankline
-vim.g['indent_blankline_show_current_context'] = vim.v['true']
-vim.g['indent_blankline_use_treesitter'] = true
-vim.g['indent_blankline_show_first_indent_level'] = false
-vim.g['indent_blankline_filetype_exclude'] = {'help', 'NvimTree', 'vista_kind', 'dashboard', 'man', 'toggleterm', 'pakcer', 'tagbar', 'lspinfo', 'lsp-installer', 'packer'}
+vim.g["indent_blankline_show_current_context"] = vim.v["true"]
+vim.g["indent_blankline_use_treesitter"] = true
+vim.g["indent_blankline_show_first_indent_level"] = false
+vim.g["indent_blankline_filetype_exclude"] = {
+	"help",
+	"NvimTree",
+	"vista_kind",
+	"dashboard",
+	"man",
+	"toggleterm",
+	"pakcer",
+	"tagbar",
+	"lspinfo",
+	"lsp-installer",
+	"packer",
+}
 
 -- vim terminal
-lvim.builtin.terminal.float_opts.border = ''
-local function width ()
-  return math.floor(tonumber(vim.o.columns) * 1)
+lvim.builtin.terminal.float_opts.border = ""
+local function width()
+	return math.floor(tonumber(vim.o.columns) * 1)
 end
-local function height ()
-  return math.floor(tonumber(vim.o.lines) * 1)
+local function height()
+	return math.floor(tonumber(vim.o.lines) * 1)
 end
 lvim.builtin.terminal.float_opts.width = width
 lvim.builtin.terminal.float_opts.height = height
 
 -- lsp_signature
-require "lsp_signature".setup({
-  floating_window_above_cur_line = true,
-  hint_enable = false
+require("lsp_signature").setup({
+	floating_window_above_cur_line = true,
+	hint_enable = false,
 })

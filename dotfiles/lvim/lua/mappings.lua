@@ -31,6 +31,7 @@ lvim.builtin.which_key.mappings["q"] = { ":q<cr>", "Quit" }
 lvim.builtin.which_key.mappings["Q"] = { ":q!<cr>", "Quit Without Saving" }
 lvim.builtin.which_key.mappings["sm"] = { ":Telescope marks <CR>", "Search Marks" }
 lvim.builtin.which_key.mappings["ss"] = { ":Telescope lsp_document_symbols <CR>", "Search Symbols" }
+lvim.builtin.which_key.mappings["f"] = { ":lua vim.lsp.buf.formatting()<CR>", "Format file" }
 lvim.builtin.which_key.mappings["r"] = {
 	name = "Run",
 	-- p = { ":w<cr>:TermExec cmd='python3 %'<cr>" , "Run Python" }
@@ -63,7 +64,7 @@ vim.cmd([[
   nnoremap qq :q<CR>
   nnoremap qa :qa<CR>
   nnoremap qe :q!<CR>
-  nnoremap qt <Cmd>BufferClose!<CR>
+  nnoremap <silent> qf :BufferClose!<CR>
 ]])
 
 -- Sensible selection
@@ -104,7 +105,7 @@ vim.cmd([[
   vnoremap ( %
   nnoremap 'i gi
   nmap <BS> ;bb
-  nmap <C-o> ;bf
+  nmap <C-f> ;bf
   nnoremap J Lzz
   vnoremap J Lzz
   nnoremap K Hzz
@@ -131,8 +132,8 @@ vim.cmd([[
 
 -- diff keymappings
 vim.cmd([[
-  nmap dg :diffget<cr> 
-  nmap dp :diffput<cr> 
+  nmap dg :diffget<cr>
+  nmap du :diffput<cr>
 ]])
 
 -- which_key labeling
@@ -145,6 +146,8 @@ wk.register({
 	p = "paste from delete buffer",
 	P = "Paste from delete buffer",
 	s = "Delete surround",
+  g = "Get Diff",
+  u = "Use Diff"
 }, { prefix = "d" })
 
 wk.register({

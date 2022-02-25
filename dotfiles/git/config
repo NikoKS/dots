@@ -3,6 +3,7 @@
 	email = nikolas.setiawan@tokopedia.com
 [merge]
 	tool = nvim
+  conflictstyle = diff3
 [mergetool]
   keepBackup = false
 [mergetool "nvim"]
@@ -10,9 +11,23 @@
 [core]
 	excludesFile = ~/.config/git/gitignore
 	editor = lvim
+  pager = delta
 [diff]
   tool = vimdiff
+  colorMoved = default
 [credential]
 	helper = store
 [pull]
 	ff = only
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true  # use n and N to move between diff sections
+  diff-so-fancy = true
+  line-numbers = true
+  syntax-theme = ansi
+  line-numbers-minus-style = red bold
+  line-numbers-plus-style = green bold
+  line-numbers-zero-style = normal
+  minus-emph-style = red 9
+  plus-emph-style = green 10

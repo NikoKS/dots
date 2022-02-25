@@ -3,22 +3,21 @@
 -- :! cd $LUNARVIM_RUNTIME_DIR/site/pack/packer/start/telescope-fzf-native.nvim && make clean && make
 -- Discussion: https://github.com/LunarVim/LunarVim/issues/1804
 
-
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.leader = ";"
 lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
-vim.cmd('set cmdheight=1')
+vim.cmd("set cmdheight=1")
 vim.cmd("set timeoutlen=300")
-vim.opt.clipboard = ''
+vim.opt.clipboard = ""
 
 -- Additional Plugins
 lvim.plugins = {
-  { "EdenEast/nightfox.nvim" },
-  { "justinmk/vim-sneak" },
-  { "tpope/vim-surround" },
+	{ "EdenEast/nightfox.nvim" },
+	{ "justinmk/vim-sneak" },
+	{ "tpope/vim-surround" },
 }
 
 -- require('mappings') -- Additional keymappings
