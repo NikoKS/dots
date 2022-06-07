@@ -3,17 +3,19 @@
 -- general
 lvim.log.level = "warn"
 lvim.leader = ";"
-lvim.builtin.dashboard.active = true
+lvim.builtin.alpha.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.notify.active = true
 vim.o.cmdheight = 1
+vim.o.foldlevel = 99
 vim.o.timeoutlen = 300
 vim.o.updatetime = 250
-vim.opt.clipboard = ""
+vim.o.clipboard = ""
+vim.o.mouse = ""
 
 -- Additional Plugins
 lvim.plugins = {
-	{ "EdenEast/nightfox.nvim" },
+	{ "EdenEast/nightfox.nvim", tag = "v1.0.0" },
 	{ "justinmk/vim-sneak" },
 	{ "tpope/vim-surround" },
 	{ "lukas-reineke/indent-blankline.nvim" },
@@ -24,11 +26,8 @@ lvim.plugins = {
 	{ "jenterkin/vim-autosource" },
 	{ "jpalardy/vim-slime" },
 	{ "tpope/vim-fugitive" },
-	-- { "NikoKS/vim-iterm2-navigator", run = 'make install'},
+	{ "ntpeters/vim-better-whitespace" },
 	-- { "liuchengxu/vista.vim" },
-	-- { "svermeulen/vim-macrobatics" }
-	-- { "tpope/vim-repeat" }
-	-- { "ntpeters/vim-better-whitespace" }
 }
 
 require("mappings") -- Additional keymappings

@@ -4,13 +4,21 @@ gui:
   theme:
     inactiveBorderColor:
       - blue
+  authorColors:
+    # use green for nikolas
+    'NikoKS': '#a3be8c'
+    'nikolasetiawan': '#a3be8c'
+    # use blue for other authors
+    '*': '#81a1c1'
 git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never
 os:
   editCommand: 'nvr --nostart --servername $NVIM_LISTEN_ADDRESS --remote-silent -l'
+  openCommand: ''
 quitOnTopLevelReturn: true
+promptToReturnFromSubprocess: false
 notARepository: 'skip'
 keybinding:
   universal:
@@ -23,3 +31,8 @@ keybinding:
     viewResetOptions: 'b'
   stash:
     popStash: 'p'
+customCommands:
+  - key: 'o'
+    context: 'commitFiles'
+    command: "nvr --nostart --servername $NVIM_LISTEN_ADDRESS -l -c 'Gedit {{.SelectedSubCommit.Sha}}:{{.SelectedCommitFile.Name}}'"
+    description: "open file on this commit"

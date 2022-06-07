@@ -21,7 +21,7 @@ vim.cmd([[
 
 -- vim indentation block selection
 vim.cmd([[
-  nmap xb yai
+  nmap yb yai
   nmap cb cai
   nmap db dai
   nmap vb vai
@@ -38,17 +38,12 @@ vim.cmd([[
 ]])
 lvim.builtin.which_key.mappings["rl"] = "Send Line"
 
--- Tagbar
--- lvim.builtin.which_key.mappings["m"] = { ":TagbarOpen<cr>" , "Map"}
--- vim.g['tagbar_map_togglefold'] = '<space>'
--- vim.g['tagbar_compact'] = 1
--- vim.g['tagbar_autoclose'] = true
-
 -- blankline
 vim.g["indent_blankline_show_current_context"] = vim.v["true"]
 vim.g["indent_blankline_use_treesitter"] = true
 vim.g["indent_blankline_show_first_indent_level"] = false
 vim.g["indent_blankline_filetype_exclude"] = {
+	"",
 	"help",
 	"NvimTree",
 	"vista_kind",
@@ -60,6 +55,17 @@ vim.g["indent_blankline_filetype_exclude"] = {
 	"lspinfo",
 	"lsp-installer",
 	"packer",
+	"TelescopePrompt",
+  "markdown",
+  "fugitive",
+  "git",
+  "gitcommit",
+  "alpha"
+}
+
+-- Better Whitespace blacklist
+vim.g["better_whitespace_filetypes_blacklist"] = {
+	unpack(vim.g["indent_blankline_filetype_exclude"]),
 }
 
 -- vim terminal

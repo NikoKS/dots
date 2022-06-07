@@ -7,7 +7,7 @@
 [mergetool]
   keepBackup = false
 [mergetool "nvim"]
-  cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
+  cmd = nvr --nostart --servername $NVIM_LISTEN_ADDRESS -l -c \"Gvdiffsplit!\" \"$MERGED\"
 [core]
 	excludesFile = ~/.config/git/gitignore
 	editor = lvim
@@ -18,7 +18,7 @@
 [credential]
 	helper = store
 [pull]
-	ff = only
+	rebase = false
 [interactive]
   diffFilter = delta --color-only
 [delta]

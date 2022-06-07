@@ -4,6 +4,7 @@ linters.setup({
 	{
 		exe = "flake8",
 		filetypes = { "python" },
+		args = { "--max-line-length", "88" },
 	},
 	{
 		exe = "mypy",
@@ -20,18 +21,23 @@ formatter.setup({
 		extra_args = { "--fast" },
 		filetypes = { "python" },
 	},
-  {
-    exe = "isort",
-    filetypes = { "python" }
-  },
+	{
+		exe = "isort",
+		filetypes = { "python" },
+	},
 	{
 		command = "stylua",
 		filetypes = { "lua" },
+	},
+	{
+		exe = "eslint",
+		filetype = { "javascript" },
 	},
 })
 
 -- lsp
 lvim.lsp.diagnostics.virtual_text = false
+require("lvim.lsp.manager").setup("tsserver")
 
 -- Change lsp info window border
 local win = require("lspconfig.ui.windows")

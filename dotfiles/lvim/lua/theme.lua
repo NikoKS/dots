@@ -24,8 +24,6 @@ nightfox.setup({
 		NvimTreeRootFolder = { fg = colors.fg, style = colors.none },
 		NvimTreeGitDirty = { fg = colors.yellow },
 		NvimTreeGitNew = { fg = colors.green },
-		-- BarBar
-		BufferOffset = { bg = colors.bg_alt },
 		-- GitSigns
 		GitSignsAdd = { fg = colors.green },
 		GitSignsChange = { fg = colors.yellow },
@@ -34,10 +32,30 @@ nightfox.setup({
 		NormalFloat = { bg = colors.none },
 		IndentBlanklineContextChar = { fg = colors.blue },
 		MatchParen = { bg = colors.black, fg = colors.none },
+		Folded = { bg = colors.none, fg = colors.comment },
 	},
 })
 
-nightfox.load()
+-- bufferline
+lvim.builtin.bufferline.options.separator_style = "thick"
+lvim.builtin.bufferline.options.always_show_bufferline = true
+lvim.builtin.bufferline.highlights = {
+	fill = { guibg = colors.bg_alt },
+	background = { guibg = colors.bg_alt },
+	close_button = { guibg = colors.bg_alt },
+	diagnostic = { guibg = colors.bg_alt },
+	error = { guibg = colors.bg_alt },
+	error_selected = { guifg = colors.white },
+	error_diagnostic = { guibg = colors.bg_alt, guifg = colors.red },
+	error_diagnostic_visible = { guifg = colors.red },
+	modified = { guibg = colors.bg_alt, guifg = colors.yellow },
+	modified_selected = { guifg = colors.yellow },
+	modified_visible = { guifg = colors.yellow },
+	separator = { guifg = colors.fg_gutter },
+}
 
+nightfox.load()
 -- ⃒⎥⎟⎜┃▏▎▍
--- ⎥⎟ ┃▏▎▍
+
+-- better whitespace
+vim.g["better_whitespace_guicolor"] = colors.red

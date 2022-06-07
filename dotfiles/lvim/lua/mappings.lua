@@ -31,10 +31,10 @@ lvim.builtin.which_key.mappings["q"] = { ":q<cr>", "Quit" }
 lvim.builtin.which_key.mappings["Q"] = { ":q!<cr>", "Quit Without Saving" }
 lvim.builtin.which_key.mappings["sm"] = { ":Telescope marks <CR>", "Search Marks" }
 lvim.builtin.which_key.mappings["ss"] = { ":Telescope lsp_document_symbols <CR>", "Search Symbols" }
-lvim.builtin.which_key.mappings["f"] = { ":lua vim.lsp.buf.formatting()<CR>", "Format file" }
+lvim.builtin.which_key.mappings["pc"] = { ":PackerClean<CR>", "Clean" }
+lvim.builtin.which_key.mappings["lR"] = { ":LspRestart<CR>", "Restart LSP" }
 lvim.builtin.which_key.mappings["r"] = {
 	name = "Run",
-	-- p = { ":w<cr>:TermExec cmd='python3 %'<cr>" , "Run Python" }
 }
 
 -- change lazygit exec
@@ -44,17 +44,19 @@ lvim.builtin.terminal.execs = {
 
 -- General Keymaps
 vim.cmd([[
-  nnoremap T @
-  nnoremap t q
+  map T @
+  noremap t q
   map <space> za
   nnoremap v <C-v>
   nnoremap r <C-r>
-  nnoremap o J
+  nnoremap O J
+  nmap o ;bj
   nnoremap gm %
   nmap ;n <c-g>
   nmap # ;/
   vmap # ;/
   nmap M zz
+  nnoremap dt :windo diffthis<cr>
 ]])
 lvim.builtin.which_key.mappings["n"] = "Print File Name"
 
@@ -64,11 +66,13 @@ vim.cmd([[
   nnoremap qq :q<CR>
   nnoremap qa :qa<CR>
   nnoremap qe :q!<CR>
-  nnoremap <silent> qf :BufferClose!<CR>
+  nnoremap qd :windo diffoff<cr>
+  nnoremap <silent> qf :BufferKill<CR>
 ]])
 
 -- Sensible selection
 vim.cmd([[
+  nnoremap * *''
   nnoremap cw ciw
   nnoremap cW ciW
   nnoremap dw daw
@@ -84,21 +88,22 @@ vim.cmd([[
 -- Remap copy paste
 vim.cmd([[
   map x y
-  map " "+
+  map X "+x
   nnoremap dp "1p
   nnoremap dP "1P
-  nnoremap xp "0p
-  nnoremap xP "0P
+  nnoremap yp "0p
+  nnoremap yP "0P
   nnoremap 'p "zp
   nnoremap 'P "zP
   noremap 'x "zy
-  nnoremap xf ggVG"+y
+  nnoremap yf ggVG"+y
+  vnoremap <M-c> "+y
 ]])
 
 -- Navigation keymappings
 vim.cmd([[
-  nmap <silent> <tab> *<esc>
-  vmap <silent> <tab> *<esc>
+  nnoremap <silent> <tab> *:noh<return><esc>
+  vnoremap <silent> <tab> *:noh<return><esc>
   nnoremap <silent> <s-tab> #:noh<return><esc>
   vnoremap <silent> <s-tab> #:noh<return><esc>
   nnoremap ( %
@@ -120,10 +125,10 @@ vim.cmd([[
   vnoremap W B
   nnoremap <nowait> > >>
   nnoremap <nowait> < <<
-  nnoremap <silent> <nowait> [ :BufferPrevious<cr>
-  nnoremap <silent> <nowait> ] :BufferNext<cr>
-  nnoremap <silent> <nowait> { :BufferMovePrevious<cr>
-  nnoremap <silent> <nowait> } :BufferMoveNext<cr>
+  nnoremap <silent> <nowait> [ :BufferLineCyclePrev<cr>
+  nnoremap <silent> <nowait> ] :BufferLineCycleNext<cr>
+  nnoremap <silent> <nowait> { :BufferLineMovePrev<cr>
+  nnoremap <silent> <nowait> } :BufferLineMoveNext<cr>
   imap <C-h> <esc><C-h>
   imap <C-j> <esc><C-j>
   imap <C-k> <esc><C-k>
@@ -136,6 +141,13 @@ vim.cmd([[
   nmap du :diffput<cr>
 ]])
 
+-- fold keymappings
+lvim.builtin.which_key.mappings["f"] = {
+	name = "Fold",
+	a = { "zM", "Fold All" },
+	o = { "zR", "Open All Fold" },
+}
+
 -- which_key labeling
 local wk = require("which-key")
 wk.register({
@@ -146,8 +158,9 @@ wk.register({
 	p = "paste from delete buffer",
 	P = "Paste from delete buffer",
 	s = "Delete surround",
-  g = "Get Diff",
-  u = "Use Diff"
+	g = "Get Diff",
+	u = "Use Diff",
+  t = "Diff between two windows"
 }, { prefix = "d" })
 
 wk.register({
@@ -158,3 +171,12 @@ wk.register({
 	n = "Change next highlighted word",
 	N = "Change previous highlighted word",
 }, { prefix = "c" })
+
+wk.register({
+	b = "Copy indentation block",
+	w = "Copy word",
+	W = "Copy Word",
+	p = "paste from copy buffer",
+	P = "Paste from copy buffer",
+	f = "Copy whole file",
+}, { prefix = "y" })
