@@ -199,6 +199,8 @@ export GOPATH=$HOME/Software/go
 export PATH=$GOPATH/bin:$PATH
 export PATH=$HOME/Software/google-cloud-sdk/bin:$PATH
 export PYTHONPYCACHEPREFIX=/tmp
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$ANDROID_HOME/platform-tools:$PATH
 ###############################################}}}
 
 ################ ALIASES #####################{{{

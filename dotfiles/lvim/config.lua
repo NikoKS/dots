@@ -15,7 +15,7 @@ vim.o.mouse = ""
 
 -- Additional Plugins
 lvim.plugins = {
-	{ "EdenEast/nightfox.nvim", tag = "v1.0.0" },
+	{ "EdenEast/nightfox.nvim" },
 	{ "justinmk/vim-sneak" },
 	{ "tpope/vim-surround" },
 	{ "lukas-reineke/indent-blankline.nvim" },
@@ -27,6 +27,8 @@ lvim.plugins = {
 	{ "jpalardy/vim-slime" },
 	{ "tpope/vim-fugitive" },
 	{ "ntpeters/vim-better-whitespace" },
+	{ "nvim-telescope/telescope-live-grep-args.nvim" },
+	{ "nvim-treesitter/playground" },
 	-- { "liuchengxu/vista.vim" },
 }
 

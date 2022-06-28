@@ -31,6 +31,8 @@ lvim.builtin.which_key.mappings["q"] = { ":q<cr>", "Quit" }
 lvim.builtin.which_key.mappings["Q"] = { ":q!<cr>", "Quit Without Saving" }
 lvim.builtin.which_key.mappings["sm"] = { ":Telescope marks <CR>", "Search Marks" }
 lvim.builtin.which_key.mappings["ss"] = { ":Telescope lsp_document_symbols <CR>", "Search Symbols" }
+lvim.builtin.which_key.mappings["sw"] = { ":lua require('tele').file_contains() <CR>", "Search File That Contains" }
+lvim.builtin.which_key.mappings["sa"] = { ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", "Live Grep with args" }
 lvim.builtin.which_key.mappings["pc"] = { ":PackerClean<CR>", "Clean" }
 lvim.builtin.which_key.mappings["lR"] = { ":LspRestart<CR>", "Restart LSP" }
 lvim.builtin.which_key.mappings["r"] = {
@@ -67,7 +69,7 @@ vim.cmd([[
   nnoremap qa :qa<CR>
   nnoremap qe :q!<CR>
   nnoremap qd :windo diffoff<cr>
-  nnoremap <silent> qf :BufferKill<CR>
+  nnoremap <silent> qf :bdelete<CR>
 ]])
 
 -- Sensible selection
@@ -109,7 +111,7 @@ vim.cmd([[
   nnoremap ( %
   vnoremap ( %
   nnoremap 'i gi
-  nmap <BS> ;bb
+  nmap <BS> :b#<cr>
   nmap <C-f> ;bf
   nnoremap J Lzz
   vnoremap J Lzz
@@ -129,6 +131,8 @@ vim.cmd([[
   nnoremap <silent> <nowait> ] :BufferLineCycleNext<cr>
   nnoremap <silent> <nowait> { :BufferLineMovePrev<cr>
   nnoremap <silent> <nowait> } :BufferLineMoveNext<cr>
+  nnoremap <silent> ;bl :BufferLineCloseRight<cr>
+  nnoremap <silent> ;bg :BufferLineCloseLeft<cr>
   imap <C-h> <esc><C-h>
   imap <C-j> <esc><C-j>
   imap <C-k> <esc><C-k>
@@ -160,7 +164,7 @@ wk.register({
 	s = "Delete surround",
 	g = "Get Diff",
 	u = "Use Diff",
-  t = "Diff between two windows"
+	t = "Diff between two windows",
 }, { prefix = "d" })
 
 wk.register({

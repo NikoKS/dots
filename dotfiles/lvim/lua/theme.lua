@@ -1,61 +1,123 @@
+-- setup must be called before loading
+local colors = require("nightfox.palette").load('nordfox')
+-- require('nightfox').setup({
+  -- options = {
+    -- Compiled file's destination location
+    -- compile_path = vim.fn.stdpath("cache") .. "/nightfox",
+    -- compile_file_suffix = "_compiled", -- Compiled file suffix
+    -- transparent = true,    -- Disable setting background
+    -- terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
+    -- dim_inactive = false,   -- Non focused panes set to alternative background
+    -- styles = {              -- Style to be applied to different syntax groups
+      -- comments = "NONE",    -- Value is any valid attr-list value `:help attr-list`
+      -- conditionals = "NONE",
+      -- constants = "NONE",
+      -- functions = "italic",
+      -- keywords = "bold",
+      -- numbers = "NONE",
+      -- operators = "NONE",
+      -- strings = "NONE",
+      -- types = "NONE",
+      -- variables = "NONE",
+    -- },
+    -- inverse = {             -- Inverse highlight for different types
+      -- match_paren = true,
+      -- visual = false,
+      -- search = false,
+    -- },
+    -- modules = true             -- List of various plugins and additional options
+  -- },
+  -- groups = {
+    -- nordfox = {
+      -- Sneak
+      -- Sneak = { bg = colors.none, fg = colors.yellow.base },
+      -- SneakLabel = { bg = colors.none, fg = colors.yellow.base },
+      -- SneakScope = { fg = colors.white.base, style = "reverse" },
+      -- -- NvimTree
+      -- NvimTreeEndOfBuffer = { fg = colors.fg.base },
+      -- NvimTreeRootFolder = { fg = colors.fg.base, style = colors.none },
+      -- NvimTreeGitDirty = { fg = colors.yellow.base },
+      -- NvimTreeGitNew = { fg = colors.green.base },
+      -- -- GitSigns
+      -- GitSignsAdd = { fg = colors.green.base },
+      -- GitSignsChange = { fg = colors.yellow.base },
+      -- -- General
+      -- VertSplit = { fg = colors.bg_alt.base, style = colors.none },
+      -- NormalFloat = { bg = colors.none },
+      -- IndentBlanklineContextChar = { fg = colors.blue.base },
+      -- MatchParen = { bg = colors.black.base, fg = colors.none },
+      -- Folded = { bg = colors.none, fg = colors.comment.base },
+    -- }
+  -- }
+-- })
+
+-- vim.cmd("colorscheme nightfox")
+
 -- Additional settings for colorscheme
-lvim.transparent_window = true
-lvim.colorscheme = "nordfox"
-local nightfox = require("nightfox")
-local colors = require("nightfox.colors.nordfox").load()
-nightfox.setup({
-	fox = "nordfox", -- change the colorscheme to use nordfox
-	styles = {
-		-- comments = "italic", -- change style of comments to be italic
-		transprent = true,
-		keywords = "bold", -- change style of keywords to be bold
-		functions = "italic", -- styles can be a comma separated list
-	},
-	inverse = {
-		match_paren = true, -- inverse the highlighting of match_parens
-	},
-	hlgroups = {
-		-- Sneak
-		Sneak = { bg = colors.none, fg = colors.yellow },
-		SneakLabel = { bg = colors.none, fg = colors.yellow },
-		SneakScope = { fg = colors.white, style = "reverse" },
-		-- NvimTree
-		NvimTreeEndOfBuffer = { fg = colors.fg },
-		NvimTreeRootFolder = { fg = colors.fg, style = colors.none },
-		NvimTreeGitDirty = { fg = colors.yellow },
-		NvimTreeGitNew = { fg = colors.green },
-		-- GitSigns
-		GitSignsAdd = { fg = colors.green },
-		GitSignsChange = { fg = colors.yellow },
-		-- General
-		VertSplit = { fg = colors.bg_alt, style = colors.none },
-		NormalFloat = { bg = colors.none },
-		IndentBlanklineContextChar = { fg = colors.blue },
-		MatchParen = { bg = colors.black, fg = colors.none },
-		Folded = { bg = colors.none, fg = colors.comment },
-	},
-})
+-- lvim.transparent_window = true
+-- lvim.colorscheme = "nordfox"
+-- local nightfox = require("nightfox")
+-- local colors = require("nightfox.colors.nordfox").load()
+-- nightfox.setup({
+-- 	fox = "nordfox", -- change the colorscheme to use nordfox
+-- 	styles = {
+-- 		-- comments = "italic", -- change style of comments to be italic
+-- 		transprent = true,
+-- 		keywords = "bold", -- change style of keywords to be bold
+-- 		functions = "italic", -- styles can be a comma separated list
+-- 	},
+-- 	inverse = {
+-- 		match_paren = true, -- inverse the highlighting of match_parens
+-- 	},
+-- 	hlgroups = {
+-- 		-- Sneak
+-- 		Sneak = { bg = colors.none, fg = colors.yellow },
+-- 		SneakLabel = { bg = colors.none, fg = colors.yellow },
+-- 		SneakScope = { fg = colors.white, style = "reverse" },
+-- 		-- NvimTree
+-- 		NvimTreeEndOfBuffer = { fg = colors.fg },
+-- 		NvimTreeRootFolder = { fg = colors.fg, style = colors.none },
+-- 		NvimTreeGitDirty = { fg = colors.yellow },
+-- 		NvimTreeGitNew = { fg = colors.green },
+-- 		-- GitSigns
+-- 		GitSignsAdd = { fg = colors.green },
+-- 		GitSignsChange = { fg = colors.yellow },
+-- 		-- General
+-- 		VertSplit = { fg = colors.bg_alt, style = colors.none },
+-- 		NormalFloat = { bg = colors.none },
+-- 		IndentBlanklineContextChar = { fg = colors.blue },
+-- 		MatchParen = { bg = colors.black, fg = colors.none },
+-- 		Folded = { bg = colors.none, fg = colors.comment },
+-- 	},
+-- })
 
 -- bufferline
-lvim.builtin.bufferline.options.separator_style = "thick"
-lvim.builtin.bufferline.options.always_show_bufferline = true
-lvim.builtin.bufferline.highlights = {
-	fill = { guibg = colors.bg_alt },
-	background = { guibg = colors.bg_alt },
-	close_button = { guibg = colors.bg_alt },
-	diagnostic = { guibg = colors.bg_alt },
-	error = { guibg = colors.bg_alt },
-	error_selected = { guifg = colors.white },
-	error_diagnostic = { guibg = colors.bg_alt, guifg = colors.red },
-	error_diagnostic_visible = { guifg = colors.red },
-	modified = { guibg = colors.bg_alt, guifg = colors.yellow },
-	modified_selected = { guifg = colors.yellow },
-	modified_visible = { guifg = colors.yellow },
-	separator = { guifg = colors.fg_gutter },
-}
+-- lvim.builtin.bufferline.options.separator_style = "thick"
+-- lvim.builtin.bufferline.options.always_show_bufferline = true
+-- lvim.builtin.bufferline.highlights = {
+-- 	fill = { guibg = colors.bg_alt },
+-- 	background = { guibg = colors.bg_alt },
+-- 	close_button = { guibg = colors.bg_alt },
+-- 	diagnostic = { guibg = colors.bg_alt },
+-- 	duplicate = { guibg = colors.bg_alt },
+-- 	separator = { guifg = colors.fg_gutter },
+-- 	error = { guibg = colors.bg_alt },
+-- 	error_selected = { guifg = colors.white },
+-- 	error_diagnostic = { guibg = colors.bg_alt, guifg = colors.red },
+-- 	error_diagnostic_selected = { guifg = colors.red },
+-- 	error_diagnostic_visible = { guifg = colors.red },
+-- 	warning = { guibg = colors.bg_alt , guifg = colors.white},
+-- 	warning_selected = { guifg = colors.white},
+-- 	warning_diagnostic = { guibg = colors.bg_alt, guifg = colors.yellow },
+-- 	warning_diagnostic_selected = { guifg = colors.yellow },
+-- 	warning_diagnostic_visible = { guifg = colors.yellow },
+-- 	modified = { guibg = colors.bg_alt, guifg = colors.yellow },
+-- 	modified_selected = { guifg = colors.yellow },
+-- 	modified_visible = { guifg = colors.yellow },
+-- }
 
-nightfox.load()
+-- nightfox.load()
 -- ⃒⎥⎟⎜┃▏▎▍
 
 -- better whitespace
-vim.g["better_whitespace_guicolor"] = colors.red
+vim.g["better_whitespace_guicolor"] = colors.red.base
