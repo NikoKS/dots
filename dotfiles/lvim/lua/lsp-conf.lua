@@ -33,11 +33,16 @@ formatter.setup({
 		exe = "eslint",
 		filetype = { "javascript" },
 	},
+  {
+    exe = "rustfmt",
+    filetype = { "rust" },
+  }
 })
 
 -- lsp
 lvim.lsp.diagnostics.virtual_text = false
-require("lvim.lsp.manager").setup("tsserver")
+-- require("lvim.lsp.manager").setup("tsserver")
+-- require("lvim.lsp.manager").setup("denols")
 
 -- Change lsp info window border
 local win = require("lspconfig.ui.windows")

@@ -35,6 +35,6 @@ keybinding:
 customCommands:
   - key: 'o'
     context: 'commitFiles'
-    command: "nvr --nostart --servername $NVIM -l -c 'Gedit {{.SelectedSubCommit.Sha}}:{{.SelectedCommitFile.Name}}'"
-    # command: "nvim --server $NVIM --remote-send 'Gedit {{.SelectedSubCommit.Sha}}:{{.SelectedCommitFile.Name}}'"
+    command: "nvr --nostart --servername $NVIM -l -c 'Gedit {{.SelectedLocalCommit.Sha}}:{{.SelectedCommitFile.Name}}'"
+    # command: "nvim --server $NVIM -c 'wincmd p' -c 'Gedit {{.SelectedLocalCommit.Sha}}:{{.SelectedCommitFile.Name}}'"
     description: "open file on this commit"

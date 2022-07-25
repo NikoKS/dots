@@ -35,9 +35,8 @@ lvim.builtin.which_key.mappings["sw"] = { ":lua require('tele').file_contains() 
 lvim.builtin.which_key.mappings["sa"] = { ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", "Live Grep with args" }
 lvim.builtin.which_key.mappings["pc"] = { ":PackerClean<CR>", "Clean" }
 lvim.builtin.which_key.mappings["lR"] = { ":LspRestart<CR>", "Restart LSP" }
-lvim.builtin.which_key.mappings["r"] = {
-	name = "Run",
-}
+lvim.builtin.which_key.mappings["bn"] = { ":enew<CR>", "New Empty Buffer" }
+lvim.builtin.which_key.mappings["r"] = { name = "Run", }
 
 -- change lazygit exec
 lvim.builtin.terminal.execs = {
@@ -69,7 +68,7 @@ vim.cmd([[
   nnoremap qa :qa<CR>
   nnoremap qe :q!<CR>
   nnoremap qd :windo diffoff<cr>
-  nnoremap <silent> qf :bdelete<CR>
+  nnoremap <silent> qf :BufferKill<CR>
 ]])
 
 -- Sensible selection

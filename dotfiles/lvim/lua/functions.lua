@@ -1,20 +1,6 @@
 -- Auto Commands
--- lvim.autocommands.custom_groups = {
--- 	{ "WinEnter", "*", "setlocal cursorline" },
--- 	{ "WinLeave", "*", "if &ft !=# 'NvimTree' | setlocal nocursorline | endif" },
--- 	{ "TermLeave", "*", "if (winnr('$') == 1 && len(expand('%')) == 0) | nmap <buffer> <esc> :quit<cr>| endif" },
--- 	{ "CursorHold", "*", "lua vim.diagnostic.open_float(nil, {focus=false, scope='cursor'})" },
--- 	{
--- 		"WinEnter",
--- 		"*",
--- 		"if (index(g:indent_blankline_filetype_exclude, &ft)) == -1 | execute 'IndentBlanklineEnable' | endif",
--- 	},
--- 	{ "WinLeave", "*", "IndentBlanklineDisable" },
--- 	{ "BufWinLeave", "*", "if (index(g:indent_blankline_filetype_exclude, &ft)) == -1 | mkview | endif" },
--- 	{ "BufWinEnter", "*", "if (index(g:indent_blankline_filetype_exclude, &ft)) == -1 | silent! loadview | endif" },
--- }
 lvim.autocommands = {
-	{ "WinEnter", { pattern = { "*" }, command = "setlocal cursorline" } },
+	{ "WinEnter", { pattern = { "*" }, command = "setlocal cursorline" } }, -- Cursor line only on active window
 	{ "WinLeave", { pattern = { "*" }, command = "if &ft !=# 'NvimTree' | setlocal nocursorline | endif" } },
 	{
 		"TermLeave",
@@ -52,14 +38,17 @@ lvim.autocommands = {
 			command = "if (index(g:indent_blankline_filetype_exclude, &ft)) == -1 | silent! loadview | endif",
 		},
 	},
-	{
-		"BufEnter",
-		{
-			pattern = { "*" },
-			command = "if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif",
-		},
-	},
 }
+
+-- quit if nvimtree is last window
+vim.api.nvim_create_autocmd("BufEnter", {
+  nested = true,
+  callback = function()
+    if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil then
+      vim.cmd "quit!"
+    end
+  end
+})
 
 -- Smart Enter
 -- let l:lsp = luaeval("vim.inspect(vim.lsp.buf_get_clients()) ~= '{}'")
