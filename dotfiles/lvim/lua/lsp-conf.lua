@@ -18,11 +18,12 @@ local formatter = require("lvim.lsp.null-ls.formatters")
 formatter.setup({
 	{
 		exe = "black",
-		extra_args = { "--fast" },
+		extra_args = { "--fast", "--line-length", "88" },
 		filetypes = { "python" },
 	},
 	{
 		exe = "isort",
+		extra_args = { "--profile", "black" },
 		filetypes = { "python" },
 	},
 	{

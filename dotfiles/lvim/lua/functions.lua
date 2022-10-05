@@ -28,7 +28,7 @@ lvim.autocommands = {
 		"BufWinLeave",
 		{
 			pattern = { "*" },
-			command = "if (index(g:indent_blankline_filetype_exclude, &ft)) == -1 | mkview | endif",
+			command = "if len(expand('%')) != 0 && (index(g:indent_blankline_filetype_exclude, &ft)) == -1 | mkview | endif",
 		},
 	},
 	{
@@ -45,7 +45,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
   nested = true,
   callback = function()
     if #vim.api.nvim_list_wins() == 1 and vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil then
-      vim.cmd "quit!"
+      vim.cmd "q!"
     end
   end
 })

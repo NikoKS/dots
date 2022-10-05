@@ -25,7 +25,9 @@ vim.cmd([[
   nnoremap <silent> <esc> :noh<return><esc>
   nnoremap <silent> R :e<CR>
 ]])
-lvim.builtin.which_key.mappings["v"] = { ":vs<CR>", "VerticalSplit" }
+lvim.builtin.which_key.mappings["bv"] = { ":vnew<CR>", "VerticalSplit" }
+lvim.builtin.which_key.mappings["bs"] = { ":new<CR>", "Split" }
+lvim.builtin.which_key.mappings["bn"] = { ":enew<CR>", "New Empty Buffer" }
 lvim.builtin.which_key.mappings[";"] = { ":Telescope resume<cr>", "Resume last search" }
 lvim.builtin.which_key.mappings["q"] = { ":q<cr>", "Quit" }
 lvim.builtin.which_key.mappings["Q"] = { ":q!<cr>", "Quit Without Saving" }
@@ -35,7 +37,6 @@ lvim.builtin.which_key.mappings["sw"] = { ":lua require('tele').file_contains() 
 lvim.builtin.which_key.mappings["sa"] = { ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", "Live Grep with args" }
 lvim.builtin.which_key.mappings["pc"] = { ":PackerClean<CR>", "Clean" }
 lvim.builtin.which_key.mappings["lR"] = { ":LspRestart<CR>", "Restart LSP" }
-lvim.builtin.which_key.mappings["bn"] = { ":enew<CR>", "New Empty Buffer" }
 lvim.builtin.which_key.mappings["r"] = { name = "Run", }
 
 -- change lazygit exec
@@ -99,6 +100,7 @@ vim.cmd([[
   noremap 'x "zy
   nnoremap yf ggVG"+y
   vnoremap <M-c> "+y
+  vnoremap / y/\V<C-R>=escape(@",'/\')<CR><CR>
 ]])
 
 -- Navigation keymappings

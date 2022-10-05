@@ -796,13 +796,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.098039215686274508</real>
+				<real>0.25098039215686274</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.098039215686274508</real>
+				<real>0.20392156862745098</real>
 				<key>Red Component</key>
-				<real>0.098039215686274508</real>
+				<real>0.1803921568627451</real>
 			</dict>
 			<key>Background Image Location</key>
 			<string></string>
@@ -826,7 +826,7 @@
 			<key>Blur</key>
 			<true/>
 			<key>Blur Radius</key>
-			<real>11.716572473404261</real>
+			<real>11.665234375000006</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -1311,7 +1311,7 @@
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Transparency</key>
-			<real>0.27000000000000002</real>
+			<real>0.0</real>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
