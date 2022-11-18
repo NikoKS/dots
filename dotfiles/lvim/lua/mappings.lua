@@ -40,9 +40,30 @@ lvim.builtin.which_key.mappings["lR"] = { ":LspRestart<CR>", "Restart LSP" }
 lvim.builtin.which_key.mappings["r"] = { name = "Run", }
 
 -- change lazygit exec
-lvim.builtin.terminal.execs = {
-	{ "lazygit -ucd ~/.config/lazygit", ";gg", "LazyGit" },
-}
+lazygit_toggle = function()
+  local Terminal = require("toggleterm.terminal").Terminal
+  local lazygit = Terminal:new {
+    cmd = "lazygit -ucd ~/.config/lazygit",
+    hidden = true,
+    direction = "float",
+    float_opts = {
+      border = "none",
+      width = 10000,
+      height = 10000,
+    },
+    on_open = function(_)
+      vim.cmd "startinsert!"
+    end,
+    on_close = function(_) end,
+    count = 99,
+  }
+  lazygit:toggle()
+end
+
+lvim.builtin.which_key.mappings["gg"] = { "<Cmd>lua lazygit_toggle()<CR>", "Custom Lazygit"}
+vim.cmd([[
+  noremap ;gg <Cmd>lua lazygit_toggle()<CR>
+]])
 
 -- General Keymaps
 vim.cmd([[

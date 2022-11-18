@@ -222,7 +222,7 @@ alias gg="lvim -c \":exe 'normal ;gg'\""
 # Poetry
 alias pvim="poetry run lvim"
 alias pshell="poetry shell"
-alias penv="source `poetry env info --path`/bin/activate"
+# alias penv="source `poetry env info --path`/bin/activate"
 # TMUX
 alias trc="vim ~/Software/dots/dotfiles/tmux/tmux.conf"
 alias t="TERM=screen-256color tmux"

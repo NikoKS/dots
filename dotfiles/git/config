@@ -31,3 +31,5 @@
   line-numbers-zero-style = normal
   minus-emph-style = red 9
   plus-emph-style = green 10
+  hunk-header-decoration-style = blue
+  hunk-header-style = file syntax
