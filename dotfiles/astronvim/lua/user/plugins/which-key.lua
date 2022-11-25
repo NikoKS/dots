@@ -1,3 +1,3 @@
 return {
-  triggers_blacklist = { n = { "[", "]", ">", "<" }, },
+  triggers_blacklist = { n = { "[", "]", ">", "<", "<leader>l" }, },
 }

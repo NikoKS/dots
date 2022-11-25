@@ -214,13 +214,14 @@ alias clear="printf '\n%.0s' {1..100}"
 alias c="clear && ls"
 alias e="exit"
 alias zrc="vim ~/Software/dots/dotfiles/zsh/dot-zshrc"
+alias venv="source venv/bin/activate"
 # VIM
-alias vrc="vim ~/Software/dots/dotfiles/lvim/config.lua"
-alias vim=lvim
+alias vrc="vim ~/Software/dots/dotfiles/astronvim/lua/user/init.lua"
+alias vim=nvim
 alias vimdiff='vim -d'
-alias gg="lvim -c \":exe 'normal ;gg'\""
+alias gg="vim -c \":exe 'normal ;gg'\""
 # Poetry
-alias pvim="poetry run lvim"
+alias pvim="poetry run vim"
 alias pshell="poetry shell"
 # alias penv="source `poetry env info --path`/bin/activate"
 # TMUX

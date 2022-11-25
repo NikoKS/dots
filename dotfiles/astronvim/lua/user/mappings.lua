@@ -15,6 +15,15 @@ return {
 		["<leader>q"] = false,
 		["<leader>gt"] = false,
 		["<leader>sm"] = false,
+		["<leader>gl"] = false,
+		["<leader>gp"] = false,
+		["<leader>lD"] = false,
+		["<leader>li"] = false,
+		["<leader>lR"] = false,
+		["<leader>lG"] = false,
+		["<leader>lS"] = false,
+		["<leader>ls"] = false,
+		["<leader>l"] = false,
 
 		-- General
 		["v"] = { "<C-v>" }, -- Visual Block
@@ -22,9 +31,7 @@ return {
 		["r"] = { "<C-r>" }, -- Redo
 		["U"] = { "J" }, -- Up the line
 		["O"] = { "<cmd>lua vim.lsp.buf.hover()<cr>" },
-		["<BS>"] = { "<cmd>b#<cr>" }, --
 		["<esc>"] = { "<cmd>noh<cr><esc>" },
-		["<CR>"] = { "<cmd>lua vim.lsp.buf.definition()<cr>" },
 		["R"] = { "<cmd>e<CR>" },
 		["#"] = { "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>" },
 		[">"] = { ">>" },
@@ -42,8 +49,8 @@ return {
 		["W"] = { "B" },
 		["<S-h>"] = { "^" },
 		["<S-l>"] = { "$" },
-		["J"] = { "Lzz" },
-		["K"] = { "Hzz" },
+		["J"] = { "<C-d>", remap = true },
+		["K"] = { "<C-u>", remap = true },
 		["("] = { "%" },
 		["<tab>"] = { "*:noh<cr><esc>" },
 		["<s-tab>"] = { "#:noh<cr><esc>" },
@@ -75,8 +82,11 @@ return {
 		["df"] = { "ggVG", desc = "Delete file" },
 
 		-- BufferLine
+		["<BS>"] = { "<cmd>b#<cr>" },
 		["]"] = { "<cmd>BufferLineCycleNext<cr>", desc = "Go to next tab", silent = true },
 		["["] = { "<cmd>BufferLineCyclePrev<cr>", desc = "Go to next tab", silent = true },
+		["<leader>]"] = { "<cmd>BufferLineCloseRight<cr>", desc = "Close Buffer to the right", silent = true },
+		["<leader>["] = { "<cmd>BufferLineCloseLeft<cr>", desc = "Close Buffer to the left", silent = true },
 		["o"] = { "<cmd>BufferLinePick<cr>", desc = "Open Buffer from tab", silent = true },
 
 		-- Search
@@ -86,6 +96,20 @@ return {
 		["<leader>sb"] = { "<cmd>Telescope buffers<cr>", desc = "Search Buffers" },
 		["<C-f>"] = { "<cmd>Telescope find_files<cr>", desc = "Find Files" },
 		["<leader>;"] = { "<cmd>Telescope resume<cr>", desc = "Resume last search" },
+		["<leader>ss"] = { function() require("telescope").extensions.aerial.aerial() end, desc = "Resume last search" },
+
+		-- File
+		["<leader>fb"] = false,
+		["<leader>fc"] = false,
+		["<leader>fF"] = false,
+		["<leader>fh"] = false,
+		["<leader>fm"] = false,
+		["<leader>fo"] = false,
+		["<leader>fW"] = false,
+		["<leader>fs"] = { "<cmd>vert split<cr>", desc = "Split" },
+		["<leader>ff"] = { function() vim.lsp.buf.format(astronvim.lsp.format_opts) end, desc = "Format" },
+		["<leader>fw"] = { "<cmd>noa w<cr>", desc = "Write File Without Format" },
+		["<leader>fr"] = { function() vim.lsp.buf.rename() end, desc = "Rename Current Symbol" },
 
 		-- Menu
 		["<leader>m"] = { "<cmd>Mason<cr>", desc = "Open Mason" },
@@ -95,13 +119,31 @@ return {
 		["sw"] = { "ysiw", desc = "Surround word", remap = true },
 		["sW"] = { "ysiW", desc = "Surround Word", remap = true },
 
+		-- Macros
+		["m"] = { "q" },
+		[","] = { "Q" },
+
+		-- Git
+		["<leader>gh"] = { "<cmd>Gitsigns preview_hunk<cr>", desc = "Preview Hunk" },
+		["<leader>gb"] = { "<cmd>Gitsigns blame_line<cr>", desc = "Blame" },
+		["<leader>gr"] = { "<cmd>Gitsigns reset_hunk<cr>", desc = "Reset Hunk" },
+
 		-- Extra Functions
 		["<leader>gg"] = {
 			function()
 				toggle_term_cmd("lazygit -ucd ~/.config/lazygit")
 			end,
-			desc = "lazygit custom",
+			desc = "Lazygit",
 		},
+		["<CR>"] = {
+			function()
+				if vim.bo.filetype == "man" or vim.bo.filetype == "help" then
+					vim.cmd('execute "tag " . expand("<cword>")')
+				else
+					vim.cmd('Telescope lsp_definitions')
+				end
+			end
+		}
 	},
 
 	-- Visual
@@ -123,6 +165,12 @@ return {
 
 		-- Comment
 		["#"] = { "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>" },
+
+		-- Surround
+		["s"] = { "S", desc = "Surround", remap = true },
+
+		-- Macros
+		[","] = { ":'<,'>normal! Q<cr>" }
 	},
 
 	-- Terminal
