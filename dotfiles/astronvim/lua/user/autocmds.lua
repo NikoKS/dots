@@ -53,7 +53,9 @@ vim.api.nvim_create_autocmd("CursorHold", {
 vim.api.nvim_create_autocmd("WinEnter", {
   pattern = { "*" },
   callback = function()
-    if not vim.tbl_contains(vim.g.indent_blankline_filetype_exclude, vim.bo.filetype) then
+    if vim.g.indent_blankline_enabled and
+        not vim.tbl_contains(vim.g.indent_blankline_filetype_exclude, vim.bo.filetype) and
+        not vim.tbl_contains(vim.g.indent_blankline_buftype_exclude, vim.bo.buftype) then
       vim.wo.cursorline = true -- Cursor line only on active window
       vim.cmd('IndentBlanklineEnable')
       vim.diagnostic.show(nil, 0)
@@ -63,7 +65,9 @@ vim.api.nvim_create_autocmd("WinEnter", {
 vim.api.nvim_create_autocmd("WinLeave", {
   pattern = { "*" },
   callback = function()
-    if not vim.tbl_contains(vim.g.indent_blankline_filetype_exclude, vim.bo.filetype) then
+    if vim.g.indent_blankline_enabled and
+        not vim.tbl_contains(vim.g.indent_blankline_filetype_exclude, vim.bo.filetype) and
+        not vim.tbl_contains(vim.g.indent_blankline_buftype_exclude, vim.bo.buftype) then
       vim.wo.cursorline = false
       vim.cmd('IndentBlanklineDisable')
       vim.diagnostic.hide(nil, 0)
