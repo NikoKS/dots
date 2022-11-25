@@ -28,5 +28,8 @@ return {
 		config = function()
 			require("neoscroll").setup()
 		end,
+	},
+	["lukas-reineke/indent-blankline.nvim"] = {
+		opt = false,
 	}
 }
