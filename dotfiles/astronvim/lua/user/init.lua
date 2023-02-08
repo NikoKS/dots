@@ -10,9 +10,8 @@ return {
       mapleader = ";", -- sets vim.g.mapleader
     }
   },
-  header = "Neovim",
   diagnostics = {
     virtual_text = false,
-    underline = { severity = { min = vim.diagnostic.severity.WARN } },
+    underline = { severity = { min = vim.diagnostic.severity.HINT } },
   },
 }

@@ -32,6 +32,26 @@ vim.api.nvim_create_autocmd("Filetype", {
   end
 })
 
+-- Markdown ftplugin
+vim.api.nvim_create_autocmd("Filetype", {
+  pattern = "markdown",
+  callback = function()
+    vim.wo.wrap = 1
+  end
+})
+
+-- Rust ftplugin
+vim.api.nvim_create_autocmd("Filetype", {
+  pattern = "rust",
+  callback = function()
+    local map = {
+      ['<leader>rb'] = { '<cmd>SlimeSend1 cargo build<cr>', "Build Project" },
+      ['<leader>rr'] = { '<cmd>SlimeSend1 cargo run<cr>', "Run Project" },
+      ['<leader>rd'] = { '<cmd>cargo doc --open<cr>', "Get Documentation" },
+    }
+    require('which-key').register(map)
+  end
+})
 
 -- Autosource
 vim.api.nvim_create_autocmd({ "VimEnter", "TermLeave" }, {

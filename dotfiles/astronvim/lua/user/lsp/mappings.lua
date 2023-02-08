@@ -9,7 +9,9 @@ return {
     ["<leader>ld"] = false,
     ["<leader>lf"] = false,
     ["<leader>lh"] = false,
-    ["<leader>lr"] = false,
+    ["<leader>ll"] = false,
+    ["<leader>lL"] = false,
     ["gr"] = { "<cmd>Telescope lsp_references<cr>", desc = "Get Refrences" },
+    ["<leader>lr"] = { "<cmd>LspRestart<cr>", desc = "Restart LSP" },
   }
 }

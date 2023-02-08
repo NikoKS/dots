@@ -1,4 +1,14 @@
 return {
+  default_component_configs = {
+    git_status = {
+      symbols = {
+        untracked = "ﱐ"
+      }
+    }
+  },
+  filesystem = {
+    follow_current_file = true
+  },
   window = {
     mappings = {
       ["<space>"] = "toggle_node",

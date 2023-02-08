@@ -7,10 +7,10 @@
 [mergetool]
   keepBackup = false
 [mergetool "nvim"]
-  cmd = nvr --nostart --servername $NVIM -l -c \"Gvdiffsplit!\" \"$MERGED\"
+  cmd = nvr --nostart --servername $NVIM -l \"$MERGED\"
 [core]
 	excludesFile = ~/.config/git/gitignore
-	editor = lvim
+	editor = nvim
   pager = delta
 [diff]
   tool = vimdiff
