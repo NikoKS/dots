@@ -26,7 +26,31 @@ vim.api.nvim_create_autocmd("Filetype", {
     local map = {
       ['<leader>rf'] = { '<cmd>SlimeSend0 "python3 " . expand("%:p") . "\\n"<cr>', "Run File" },
       ['<leader>rp'] = { '<cmd>SlimeSend1 python3<cr>', "Run Python" },
-      ['<leader>re'] = { '<cmd>SlimeSend1 exit()<cr>', "Exit Python" }
+      ['<leader>re'] = { '<cmd>SlimeSend1 exit()<cr>', "Exit Python" },
+    }
+    require('which-key').register(map)
+  end
+})
+
+-- JS ftplugin
+vim.api.nvim_create_autocmd("Filetype", {
+  pattern = "javascript",
+  callback = function()
+    local map = {
+      ['<leader>rf'] = { '<cmd>SlimeSend0 "node " . expand("%:p") . "\\n"<cr>', "Run File" },
+      ['<leader>rp'] = { '<cmd>SlimeSend1 node<cr>', "Run node" },
+      ['<leader>re'] = { '<cmd>SlimeSend1 .exit<cr>', "Exit node" }
+    }
+    require('which-key').register(map)
+  end
+})
+
+-- Golang ftplugin
+vim.api.nvim_create_autocmd("Filetype", {
+  pattern = "go",
+  callback = function()
+    local map = {
+      ['<leader>rf'] = { '<cmd>SlimeSend0 "go run " . expand("%:p") . "\\n"<cr>', "Run File" },
     }
     require('which-key').register(map)
   end

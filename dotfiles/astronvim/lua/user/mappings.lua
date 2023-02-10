@@ -112,7 +112,6 @@ return {
 		["<leader>fd"] = { "<cmd>diffthis<cr>", desc = "Diff current split" },
 		["<leader>fp"] = { "<cmd>!ls %:p<cr>", desc = "Print fullpath" },
 		["<leader>fo"] = { "<cmd>diffoff!<cr>", desc = "Exit Diff mode" },
-		["<leader>w"] = { "<cmd>noa w<cr>", desc = "Write File" },
 
 		-- Menu
 		["<leader>m"] = { "<cmd>Mason<cr>", desc = "Open Mason" },

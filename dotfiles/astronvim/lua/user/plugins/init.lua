@@ -55,6 +55,13 @@ return {
 			require("user.plugins.conflict")
 		end,
 	},
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		config = function()
+			require("user.plugins.treesitter")
+		end,
+		after = "nvim-treesitter"
+	},
 	-- { "nvim-treesitter/nvim-treesitter-context" }
 	-- { "ahmedkhalf/project.nvim" }
 	-- { "kylechui/nvim-surround" }

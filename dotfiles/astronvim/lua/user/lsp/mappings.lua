@@ -12,6 +12,7 @@ return {
     ["<leader>ll"] = false,
     ["<leader>lL"] = false,
     ["gr"] = { "<cmd>Telescope lsp_references<cr>", desc = "Get Refrences" },
-    ["<leader>lr"] = { "<cmd>LspRestart<cr>", desc = "Restart LSP" },
+    ["<leader>lR"] = { "<cmd>LspRestart<cr>", desc = "Restart LSP" },
+    ["<leader>lr"] = { function() vim.lsp.buf.rename() end, desc = "Rename symbol" },
   }
 }

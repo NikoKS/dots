@@ -3,7 +3,7 @@
 	email = nikolas.setiawan@tokopedia.com
 [merge]
 	tool = nvim
-  conflictstyle = merge
+  conflictstyle = diff3
 [mergetool]
   keepBackup = false
 [mergetool "nvim"]

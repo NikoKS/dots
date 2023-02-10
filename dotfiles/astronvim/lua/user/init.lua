@@ -12,6 +12,6 @@ return {
   },
   diagnostics = {
     virtual_text = false,
-    underline = { severity = { min = vim.diagnostic.severity.HINT } },
+    underline = { severity = { min = vim.diagnostic.severity.WARN } },
   },
 }
