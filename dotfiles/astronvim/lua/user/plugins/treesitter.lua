@@ -1,5 +1,5 @@
 return {
-  ensure_installed = { "tsx", "typescript", "javascript", "go", "astro", "css" },
+  ensure_installed = { "tsx", "typescript", "javascript", "go", "astro", "css", "svelte", "dockerfile" },
   textobjects = {
     select = {
       enable = true,
@@ -20,4 +20,5 @@ return {
       },
     },
   },
+  indent = { enable = true, disable = { "python" } },
 }

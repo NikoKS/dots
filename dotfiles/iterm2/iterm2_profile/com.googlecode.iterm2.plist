@@ -1259,7 +1259,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Haskplex-Nerd-Regular 15</string>
+			<string>HasklugNerdFontCompleteM-Light 15</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Option Key Sends</key>
@@ -1342,6 +1342,8 @@
 	<integer>2</integer>
 	<key>PMPrintingExpandedStateForPrint2</key>
 	<false/>
+	<key>PMPrintingPanelSize</key>
+	<string>{777, 900}</string>
 	<key>PerPaneBackgroundImage</key>
 	<true/>
 	<key>PointerActions</key>

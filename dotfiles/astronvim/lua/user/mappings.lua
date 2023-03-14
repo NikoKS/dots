@@ -3,16 +3,16 @@ return {
 	-- first key is the mode
 	n = {
 		-- Remove mapping
-		["q"] = "<nop>", -- <nop> for vim defaults
-		[">b"] = false, -- false for remove mapping
-		["<b"] = false,
-		["<leader>/"] = false,
-		["<leader>c"] = false,
-		["<leader>C"] = false,
-		["<leader>d"] = false,
-		["<leader>h"] = false,
-		["<leader>o"] = false,
-		["<leader>q"] = false,
+		["q"]          = "<nop>", -- <nop> for vim defaults
+		[">b"]         = false, -- false for remove mapping
+		["<b"]         = false,
+		["<leader>/"]  = false,
+		["<leader>c"]  = false,
+		["<leader>C"]  = false,
+		["<leader>d"]  = false,
+		["<leader>h"]  = false,
+		["<leader>o"]  = false,
+		["<leader>q"]  = false,
 		["<leader>gt"] = false,
 		["<leader>sm"] = false,
 		["<leader>gl"] = false,
@@ -23,72 +23,73 @@ return {
 		["<leader>lG"] = false,
 		["<leader>lS"] = false,
 		["<leader>ls"] = false,
-		["<leader>l"] = false,
+		["<leader>l"]  = false,
 
 		-- General
-		["v"]     = { "<C-v>" }, -- Visual Block
-		["<C-v>"] = { "v" }, -- Visual
-		["r"]     = { "<C-r>" }, -- Redo
-		["U"]     = { "J" }, -- Up the line
-		["O"]     = { "<cmd>lua vim.lsp.buf.hover()<cr>" },
-		["<esc>"] = { "<cmd>noh<cr><esc>" },
-		["R"]     = { "<cmd>e!<CR>" },
-		["#"]     = { "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>" },
-		[">"]     = { ">>" },
-		["<"]     = { "<<" },
+		["v"]          = { "<C-v>" }, -- Visual Block
+		["<C-v>"]      = { "v" }, -- Visual
+		["r"]          = { "<C-r>" }, -- Redo
+		["U"]          = { "J" }, -- Up the line
+		["O"]          = { "<cmd>lua vim.lsp.buf.hover()<cr>" },
+		["<esc>"]      = { "<cmd>noh<cr><esc>" },
+		["R"]          = { "<cmd>e!<CR>" },
+		["#"]          = { "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>" },
+		[">"]          = { ">>" },
+		["<"]          = { "<<" },
+		[" "]          = { "za" },
 
 		-- Quit
-		["qq"] = { ":q<cr>" },
-		["qw"] = { "ZZ" },
-		["qa"] = { ":qa<CR>" },
-		["qe"] = { ":q!<CR>" },
-		["qf"] = { "<cmd>Bdelete<cr>" },
+		["qq"]         = { ":q<cr>" },
+		["qw"]         = { "ZZ" },
+		["qa"]         = { ":qa<CR>" },
+		["qe"]         = { ":q!<CR>" },
+		["qf"]         = { "<cmd>Bdelete<cr>" },
 
 		-- Navigation
-		["w"]       = { "b" },
-		["W"]       = { "B" },
-		["<S-h>"]   = { "^" },
-		["<S-l>"]   = { "$" },
-		["J"]       = { "<C-d>", remap = true },
-		["K"]       = { "<C-u>", remap = true },
-		["("]       = { "%" },
-		["<tab>"]   = { "*:noh<cr><esc>" },
-		["<s-tab>"] = { "#:noh<cr><esc>" },
-		["M"] = { "zz", remap = true },
-		["<BS>"]      = { "<C-o>" },
-		["\\"]      = { "<C-i>" },
+		["w"]          = { "b" },
+		["W"]          = { "B" },
+		["<S-h>"]      = { "^" },
+		["<S-l>"]      = { "$" },
+		["J"]          = { "<C-d>", remap = true },
+		["K"]          = { "<C-u>", remap = true },
+		["("]          = { "%" },
+		["<tab>"]      = { "*:noh<cr><esc>" },
+		["<s-tab>"]    = { "#:noh<cr><esc>" },
+		["M"]          = { "zz", remap = true },
+		["<BS>"]       = { "<C-o>" },
+		["\\"]         = { "<C-i>" },
 
 		-- Copy, Delete
-		["x"]  = { "y", desc = "Copy", remap = true },
-		["X"]  = { '"+x', desc = "Copy to system", remap = true },
-		["yx"] = { "yy", desc = "Copy current line" },
-		["dp"] = { '"1p', desc = "paste from delete buffer" },
-		["dP"] = { '"1P', desc = "Paste from delete buffer" },
-		["yp"] = { '"0p', desc = "paste from copy buffer" },
-		["yP"] = { '"0P', desc = "Paste from copy buffer" },
-		["'p"] = { '"zp', desc = "paste from ' buffer" },
-		["'P"] = { '"zP', desc = "Paste from ' buffer" },
-		["'x"] = { '"zy', desc = "copy to ' buffer" },
-		["yf"] = { 'ggVG"+y', desc = "Copy entire file" },
+		["x"]          = { "y", desc = "Copy", remap = true },
+		["X"]          = { '"+x', desc = "Copy to system", remap = true },
+		["yx"]         = { "yy", desc = "Copy current line" },
+		["dp"]         = { '"1p', desc = "paste from delete buffer" },
+		["dP"]         = { '"1P', desc = "Paste from delete buffer" },
+		["yp"]         = { '"0p', desc = "paste from copy buffer" },
+		["yP"]         = { '"0P', desc = "Paste from copy buffer" },
+		["'p"]         = { '"zp', desc = "paste from ' buffer" },
+		["'P"]         = { '"zP', desc = "Paste from ' buffer" },
+		["'x"]         = { '"zy', desc = "copy to ' buffer" },
+		["yf"]         = { 'ggVG"+y', desc = "Copy entire file" },
 
 		-- Better selection
 		-- ["cw"] = { "ciw", desc = "Change word" },
 		-- ["cW"] = { "ciW", desc = "Change Word" },
 		-- ["dw"] = { "daw", desc = "Delete word" },
 		-- ["dW"] = { "daW", desc = "Delete Word" },
-		["cn"] = { "cgn", desc = "Copy next" },
-		["cN"] = { "cgN", desc = "Copy prev" },
+		["cn"]         = { "cgn", desc = "Copy next" },
+		["cN"]         = { "cgN", desc = "Copy prev" },
 		-- ["yw"] = { "yiw", desc = "Copy word" },
 		-- ["yW"] = { "yiW", desc = "Copy Word" },
-		["cf"] = { "ggVGc", desc = "Change file" },
-		["df"] = { "ggVGd", desc = "Delete file" },
+		["cf"]         = { "ggVGc", desc = "Change file" },
+		["df"]         = { "ggVGd", desc = "Delete file" },
 
 		-- BufferLine
-		["]"]         = { "<cmd>BufferLineCycleNext<cr>", desc = "Go to next tab", silent = true },
-		["["]         = { "<cmd>BufferLineCyclePrev<cr>", desc = "Go to next tab", silent = true },
-		["<leader>]"] = { "<cmd>BufferLineCloseRight<cr>", desc = "Close Buffer to the right", silent = true },
-		["<leader>["] = { "<cmd>BufferLineCloseLeft<cr>", desc = "Close Buffer to the left", silent = true },
-		["o"]         = { "<cmd>BufferLinePick<cr>", desc = "Open Buffer from tab", silent = true },
+		["]"]          = { "<cmd>BufferLineCycleNext<cr>", desc = "Go to next tab", silent = true },
+		["["]          = { "<cmd>BufferLineCyclePrev<cr>", desc = "Go to next tab", silent = true },
+		["<leader>]"]  = { "<cmd>BufferLineCloseRight<cr>", desc = "Close Buffer to the right", silent = true },
+		["<leader>["]  = { "<cmd>BufferLineCloseLeft<cr>", desc = "Close Buffer to the left", silent = true },
+		["o"]          = { "<cmd>BufferLinePick<cr>", desc = "Open Buffer from tab", silent = true },
 
 		-- Search
 		["<leader>sw"] = { "*N", desc = "Search Word Under Cursor" },
@@ -114,12 +115,16 @@ return {
 		["<leader>fo"] = { "<cmd>diffoff!<cr>", desc = "Exit Diff mode" },
 
 		-- Menu
-		["<leader>m"] = { "<cmd>Mason<cr>", desc = "Open Mason" },
-		["<leader>a"] = { "<cmd>AerialToggle<cr>", desc = "Toggle Aerial" },
+		["<leader>m"]  = { "<cmd>Mason<cr>", desc = "Open Mason" },
+		["<leader>a"]  = { "<cmd>AerialToggle<cr>", desc = "Toggle Aerial" },
+
+		-- Diff
+		["co"]         = { "dp", desc = "Choose Ours" },
+		["ct"]         = { "do", desc = "Choose Theirs" },
 
 		-- Macros
-		["m"] = { "q" },
-		[","] = { "Q" },
+		["m"]          = { "q" },
+		[","]          = { "Q" },
 
 		-- Git
 		["<leader>gh"] = { "<cmd>Gitsigns preview_hunk<cr>", desc = "Preview Hunk" },
@@ -133,7 +138,13 @@ return {
 			end,
 			desc = "Lazygit",
 		},
-		["<CR>"] = {
+		["<leader>ld"] = {
+			function()
+				toggle_term_cmd("lazydocker")
+			end,
+			desc = "LazyDocker",
+		},
+		["<CR>"]       = {
 			function()
 				if vim.bo.filetype == "man" or vim.bo.filetype == "help" then
 					vim.cmd('execute "tag " . expand("<cword>")')
@@ -143,31 +154,29 @@ return {
 			end
 		}
 	},
-
 	-- Visual
 	v = {
 		-- Remove Mapping
 		["<leader>/"] = false,
 
 		-- Navigation
-		["w"]     = { "b" },
-		["W"]     = { "B" },
-		["<S-h>"] = { "^" },
-		["<S-l>"] = { "$" },
-		["J"]     = { "Lzz" },
-		["K"]     = { "Hzz" },
+		["w"]         = { "b" },
+		["W"]         = { "B" },
+		["<S-h>"]     = { "^" },
+		["<S-l>"]     = { "$" },
+		["J"]         = { "Lzz" },
+		["K"]         = { "Hzz" },
 
 		-- Copy
-		["x"] = { "y", desc = "Copy", remap = true },
-		["X"] = { '"+x', desc = "Copy", remap = true },
+		["x"]         = { "y", desc = "Copy", remap = true },
+		["X"]         = { '"+x', desc = "Copy", remap = true },
 
 		-- Comment
-		["#"] = { "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>" },
+		["#"]         = { "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>" },
 
 		-- Macros
-		[","] = { ":'<,'>normal! Q<cr>" }
+		[","]         = { ":'<,'>normal! Q<cr>" }
 	},
-
 	-- Terminal
 	t = {
 		-- setting a mapping to false will disable it

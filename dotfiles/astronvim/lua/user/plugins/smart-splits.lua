@@ -1,3 +1,3 @@
 return {
-  wrap_at_edge = false
+  wrap_at_edge = true
 }

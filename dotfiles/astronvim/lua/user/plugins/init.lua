@@ -65,4 +65,6 @@ return {
 	-- { "nvim-treesitter/nvim-treesitter-context" }
 	-- { "ahmedkhalf/project.nvim" }
 	-- { "kylechui/nvim-surround" }
+	-- { "chipsenkbeil/distant.nvim" }
+	-- { "folke/noice.nvim" }
 }
