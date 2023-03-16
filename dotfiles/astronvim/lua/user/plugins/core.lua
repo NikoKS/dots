@@ -22,9 +22,12 @@ return {
       window = {
         mappings = {
           ["<space>"] = "toggle_node",
-        }
-      }
-    }
+        },
+      },
+      filesystem = {
+        bind_to_cwd = true, -- true creates a 2-way binding between vim's cwd and neo-tree's root
+      },
+    },
   },
   {
     "nvim-telescope/telescope.nvim",
@@ -48,8 +51,8 @@ return {
               vim.cmd([[execute "normal! B"]])
             end,
           },
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 }
