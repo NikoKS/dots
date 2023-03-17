@@ -15,6 +15,7 @@ return {
 			presets = { lsp_doc_border = true },
 		},
 	},
+	{ import = "astrocommunity.project.project-nvim" },
 
 	-- Language
 	{ import = "astrocommunity.pack.svelte" },
@@ -25,4 +26,9 @@ return {
 	{ import = "astrocommunity.pack.yaml" },
 	{ import = "astrocommunity.pack.json" },
 	{ import = "astrocommunity.pack.lua" },
+	{ import = "astrocommunity.pack.rust" },
+	{ import = "astrocommunity.pack.bash" },
+	{ import = "astrocommunity.pack.tailwindcss" },
+	{ import = "astrocommunity.pack.toml" },
+	{ import = "astrocommunity.pack.docker" },
 }

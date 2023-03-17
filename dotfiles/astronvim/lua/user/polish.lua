@@ -14,12 +14,23 @@ return function()
 
 	-- JS ftplugin
 	vim.api.nvim_create_autocmd("Filetype", {
-		pattern = "javascript",
+		pattern = { "javascript" },
 		callback = function()
 			local map = {
 				["<leader>rf"] = { '<cmd>SlimeSend0 "node " . expand("%:p") . "\\n"<cr>', "Run File" },
 				["<leader>rp"] = { "<cmd>SlimeSend1 node<cr>", "Run node" },
 				["<leader>re"] = { "<cmd>SlimeSend1 .exit<cr>", "Exit node" },
+			}
+			require("which-key").register(map)
+		end,
+	})
+
+	-- TS ftplugin
+	vim.api.nvim_create_autocmd("Filetype", {
+		pattern = { "typescript" },
+		callback = function()
+			local map = {
+				["<leader>rf"] = { '<cmd>SlimeSend0 "ts-node " . expand("%:p") . "\\n"<cr>', "Run File" },
 			}
 			require("which-key").register(map)
 		end,
@@ -31,6 +42,19 @@ return function()
 		callback = function()
 			local map = {
 				["<leader>rf"] = { '<cmd>SlimeSend0 "go run " . expand("%:p") . "\\n"<cr>', "Run File" },
+			}
+			require("which-key").register(map)
+		end,
+	})
+
+	-- Rust ftplugin
+	vim.api.nvim_create_autocmd("Filetype", {
+		pattern = "rust",
+		callback = function()
+			local map = {
+				["<leader>rb"] = { "<cmd>SlimeSend1 cargo build<cr>", "Build Project" },
+				["<leader>rr"] = { "<cmd>SlimeSend1 cargo run<cr>", "Run Project" },
+				["<leader>rd"] = { "<cmd>cargo doc --open<cr>", "Get Documentation" },
 			}
 			require("which-key").register(map)
 		end,
@@ -55,7 +79,6 @@ return function()
 			then
 				vim.wo.cursorline = true -- Cursor line only on active window
 				vim.cmd("IndentBlanklineEnable")
-				vim.cmd("Gitsigns attach")
 				vim.diagnostic.show(nil, 0)
 			end
 		end,
@@ -70,7 +93,6 @@ return function()
 			then
 				vim.wo.cursorline = false
 				vim.cmd("IndentBlanklineDisable")
-				vim.cmd("Gitsigns detach")
 				vim.diagnostic.hide(nil, 0)
 			end
 		end,

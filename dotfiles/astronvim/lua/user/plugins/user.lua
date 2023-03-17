@@ -28,6 +28,10 @@ return {
 		dependencies = { "tpope/vim-surround" },
 	},
 	{
+		"tpope/vim-fugitive",
+		event = "User AstroFile",
+	},
+	{
 		"junegunn/vim-easy-align",
 		event = "User AstroFile",
 		config = function()
@@ -37,7 +41,7 @@ return {
 	},
 	{
 		"akinsho/git-conflict.nvim",
-		event = "User AstroFile",
+		event = "VeryLazy",
 		config = function()
 			require("git-conflict").setup({
 				default_mappings = {
@@ -45,8 +49,8 @@ return {
 					theirs = "ct",
 					none = "c0",
 					both = "cb",
-					next = ";gn",
-					prev = ";gp",
+					next = "]c",
+					prev = "[c",
 				},
 				disable_diagnostics = true,
 			})
@@ -63,17 +67,9 @@ return {
 			vim.g["slime_target"] = "tmux"
 			vim.g["slime_dont_ask_default"] = 1
 			vim.g["autosource_disable_autocmd"] = 1
-			vim.keymap.set("v", "r", "<Plug>SlimeRegionSend")
-			vim.keymap.set("n", "<leader>rl", "Vr", { remap = true })
+			vim.keymap.set("v", "<cr>", "<Plug>SlimeRegionSend")
 			vim.keymap.set("n", "<leader>rw", '<cmd>SlimeSend0 "cd " . getcwd() . "\\n"<cr>')
 		end,
 	},
-	{
-		"ahmedkhalf/project.nvim",
-		event = "BufRead",
-		config = function()
-			require("project_nvim").setup()
-		end,
-	},
-	{ "jenterkin/vim-autosource", event = "User AstroFile" },
+	{ "jenterkin/vim-autosource", lazy = false },
 }

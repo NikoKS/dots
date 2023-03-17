@@ -1,0 +1,7 @@
+brew:
+  - git
+  - node
+  - rust
+
+pip:
+  -
