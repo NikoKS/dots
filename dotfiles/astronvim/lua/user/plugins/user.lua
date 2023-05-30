@@ -2,42 +2,37 @@ return {
 	{
 		"phaazon/hop.nvim",
 		event = "User AstroFile",
-		config = function()
-			local hop = require("hop")
-			local directions = require("hop.hint").HintDirection
-			hop.setup({ keys = "etovxqpdygfblzhckisuran" })
-			vim.keymap.set("", "f", function()
-				hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = false })
-			end, { remap = true })
-			vim.keymap.set("", "F", function()
-				hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = false })
-			end, { remap = true })
-		end,
-	},
-	{
-		"tpope/vim-surround",
-		event = "User AstroFile",
-		config = function()
-			vim.keymap.set("x", "s", "<Plug>VSurround")
-			vim.keymap.set("n", "s", "<Plug>Ysurround")
-		end,
-	},
-	{
-		"tpope/vim-repeat",
-		event = "User AstroFile",
-		dependencies = { "tpope/vim-surround" },
+		opts = {
+			keys = "etovxqpdygfblzhckisuran",
+		},
+		keys = {
+			{
+				"f",
+				function()
+					require("hop").hint_char1({
+						direction = require("hop.hint").HintDirection.AFTER_CURSOR,
+						current_line_only = false,
+					})
+				end,
+				mode = { "n", "x" },
+				desc = "Hop char 1 forward",
+			},
+			{
+				"F",
+				function()
+					require("hop").hint_char1({
+						direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
+						current_line_only = false,
+					})
+				end,
+				mode = { "n", "x" },
+				desc = "Hop char 1 backward",
+			},
+		},
 	},
 	{
 		"tpope/vim-fugitive",
 		event = "User AstroFile",
-	},
-	{
-		"junegunn/vim-easy-align",
-		event = "User AstroFile",
-		config = function()
-			vim.keymap.set("x", "S", "<Plug>(EasyAlign)")
-			vim.keymap.set("n", "S", "<Plug>(EasyAlign)")
-		end,
 	},
 	{
 		"akinsho/git-conflict.nvim",

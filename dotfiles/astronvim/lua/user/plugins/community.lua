@@ -5,9 +5,11 @@ return {
 	-- available plugins can be found at https://github.com/AstroNvim/astrocommunity
 
 	-- Colorscheme
-	{ import = "astrocommunity.colorscheme.nightfox" },
+	{ import = "astrocommunity.colorscheme.nightfox-nvim" },
 	-- utility
 	{ import = "astrocommunity.scrolling.mini-animate" },
+	{ import = "astrocommunity.project.project-nvim" },
+	{ import = "astrocommunity.motion.nvim-surround" },
 	{ import = "astrocommunity.utility.noice-nvim" },
 	{
 		"folke/noice.nvim",
@@ -15,7 +17,14 @@ return {
 			presets = { lsp_doc_border = true },
 		},
 	},
-	{ import = "astrocommunity.project.project-nvim" },
+	{ import = "astrocommunity.syntax.vim-easy-align" },
+	{
+		"junegunn/vim-easy-align",
+		config = function()
+			vim.keymap.set("x", "S", "<Plug>(EasyAlign)")
+			vim.keymap.set("n", "S", "<Plug>(EasyAlign)")
+		end,
+	},
 
 	-- Language
 	{ import = "astrocommunity.pack.svelte" },
