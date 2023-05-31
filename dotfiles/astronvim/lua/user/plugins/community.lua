@@ -6,16 +6,19 @@ return {
 
 	-- Colorscheme
 	{ import = "astrocommunity.colorscheme.nightfox-nvim" },
+
 	-- utility
 	{ import = "astrocommunity.scrolling.mini-animate" },
 	{ import = "astrocommunity.project.project-nvim" },
 	{ import = "astrocommunity.motion.nvim-surround" },
+	{
+		"kylechui/nvim-surround",
+		opts = { keymaps = { normal = "s", visual = "s" } },
+	},
 	{ import = "astrocommunity.utility.noice-nvim" },
 	{
 		"folke/noice.nvim",
-		opts = {
-			presets = { lsp_doc_border = true },
-		},
+		opts = { presets = { lsp_doc_border = true } },
 	},
 	{ import = "astrocommunity.syntax.vim-easy-align" },
 	{
