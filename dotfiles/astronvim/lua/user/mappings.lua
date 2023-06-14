@@ -7,7 +7,11 @@ return {
 	n = {
 		-- Remove Mapping
 		["<leader>/"] = false,
-		["q"] = "<nop>",   -- <nop> for vim defaults
+		["<leader>c"] = false,
+		["<leader>C"] = false,
+		["<leader>h"] = false,
+		["<leader>q"] = false,
+		["q"] = "<nop>", -- <nop> for vim defaults
 		-- General/Utility
 		["r"] = { "<C-r>" }, -- Redo
 		["R"] = { "<cmd>e!<CR>" },
