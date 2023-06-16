@@ -1,23 +1,20 @@
-################# GENERAL #####################{{{
+################# GENERAL #####################
+kernel=`uname -s`
+if [[ $kernel == 'Darwin' ]]; then
+  alias ls='ls -G'
+elif [[ $kernel == 'Linux' ]]; then
+  alias ls='ls --color=always'
+fi
+
 # move prompt to bottom
 printf '\n%.0s' {1..100}
-ls -G
+ls
 # Instant Prompt
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 printf '\n'
 
-
-#if [[ $kernel == 'Darwin' ]]; then
-# Source brew
-eval "$(/opt/homebrew/bin/brew shellenv)"
-# setup pyenv
-export PYENV_ROOT="$HOME/.config/pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-# eval "$(pyenv init -)"
-#fi
 # Set default fallback prompt
 PS1="
 %B%{$fg[cyan]%}%n %{$fg[green]%}%~ →%{$reset_color%}%b "
@@ -30,55 +27,27 @@ HISTFILE=~/.cache/zsh/hist
 # Setting for the new UTF-8 terminal support
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-###############################################}}}
 
-################# PLUGINS #####################{{{
-kernel=`uname -s`
+################# PLUGINS #####################
 source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.config/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
-if [[ $kernel == 'Darwin' ]]; then
-  [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
-elif [[ $kernel == 'Linux' ]]; then
-  [ -f /usr/share/autojump/autojump.sh ] && . /usr/share/autojump/autojump.sh
-fi
-source ~/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+source ~/.config/zsh/zsh-vim-mode/zsh-vim-mode.plugin.zsh
+source ~/.config/zsh/powerlevel10k/powerlevel10k.zsh-theme # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh
-# Consider https://github.com/softmoth/zsh-vim-mode#installation if needed
-###############################################}}}
 
-############### COMPLETIONS ###################{{{
-# poetry completion
-if [[ $kernel == 'Darwin' ]]; then
-  poetry completions zsh > $(brew --prefix)/share/zsh/site-functions/_poetry
-fi
-
+############### COMPLETIONS ###################
 # Basic auto/tab complete:
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
-#zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' verbose yes
-autoload -Uz compinit
 zstyle ':completion:*' menu select
+autoload -Uz compinit
 zmodload zsh/complist
 compinit -y
-_comp_options+=(globdots)   # Include hidden files.
+_comp_options+=(globdots)    # Include hidden files.
+autoload -U colors && colors # Enable colors and change prompt
 
-# Kitty completion
-# kitty + complete setup zsh | source /dev/stdin
-# vman completion
-# compdef vman="man"
-# gd completion
-compdef _git gd="git-diff"
-
-# Enable colors and change prompt:
-autoload -U colors && colors
-
-# gcloud completion
-if [ -f ~/Software/google-cloud-sdk/completion.zsh.inc ]; then source ~/Software/google-cloud-sdk/completion.zsh.inc; fi
-###############################################}}}
-
-############## KEYBINDS #######################{{{
+############## KEYBINDS #######################
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
@@ -98,30 +67,12 @@ bindkey -M vicmd 'L' vi-end-of-line
 bindkey -M vicmd 'x' vi-yank
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
-# bindkey -M vicmd 'K' 'gd'
-# bindkey -M vicmd 'J' down-line
 bindkey -M vicmd '^I' vi-repeat-find
-bindkey -M viopp -s w iw
-bindkey -M viopp -s W iW
 # History finding
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-###############################################}}}
 
-################ FUNCTIONS ####################{{{
-# FZF git diff
-gd()
-{
-  if [ -d .git ]; then
-  preview="git diff $@ --color=always -- {-1}"
-  execute="enter:execute(git difftool {} < /dev/tty)"
-  git diff $@ --name-only | fzf -m --ansi --bind $execute \
-  --preview $preview
-  else
-  echo "It's not a git repository"
-  fi;
-}
-
+################ FUNCTIONS ####################
 escape()
 {
   if [[ -v VIMRUNTIME ]]; then
@@ -130,33 +81,6 @@ escape()
 }
 zle -N escape
 bindkey -M vicmd '^[' escape
-
-# change tmux layout to horizontal
-tmux_horizontal()
-{
-  tmux select-layout main-horizontal
-}
-zle -N tmux_horizontal
-bindkey -M vicmd ';' tmux_horizontal
-
-# change tmux layout to horizontal
-tmux_vertical()
-{
-  tmux select-layout main-vertical
-}
-zle -N tmux_vertical
-bindkey -M vicmd '"' tmux_vertical
-
-# Toggle Suspend process and go back to shell
-ctrlz() {
-  if [[ $#BUFFER == 0 ]]; then
-    fg >/dev/null 2>&1 && zle redisplay
-  else
-    zle push-input
-  fi
-}
-zle -N ctrlz
-bindkey '^Z' ctrlz
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
@@ -179,51 +103,33 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
-# Yank to the system clipboard
-function vi-yank-xclip {
-    zle vi-yank
-   echo "$CUTBUFFER" | pbcopy -i
-}
-
-zle -N vi-yank-xclip
-bindkey -M vicmd 'x' vi-yank-xclip
-###############################################}}}
-
-################# EXPORTS ####################{{{
+################# EXPORTS ####################
 export EDITOR=nvim
 export MANPAGER="nvim +Man!"
 export FZF_DEFAULT_OPTS='--bind=shift-tab:up,tab:down'
 export PATH=$HOME/.local/bin:$PATH
 export MYPY_CACHE_DIR=$HOME/.cache/mypy/
-export GOPATH=$HOME/Software/go
+export GOPATH=$HOME/.local/go
 export PATH=$GOPATH/bin:$PATH
-export PATH=$HOME/Software/google-cloud-sdk/bin:$PATH
 export PYTHONPYCACHEPREFIX=/tmp
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$ANDROID_HOME/platform-tools:$PATH
-###############################################}}}
+export PATH=$HOME/.cargo/bin:$PATH
 
-################ ALIASES #####################{{{
+################ ALIASES #####################
 # General
-if [[ $kernel == 'Darwin' ]]; then
-  alias ls='ls -G'
-elif [[ $kernel == 'Linux' ]]; then
-  alias ls='ls --color=always'
-fi
 alias clear="printf '\n%.0s' {1..100}"
 alias c="clear && ls"
 alias e="exit"
 alias zrc="vim ~/Software/dots/dotfiles/zsh/dot-zshrc"
 alias venv="source venv/bin/activate"
+
 # VIM
 alias vrc="vim ~/Software/dots/dotfiles/astronvim/lua/user/init.lua"
 alias vim=nvim
 alias vimdiff='vim -d'
 alias gg="vim -c \":exe 'normal ;gg'\""
-# Poetry
-alias pvim="poetry run nvim"
-alias pshell="poetry shell"
-# alias penv="source `poetry env info --path`/bin/activate"
+
 # TMUX
 alias trc="vim ~/Software/dots/dotfiles/tmux/tmux.conf"
 alias t="TERM=screen-256color tmux"
@@ -231,12 +137,28 @@ alias tls="tmux ls"
 alias tn="t new -s"
 alias ta="t a -t"
 alias d="tmux detach"
-alias tlh="tmux select-layout main-horizontal"
-alias tlv="tmux select-layout main-vertical"
-# alias rmt="trash"
-###############################################}}}
 
-########### ADDED EXTERNALLY ##################
+################ MODULES #####################
+# Zoxide
+eval "$(_ZO_ECHO=1 zoxide init --cmd j zsh)"
 
-# To customize prompt, run `p10k configure` or edit ~/Software/dots/dotfiles/zsh/p10k.zsh.
-[[ ! -f ~/Software/dots/dotfiles/zsh/p10k.zsh ]] || source ~/Software/dots/dotfiles/zsh/p10k.zsh
+if ! [[ $REMOTE == "true" ]]; then
+  # Pyenv
+  export PYENV_ROOT="$HOME/.config/pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init --path)"
+
+  # Brew
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+
+  # Poetry
+  poetry completions zsh > $(brew --prefix)/share/zsh/site-functions/_poetry
+  alias pvim="poetry run nvim"
+  alias pshell="poetry shell"
+
+  # Gcloud
+  if [ -f ~/Software/google-cloud-sdk/completion.zsh.inc ]; then source ~/Software/google-cloud-sdk/completion.zsh.inc; fi
+  export PATH=$HOME/Software/google-cloud-sdk/bin:$PATH
+fi
+
+########### ADDED EXTERNALLY #################
