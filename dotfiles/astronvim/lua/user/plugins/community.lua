@@ -1,4 +1,4 @@
-return {
+local plugins = {
 	-- Add the community repository of plugin specifications
 	"AstroNvim/astrocommunity",
 	-- example of imporing a plugin, comment out to use it or add your own
@@ -8,17 +8,11 @@ return {
 	{ import = "astrocommunity.colorscheme.nightfox-nvim" },
 
 	-- utility
-	{ import = "astrocommunity.scrolling.mini-animate" },
 	{ import = "astrocommunity.project.project-nvim" },
 	{ import = "astrocommunity.motion.nvim-surround" },
 	{
 		"kylechui/nvim-surround",
 		opts = { keymaps = { normal = "s", visual = "s" } },
-	},
-	{ import = "astrocommunity.utility.noice-nvim" },
-	{
-		"folke/noice.nvim",
-		opts = { presets = { lsp_doc_border = true } },
 	},
 	{ import = "astrocommunity.syntax.vim-easy-align" },
 	{
@@ -44,3 +38,21 @@ return {
 	{ import = "astrocommunity.pack.toml" },
 	{ import = "astrocommunity.pack.docker" },
 }
+
+local nonremote = {
+	{ import = "astrocommunity.scrolling.mini-animate" },
+	{ import = "astrocommunity.utility.noice-nvim" },
+	{
+		"folke/noice.nvim",
+		opts = { presets = { lsp_doc_border = true } },
+	},
+}
+
+-- Plugins excluded in remote environment
+if os.getenv("REMOTE") ~= "true" then
+	for _, v in ipairs(nonremote) do
+		table.insert(plugins, v)
+	end
+end
+
+return plugins
