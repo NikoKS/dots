@@ -3,6 +3,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
 			ensure_installed = { "lua", "sql" },
+			auto_install = true,
 			textobjects = {
 				select = {
 					enable = true,

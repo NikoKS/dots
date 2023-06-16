@@ -22,6 +22,15 @@ local plugins = {
 			vim.keymap.set("n", "S", "<Plug>(EasyAlign)")
 		end,
 	},
+}
+
+local nonremote = {
+	{ import = "astrocommunity.scrolling.mini-animate" },
+	{ import = "astrocommunity.utility.noice-nvim" },
+	{
+		"folke/noice.nvim",
+		opts = { presets = { lsp_doc_border = true } },
+	},
 
 	-- Language
 	{ import = "astrocommunity.pack.svelte" },
@@ -37,15 +46,6 @@ local plugins = {
 	{ import = "astrocommunity.pack.tailwindcss" },
 	{ import = "astrocommunity.pack.toml" },
 	{ import = "astrocommunity.pack.docker" },
-}
-
-local nonremote = {
-	{ import = "astrocommunity.scrolling.mini-animate" },
-	{ import = "astrocommunity.utility.noice-nvim" },
-	{
-		"folke/noice.nvim",
-		opts = { presets = { lsp_doc_border = true } },
-	},
 }
 
 -- Plugins excluded in remote environment
