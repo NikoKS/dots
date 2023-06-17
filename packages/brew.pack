@@ -1,22 +1,21 @@
 # List of brew packages to install
-archiver
-arp-scan
-# bat
-cmake
-universal-ctags
+# Programming language
+go
+node
+python3
+
+# Tools
+zoxide
 ffmpeg
 fzf
-go
 htop
-neovim
-node
-poetry
-pyenv
-python3
 ripgrep
 stow
-tmux
-trash-cli
-# task
-rename
 tree
+
+# Development
+neovim
+poetry
+pyenv
+tmux
+tree-sitter
