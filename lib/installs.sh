@@ -58,10 +58,10 @@ function install_tmux_plugin() {
 
 # install zsh plugin
 function install_zsh_plugin() {
-	git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git "$zsh_dir"/zsh/zsh-syntax-highlighting
-	git clone --depth 1 https://github.com/zsh-users/zsh-history-substring-search.git "$zsh_dir"/zsh/zsh-history-substring-search
-	git clone --depth 1 https://github.com/softmoth/zsh-vim-mode.git "$zsh_dir"/zsh/zsh-vim-mode
-	git clone --depth 1 https://github.com/romkatv/powerlevel10k.git "$zsh_dir"/zsh/powerlevel10k
+	git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git "$zsh_dir"/zsh-syntax-highlighting
+	git clone --depth 1 https://github.com/zsh-users/zsh-history-substring-search.git "$zsh_dir"/zsh-history-substring-search
+	git clone --depth 1 https://github.com/softmoth/zsh-vim-mode.git "$zsh_dir"/zsh-vim-mode
+	git clone --depth 1 https://github.com/romkatv/powerlevel10k.git "$zsh_dir"/powerlevel10k
 }
 
 # install homebrew for macos

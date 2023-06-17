@@ -1,6 +1,9 @@
 # Core
 git
 zsh
+stow
+zoxide
+snapd
 
 # Lang
 python3

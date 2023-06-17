@@ -9,15 +9,11 @@ source ./lib/core.sh
 
 if [[ $SSH_TTY ]]; then
 	# For linux
-	software=$HOME/Software
 	sudo -v
 	sudo apt update && sudo apt -y upgrade
 	install_pack 'sudo apt install -y' ./packages/apt.pack
-	install_pack 'pip install' ./packages/pip-remote.pack
+	install_pack 'sudo snap install' ./packages/snap.pack
 	install_pack 'npm i -g' ./packages/npm.pack
-	install_pack 'cargo install' ./packages/cargo.pack
-	install_nvim_appimage "$software"
-	install_tmux_appimage "$software"
 	link_dotfiles
 	install_tmux_plugin
 	install_zsh_plugin
