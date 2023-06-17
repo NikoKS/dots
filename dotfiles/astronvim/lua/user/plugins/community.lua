@@ -49,7 +49,7 @@ local nonremote = {
 }
 
 -- Plugins excluded in remote environment
-if os.getenv("REMOTE") ~= "true" then
+if os.getenv("SSH_TTY") == nil then
 	for _, v in ipairs(nonremote) do
 		table.insert(plugins, v)
 	end
