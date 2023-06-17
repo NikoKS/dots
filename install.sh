@@ -12,7 +12,7 @@ if [[ $SSH_TTY ]]; then
 	software=$HOME/Software
 	sudo -v
 	sudo apt update && sudo apt -y upgrade
-	install_pack 'apt install -y' ./packages/apt.pack
+	install_pack 'sudo apt install -y' ./packages/apt.pack
 	install_pack 'pip install' ./packages/pip-remote.pack
 	install_pack 'npm i -g' ./packages/npm.pack
 	install_pack 'cargo install' ./packages/cargo.pack
