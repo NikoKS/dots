@@ -78,5 +78,5 @@ function install_pack() {
 # Like install_pack, but do it recursively
 function install_packs() {
 	# use $1 command to install packages in $2
-	eval $(awk '!/^(#|$)/ { if (line) printf " && "; printf "'$1' %s", $0; line=1 } END { if (line) print "" }' $2)
+	eval $(awk -v var="$1" '!/^(#|$)/ { if (line) printf " && "; printf "%s %s",var, $0; line=1 } END { if (line) print "" }' $2)
 }
