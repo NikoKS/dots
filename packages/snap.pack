@@ -1,2 +1,3 @@
-nvim
-tmux-non-dead
+# snap packages
+nvim --classic
+tmux-non-dead_tmux --classic

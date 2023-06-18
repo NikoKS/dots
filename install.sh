@@ -12,7 +12,7 @@ if [[ $SSH_TTY ]]; then
 	sudo -v
 	sudo apt update && sudo apt -y upgrade
 	install_pack 'sudo apt install -y' ./packages/apt.pack
-	install_pack 'sudo snap install' ./packages/snap.pack
+	install_packs 'sudo snap install' ./packages/snap.pack
 	install_pack 'npm i -g' ./packages/npm.pack
 	link_dotfiles
 	install_tmux_plugin
