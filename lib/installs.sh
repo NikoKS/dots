@@ -64,6 +64,10 @@ function install_zsh_plugin() {
 	git clone --depth 1 https://github.com/romkatv/powerlevel10k.git "$zsh_dir"/powerlevel10k
 }
 
+function install_astronvim() {
+	git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+}
+
 # install homebrew for macos
 function install_brew() {
 	# Install Homebrew

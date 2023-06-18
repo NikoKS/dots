@@ -16,3 +16,10 @@ function link_dotfiles() {
 	stow --dotfiles -vDt "$config_dir" dotfiles
 	stow --dotfiles -vt "$config_dir" dotfiles
 }
+
+function source_bashrc() {
+	if [ ! -f "$HOME"/.bashrc ] || ! grep -q "source $config_dir/bash/bashrc" "$HOME"/.bashrc; then
+		touch "$HOME"/.bashrc
+		echo "source $config_dir/bash/bashrc" >>"$HOME"/.bashrc
+	fi
+}

@@ -14,7 +14,9 @@ if [[ $SSH_TTY ]]; then
 	install_pack 'sudo apt install -y' ./packages/apt.pack
 	install_packs 'sudo snap install' ./packages/snap.pack
 	install_pack 'npm i -g' ./packages/npm.pack
+	sudo snap alias tmux-non-dead.tmux tmux # set alias to tmux snap
 	link_dotfiles
+	source_bashrc
 	install_tmux_plugin
 	install_zsh_plugin
 else
