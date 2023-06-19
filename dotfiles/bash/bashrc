@@ -1,7 +1,7 @@
 export ZDOTDIR=$HOME/.config/zsh
 
 alias e="exit"
-alias "tmux"
+alias t="tmux"
 alias tls="tmux ls"
 alias tn="t new -s"
 alias ta="t a -t"
