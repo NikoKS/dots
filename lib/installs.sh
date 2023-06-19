@@ -2,7 +2,7 @@
 
 local_bin=$HOME/.local/bin
 config_dir=$HOME/.config
-plugins_dir=$config_dir/tmux/plugins
+tmux_plugins_dir=$config_dir/tmux/plugins
 zsh_dir=$config_dir/zsh
 
 # install latest nvim appimage
@@ -53,7 +53,10 @@ function install_zsh_source() {
 # install tmux plugin using tpm
 function install_tmux_plugin() {
 	mkdir -p plugins_dir
-	git clone --depth 1 https://github.com/tmux-plugins/tpm.git "$plugins_dir"/tpm
+	git clone --depth 1 https://github.com/tmux-plugins/tpm.git "$tmux_plugins_dir"/tpm
+	tmux new-session -d "sleep 5" && sleep 1
+	tmux source "$config_dir"/tmux/tmux.conf
+	"$tmux_plugins_dir"/tpm/bin/install_plugins
 }
 
 # install zsh plugin
