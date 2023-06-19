@@ -8,7 +8,7 @@ source ./lib/installs.sh
 source ./lib/core.sh
 
 if [[ $SSH_TTY ]]; then
-	# For linux
+	# For Ubuntu linux
 	sudo -v
 	sudo apt update && sudo apt -y upgrade
 	install_pack 'sudo apt install -y' ./packages/apt.pack
