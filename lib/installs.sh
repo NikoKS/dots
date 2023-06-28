@@ -50,10 +50,29 @@ function install_zsh_source() {
 	ok
 }
 
+function install_podman_ubuntu() {
+	sudo mkdir -p /etc/apt/keyrings
+	curl -fsSL https://download.opensuse.org/repositories/devel:kubic:libcontainers:unstable/xUbuntu_$(lsb_release -rs)/Release.key |
+		gpg --dearmor |
+		sudo tee /etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg >/dev/null
+	echo \
+		"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg]\
+    https://download.opensuse.org/repositories/devel:kubic:libcontainers:unstable/xUbuntu_$(lsb_release -rs)/ /" |
+		sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:unstable.list >/dev/null
+	sudo apt update
+	sudo apt -y install podman podman-plugins
+	python3 -m pip install podman-compose
+	# restart podman if stuck: podman system reset --force
+}
+
+function install_k3s() {
+	curl -sfL https://get.k3s.io | sh -
+}
+
 # install tmux plugin using tpm
 function install_tmux_plugin() {
 	mkdir -p plugins_dir
-	git clone --depth 1 https://github.com/tmux-plugins/tpm.git "$tmux_plugins_dir"/tpm
+	clone_or_pull 1 https://github.com/tmux-plugins/tpm.git "$tmux_plugins_dir"/tpm
 	tmux new-session -d "sleep 5" && sleep 1
 	tmux source "$config_dir"/tmux/tmux.conf
 	"$tmux_plugins_dir"/tpm/bin/install_plugins
@@ -61,14 +80,14 @@ function install_tmux_plugin() {
 
 # install zsh plugin
 function install_zsh_plugin() {
-	git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git "$zsh_dir"/zsh-syntax-highlighting
-	git clone --depth 1 https://github.com/zsh-users/zsh-history-substring-search.git "$zsh_dir"/zsh-history-substring-search
-	git clone --depth 1 https://github.com/softmoth/zsh-vim-mode.git "$zsh_dir"/zsh-vim-mode
-	git clone --depth 1 https://github.com/romkatv/powerlevel10k.git "$zsh_dir"/powerlevel10k
+	clone_or_pull https://github.com/zsh-users/zsh-syntax-highlighting.git "$zsh_dir"/zsh-syntax-highlighting
+	clone_or_pull https://github.com/zsh-users/zsh-history-substring-search.git "$zsh_dir"/zsh-history-substring-search
+	clone_or_pull https://github.com/softmoth/zsh-vim-mode.git "$zsh_dir"/zsh-vim-mode
+	clone_or_pull https://github.com/romkatv/powerlevel10k.git "$zsh_dir"/powerlevel10k
 }
 
 function install_astronvim() {
-	git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+	clone_or_pull https://github.com/AstroNvim/AstroNvim ~/.config/nvim
 }
 
 # install homebrew for macos

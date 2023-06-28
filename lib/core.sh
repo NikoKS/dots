@@ -17,6 +17,16 @@ function link_dotfiles() {
 	stow --dotfiles -vt "$config_dir" dotfiles
 }
 
+function clone_or_pull() {
+	if [[ -d $2 ]]; then
+		pushd "$2" >/dev/null || return
+		git pull --ff-only
+		popd >/dev/null || return
+	else
+		git clone --depth=1 "$1" "$2"
+	fi
+}
+
 function source_bashrc() {
 	if [ ! -f "$HOME"/.bashrc ] || ! grep -q "source $config_dir/bash/bashrc" "$HOME"/.bashrc; then
 		touch "$HOME"/.bashrc
