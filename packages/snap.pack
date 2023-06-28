@@ -1,4 +1,3 @@
 # snap packages
 nvim --classic
 tmux-non-dead --classic
-lazygit

@@ -17,6 +17,7 @@ if [[ $SSH_TTY ]]; then
 	sudo snap alias tmux-non-dead.tmux tmux # set alias to tmux snap
 	link_dotfiles
 	source_bashrc
+	install_lazygit_source "$HOME"/Software/lazygit
 	install_astronvim
 	install_tmux_plugin
 	install_zsh_plugin
