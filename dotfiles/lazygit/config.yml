@@ -15,7 +15,7 @@ git:
     colorArg: always
     pager: delta --dark --paging=never
 os:
-  edit: "nvr --nostart --servername $NVIM --remote-silent -l"
+  edit: "nvr --nostart --servername $NVIM --remote-silent -l {{filename}}"
   openCommand: ""
 quitOnTopLevelReturn: true
 promptToReturnFromSubprocess: false
