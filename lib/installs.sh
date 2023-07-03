@@ -71,9 +71,7 @@ function install_podman_ubuntu() {
     https://download.opensuse.org/repositories/devel:kubic:libcontainers:unstable/xUbuntu_$(lsb_release -rs)/ /" |
 		sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:unstable.list >/dev/null
 	sudo apt update
-	sudo apt -y install podman podman-plugins
-	python3 -m pip install podman-compose
-	# restart podman if stuck: podman system reset --force
+	sudo apt -y install podman
 }
 
 function install_k3s() {

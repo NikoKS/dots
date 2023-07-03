@@ -25,7 +25,11 @@ return {
 		["qw"] = { "ZZ", silent = true },
 		["qa"] = { ":qa<CR>", silent = true },
 		["qe"] = { ":q!<CR>", silent = true },
-		["qf"] = { "<cmd>Bdelete<cr>" },
+		["qf"] = {
+			function()
+				require("astronvim.utils.buffer").close()
+			end,
+		},
 		-- Navigation
 		["w"] = { "b" },
 		["W"] = { "B" },
