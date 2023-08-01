@@ -5,7 +5,7 @@ local plugins = {
 	-- available plugins can be found at https://github.com/AstroNvim/astrocommunity
 
 	-- Colorscheme
-	{ import = "astrocommunity.colorscheme.nightfox-nvim" },
+	{ import = "astrocommunity.colorscheme.github-nvim-theme" },
 
 	-- utility
 	{ import = "astrocommunity.project.project-nvim" },

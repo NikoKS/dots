@@ -2,16 +2,15 @@
 # Programming language
 go
 node
-python3
 
 # Tools
 zoxide
-ffmpeg
-fzf
 htop
 ripgrep
 stow
 tree
+lazygit
+git-delta
 
 # Development
 neovim

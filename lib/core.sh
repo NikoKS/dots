@@ -11,6 +11,7 @@ function link_dotfiles() {
 	mkdir -p "$config_dir"/tmux
 	mkdir -p "$config_dir"/lazygit
 	mkdir -p "$config_dir"/astronvim
+	mkdir -p "$config_dir"/alacritty
 
 	# stow
 	stow --dotfiles -vDt "$config_dir" dotfiles

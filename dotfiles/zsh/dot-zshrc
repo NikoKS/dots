@@ -122,6 +122,7 @@ alias clear="printf '\n%.0s' {1..100}"
 alias c="clear && ls"
 alias e="exit"
 alias zrc="vim ~/Software/dots/dotfiles/zsh/dot-zshrc"
+alias arc="vim ~/Software/dots/dotfiles/alacritty/alacritty.yml"
 alias venv="source venv/bin/activate"
 
 # VIM
@@ -132,7 +133,7 @@ alias gg="vim -c \":exe 'normal ;gg'\""
 
 # TMUX
 alias trc="vim ~/Software/dots/dotfiles/tmux/tmux.conf"
-alias t="TERM=screen-256color tmux"
+alias t="tmux"
 alias tls="tmux ls"
 alias tn="t new -s"
 alias ta="t a -t"
