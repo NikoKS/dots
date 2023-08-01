@@ -1,3 +1,5 @@
 # snap packages
 nvim --classic
 tmux-non-dead --classic
+go --classic
+node --classic

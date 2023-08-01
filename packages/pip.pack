@@ -1,2 +1,3 @@
 # List of pip packages to install
-git+https://github.com/NikoKS/vim-tmux-remote.git
+# git+https://github.com/NikoKS/vim-tmux-remote.git
+lastversion

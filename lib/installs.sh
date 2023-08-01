@@ -95,6 +95,14 @@ function install_docker_ubuntu() {
 	sudo usermod -aG docker "$USER"
 }
 
+function install_delta_ubuntu() {
+	mkdir -p "$1"
+	pushd "$1" || return
+	lastversion dandavison/delta --assets --filter "git-delta_.*_amd64.deb" -d delta.deb
+	sudo dpkg -i delta.deb
+	popd || return
+}
+
 function install_caprover() {
 	# from https://caprover.com/docs/get-started.html
 	ufw allow 80,443,3000,996,7946,4789,2377/tcp
@@ -111,7 +119,7 @@ function install_k3s() {
 # install tmux plugin using tpm
 function install_tmux_plugin() {
 	mkdir -p plugins_dir
-	clone_or_pull 1 https://github.com/tmux-plugins/tpm.git "$tmux_plugins_dir"/tpm
+	clone_or_pull https://github.com/tmux-plugins/tpm.git "$tmux_plugins_dir"/tpm
 	tmux new-session -d "sleep 5" && sleep 1
 	tmux source "$config_dir"/tmux/tmux.conf
 	"$tmux_plugins_dir"/tpm/bin/install_plugins
@@ -127,6 +135,10 @@ function install_zsh_plugin() {
 
 function install_astronvim() {
 	clone_or_pull https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+	pushd "$HOME/.local/state/nvim" || return
+	python3 -m venv venv
+	./venv/bin/pip install neovim
+	popd || return
 }
 
 # install homebrew for macos

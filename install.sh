@@ -13,11 +13,13 @@ if [[ $SSH_TTY ]]; then
 	sudo apt update && sudo apt -y upgrade
 	install_pack 'sudo apt install -y' ./packages/apt.pack
 	install_packs 'sudo snap install' ./packages/snap.pack
-	install_pack 'npm i -g' ./packages/npm.pack
+	install_pack 'sudo npm i -g' ./packages/npm.pack
+	install_pack 'python3 -m pip install' ./packages/pip.pack
 	sudo snap alias tmux-non-dead.tmux tmux # set alias to tmux snap
 	link_dotfiles
 	source_bashrc
 	install_lazygit_source "$HOME"/Software/lazygit
+	install_delta_ubuntu "$HOME"/Software/delta
 	install_astronvim
 	install_tmux_plugin
 	install_zsh_plugin

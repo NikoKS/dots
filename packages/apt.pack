@@ -2,12 +2,14 @@
 git
 zsh
 stow
-zoxide
 snapd
 
 # Lang
 python3
 python3-pip
-nodejs
-npm
+python3-venv
 cargo
+
+# Tool
+zoxide
+ripgrep
