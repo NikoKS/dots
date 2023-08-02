@@ -145,6 +145,8 @@ function install_astronvim() {
 function install_brew() {
 	# Install Homebrew
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+	brew tap homebrew/cask-versions
 }
 
 function install_pack() {

@@ -1,5 +1,7 @@
 window:
   title: Terminal
+  opacity: 0.85
+  decorations: buttonless
 
 font:
   size: 14
@@ -15,6 +17,10 @@ font:
   bold_italic:
     family: Liga SFMono Nerd Font
     style: Bold Italic
+
+key_bindings:
+  - { key: LBracket, mods: Control, chars: "\0" }
+  - { key: Return, mods: Control, chars: "\x01" }
 
 # github Alacritty Colors
 # from: https://github.com/ful1e5/github-nvim-theme/blob/main/extras/alacritty/dimmed.yml

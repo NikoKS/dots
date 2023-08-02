@@ -34,3 +34,10 @@ function source_bashrc() {
 		echo "source $config_dir/bash/bashrc" >>"$HOME"/.bashrc
 	fi
 }
+
+function create_zshenv() {
+	if [ ! -f "$HOME"/.zshenv ] || ! grep -q "export ZDOTDIR=$HOME/.config/zsh" "$HOME"/.zshenv; then
+		touch "$HOME"/.zshenv
+		echo "export ZDOTDIR=$HOME/.config/zsh" >>"$HOME"/.zshenv
+	fi
+}

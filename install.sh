@@ -28,13 +28,12 @@ else
 	go_passwordless
 	# update_hosts (to be implemented)
 	install_brew
-	# eval brew afterwards
-	# create $HOME/.zshenv for setting ZDOTDIR
 	install_pack 'brew install' ./packages/brew.pack
 	install_pack 'brew install --cask' ./packages/cask.pack
 	install_pack 'npm i -g' ./packages/npm.pack
 	link_dotfiles
-	# install astronvim
-	# install tmux plugin
-	# install zsh plugin
+	create_zshenv
+	install_astronvim
+	install_tmux_plugin
+	install_zsh_plugin
 fi

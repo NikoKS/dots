@@ -1,0 +1,7 @@
+# From: https://gist.github.com/WesleyAC/bc3c3aa06b8443646c25f927e0db8898
+youtube.com##ytd-watch-next-secondary-results-renderer.ytd-watch-flexy.style-scope
+youtube.com##a.ytp-suggestion-set.ytp-videowall-still
+youtube.com##ytd-browse[page-subtype=home]
+youtube.com##.ytd-popup-container.style-scope > .yt-mealbar-promo-renderer.style-scope
+youtube.com##.ytp-suggestion-panel
+youtube.com##.ytp-autonav-endscreen-upnext-container

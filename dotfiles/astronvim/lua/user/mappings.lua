@@ -40,6 +40,7 @@ return {
 		["}"] = { "]b", remap = true },
 		["{"] = { "[b", remap = true },
 		["<bs>"] = { "<c-o>", desc = "Jump to last position" },
+		["\\"] = { "<c-i>", desc = "Jump to next position" },
 		["[w"] = { "#", desc = "Jump to previous word match" },
 		["]w"] = { "*", desc = "Jump to next word match" },
 		["U"] = { "J" }, -- Up the line
