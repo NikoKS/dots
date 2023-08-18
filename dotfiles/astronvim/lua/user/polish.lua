@@ -60,6 +60,13 @@ return function()
 		end,
 	})
 
+	-- Post css
+	vim.filetype.add({
+		extension = {
+			postcss = "css",
+		},
+	})
+
 	-- Diagnostic Float
 	vim.api.nvim_create_autocmd("CursorHold", {
 		pattern = { "*" },
