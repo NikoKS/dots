@@ -20,6 +20,7 @@ font:
 
 key_bindings:
   - { key: LBracket, mods: Control, chars: "\0" }
+  - { key: Equals, mods: Control, chars: "\x1e" }
   - { key: Return, mods: Control, chars: "\x01" }
 
 # github Alacritty Colors

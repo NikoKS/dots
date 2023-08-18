@@ -1,3 +1,4 @@
+// ~/Library/Containers/net.televator.Vimari.SafariExtension/Data/Library/Application Support/userSettings.json
 {
   "excludedUrls": "",
   "linkHintCharacters": "asdfjklqwerzxc",
@@ -26,6 +27,7 @@
     "tabForward": "w",
     "tabBack": "q",
     "closeTab": "x",
-    "openTab": "t"
+    "openTab": "t",
+    "visitPreviousTab": "b"
   }
 }

@@ -1,0 +1,2 @@
+# To replace Safari up/down
+https://github.com/infokiller/web-search-navigator/issues/64
