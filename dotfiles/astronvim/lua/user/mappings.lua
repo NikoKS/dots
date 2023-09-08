@@ -50,6 +50,26 @@ return {
 		["<C-f>"] = { "<cmd>Telescope find_files<cr>", desc = "Find File" },
 		["<leader>ff"] = { "<cmd>Telescope resume<cr>", desc = "Resume last search" },
 		["<leader>fd"] = { "<cmd>Telescope diagnostics<cr>", desc = "Find diagnostic" },
+		-- Git
+		["<leader>gp"] = false,
+		["<leader>gh"] = {
+			function()
+				require("gitsigns").preview_hunk()
+			end,
+			desc = "Preview Git hunk",
+		},
+		["<leader>gR"] = {
+			function()
+				require("gitsigns").reset_buffer()
+			end,
+			desc = "Reset Git buffer",
+		},
+		["<leader>gr"] = {
+			function()
+				require("gitsigns").reset_hunk()
+			end,
+			desc = "Reset Git hunk",
+		},
 		-- Copy, Delete
 		["x"] = { "y", desc = "Copy", remap = true },
 		["X"] = { '"+x', desc = "Copy to system", remap = true },

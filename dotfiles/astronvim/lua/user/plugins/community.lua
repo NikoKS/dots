@@ -6,6 +6,21 @@ local plugins = {
 
 	-- Colorscheme
 	{ import = "astrocommunity.colorscheme.github-nvim-theme" },
+	-- {
+	-- 	"projekt0n/github-nvim-theme",
+	-- 	config = function()
+	-- 		require("github-theme").setup({
+	-- 			options = {
+	-- 				darken = {
+	-- 					sidebars = {
+	-- 						enable = true,
+	-- 						list = { "neo-tree" }, -- Apply dark background to specific windows
+	-- 					},
+	-- 				},
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
 
 	-- utility
 	{ import = "astrocommunity.project.project-nvim" },
