@@ -24,35 +24,40 @@ key_bindings:
   - { key: Return, mods: Control, chars: "\x01" }
 
 # github Alacritty Colors
-# from: https://github.com/ful1e5/github-nvim-theme/blob/main/extras/alacritty/dimmed.yml
+# from: https://github.com/projekt0n/github-theme-contrib/blob/main/themes/alacritty/github_dark_tritanopia.yml
+# (Github Dark High Contrast) Colors for Alacritty
+
 colors:
   # Default colors
   primary:
-    background: "0x22272e"
-    foreground: "0x768390"
+    background: "0x0a0c10"
+    foreground: "0xf0f3f6"
+
+  # Cursor colors
+  #
+  # These will only be used when the `custom_cursor_colors` field is set to `true`.
+  cursor:
+    text: "0x0a0c10"
+    cursor: "0xf0f3f6"
 
   # Normal colors
   normal:
-    black: "0x22272e"
-    red: "0xff938a"
-    green: "0x6bc46d"
-    yellow: "0xc69026"
-    blue: "0x6cb6ff"
-    magenta: "0xb083f0"
-    cyan: "0x56d4dd"
-    white: "0x768390"
+    black: "0x7a828e"
+    red: "0xff9492"
+    green: "0x26cd4d"
+    yellow: "0xf0b72f"
+    blue: "0x71b7ff"
+    magenta: "0xcb9eff"
+    cyan: "0x39c5cf"
+    white: "0xd9dee3"
 
   # Bright colors
   bright:
-    black: "0x636e7b"
-    red: "0xff938a"
-    green: "0x6bc46d"
-    yellow: "0xdaaa3f"
-    blue: "0x6cb6ff"
-    magenta: "0xdcbdfb"
-    cyan: "0x56d4dd"
-    white: "0x768390"
-
-  indexed_colors:
-    - { index: 16, color: "0xd18616" }
-    - { index: 17, color: "0xff938a" }
+    black: "0x9ea7b3"
+    red: "0xffb1af"
+    green: "0x4ae168"
+    yellow: "0xf7c843"
+    blue: "0x91cbff"
+    magenta: "0xcb9eff"
+    cyan: "0x39c5cf"
+    white: "0xd9dee3"
