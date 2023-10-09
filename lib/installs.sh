@@ -93,6 +93,7 @@ function install_docker_ubuntu() {
 	sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 	sudo usermod -aG docker "$USER"
+	echo "Don't forget to logout and login"
 }
 
 function install_delta_ubuntu() {
@@ -107,13 +108,21 @@ function install_caprover() {
 	# from https://caprover.com/docs/get-started.html
 	ufw allow 80,443,3000,996,7946,4789,2377/tcp
 	ufw allow 7946,4789,2377/udp
-	docker run -p 80:80 -p 443:443 -p 3000:3000 -v /var/run/docker.sock:/var/run/docker.sock -v /captain:/captain caprover/caprover
+	docker run -p 80:80 -p 443:443 -p 3000:3000 -e ACCEPTED_TERMS=true -v /var/run/docker.sock:/var/run/docker.sock -v /captain:/captain caprover/caprover
 	npm install -g caprover
 	caprover serversetup
 }
 
-function install_k3s() {
+function install_k3s_ubuntu() {
 	curl -sfL https://get.k3s.io | sh -
+}
+
+function install_helm_ubuntu() {
+	curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg >/dev/null
+	sudo apt-get install apt-transport-https --yes
+	echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+	sudo apt-get update
+	sudo apt-get install helm
 }
 
 # install tmux plugin using tpm

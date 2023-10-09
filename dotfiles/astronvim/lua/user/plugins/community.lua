@@ -61,6 +61,7 @@ local nonremote = {
 	{ import = "astrocommunity.pack.tailwindcss" },
 	{ import = "astrocommunity.pack.toml" },
 	{ import = "astrocommunity.pack.docker" },
+	{ import = "astrocommunity.pack.terraform" },
 }
 
 -- Plugins excluded in remote environment

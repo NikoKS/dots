@@ -1,6 +1,6 @@
 return {
 	{
-		"phaazon/hop.nvim",
+		"smoka7/hop.nvim",
 		event = "User AstroFile",
 		opts = {
 			keys = "etovxqpdygfblzhckisuran",

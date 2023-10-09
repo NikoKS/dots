@@ -2,14 +2,8 @@ return function()
 	local get_hlgroup = require("astronvim.utils").get_hlgroup
 	-- get highlights from highlight groups
 	local bg_alt = get_hlgroup("NormalSB").bg
-	local green = get_hlgroup("String").fg
-	local yellow = get_hlgroup("WarningMsg").fg
 	-- return a table of highlights for telescope based on colors gotten from highlight groups
 	return {
-		-- Hop
-		HopNextKey = { fg = yellow },
-		HopNextKey1 = { fg = green },
-		HopNextKey2 = { fg = green },
 		-- NeoTree
 		NeoTreeWinSeparator = { bg = bg_alt, fg = bg_alt },
 		-- StatusLine
