@@ -1,6 +1,6 @@
 window:
   title: Terminal
-  opacity: 0.8
+  opacity: 1
   decorations: buttonless
 
 font:
@@ -22,6 +22,7 @@ key_bindings:
   - { key: LBracket, mods: Control, chars: "\0" }
   - { key: Equals, mods: Control, chars: "\x1e" }
   - { key: Return, mods: Control, chars: "\x01" }
+  - { key: Return, mods: Shift, chars: "\x1b[13;2u" }
 
 # github Alacritty Colors
 # from: https://github.com/projekt0n/github-theme-contrib/blob/main/themes/alacritty/github_dark_tritanopia.yml
