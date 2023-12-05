@@ -1,6 +1,6 @@
 return {
 	-- Set colorscheme to use
-	colorscheme = "github_dark_high_contrast",
+	colorscheme = "github_dark_default",
 	-- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
 	diagnostics = {
 		virtual_text = false,
