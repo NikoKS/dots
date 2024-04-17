@@ -1,0 +1,71 @@
+[colors.bright]
+black = "0x9ea7b3"
+blue = "0x91cbff"
+cyan = "0x39c5cf"
+green = "0x4ae168"
+magenta = "0xcb9eff"
+red = "0xffb1af"
+white = "0xd9dee3"
+yellow = "0xf7c843"
+
+[colors.cursor]
+cursor = "0xf0f3f6"
+text = "0x0a0c10"
+
+[colors.normal]
+black = "0x7a828e"
+blue = "0x71b7ff"
+cyan = "0x39c5cf"
+green = "0x26cd4d"
+magenta = "0xcb9eff"
+red = "0xff9492"
+white = "0xd9dee3"
+yellow = "0xf0b72f"
+
+[colors.primary]
+background = "0x0d1117"
+foreground = "0xf0f3f6"
+
+[font]
+size = 14
+
+[font.bold]
+family = "Liga SFMono Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "Liga SFMono Nerd Font"
+style = "Bold Italic"
+
+[font.italic]
+family = "Liga SFMono Nerd Font"
+style = "Regular Italic"
+
+[font.normal]
+family = "Liga SFMono Nerd Font"
+style = "Regular"
+
+[[keyboard.bindings]]
+chars = "\u0000"
+key = "LBracket"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001E"
+key = "Equals"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u0001"
+key = "Return"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[13;2u"
+key = "Return"
+mods = "Shift"
+
+[window]
+decorations = "buttonless"
+opacity = 1
+title = "Terminal"

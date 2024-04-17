@@ -92,4 +92,13 @@ return {
 			end, { noremap = true, desc = "Toggle Codeium active" })
 		end,
 	},
+	{
+		"anurag3301/nvim-platformio.lua",
+		event = "User AstroFile",
+		dependencies = {
+			{ "akinsho/nvim-toggleterm.lua" },
+			{ "nvim-telescope/telescope.nvim" },
+			{ "nvim-lua/plenary.nvim" },
+		},
+	},
 }
