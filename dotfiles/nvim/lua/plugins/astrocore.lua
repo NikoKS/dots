@@ -145,6 +145,15 @@ return {
     mappings = {
       -- first key is the mode
       n = {
+        -- Disable default mappings
+        ["<Leader>/"] = false,
+        ["<Leader>c"] = false,
+        ["<Leader>C"] = false,
+        ["<Leader>o"] = false,
+        ["<Leader>h"] = false,
+        ["<Leader>q"] = false,
+        ["<Leader>Q"] = false,
+        ["q"] = "<nop>", -- <nop> for vim defaults
         -- General/Utility
         ["r"] = { "<C-r>" }, -- Redo
         ["R"] = { "<cmd>e!<CR>" },
@@ -202,7 +211,9 @@ return {
         [","] = { "Q" },
         -- Extra Functions
         ["<Leader>gg"] = {
-          function() require("astrocore").toggle_term_cmd "lazygit -ucd ~/.config/lazygit" end,
+          function()
+            require("astrocore").toggle_term_cmd { cmd = "lazygit -ucd ~/.config/lazygit", direction = "float" }
+          end,
           desc = "Lazygit",
         },
         ["<Leader>ld"] = {
