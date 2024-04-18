@@ -121,7 +121,7 @@ alias clear="printf '\n%.0s' {1..100}"
 alias c="clear && ls"
 alias e="exit"
 alias zrc="vim ~/Software/dots/dotfiles/zsh/dot-zshrc"
-alias alrc="vim ~/Software/dots/dotfiles/alacritty/alacritty.yml"
+alias alrc="vim ~/Software/dots/dotfiles/alacritty/alacritty.toml"
 alias venv="source venv/bin/activate"
 
 # VIM

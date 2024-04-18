@@ -10,7 +10,7 @@ function link_dotfiles() {
 	mkdir -p "$config_dir"/zsh
 	mkdir -p "$config_dir"/tmux
 	mkdir -p "$config_dir"/lazygit
-	mkdir -p "$config_dir"/astronvim
+	mkdir -p "$config_dir"/nvim
 	mkdir -p "$config_dir"/alacritty
 
 	# stow
