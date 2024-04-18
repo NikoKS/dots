@@ -125,7 +125,7 @@ alias alrc="vim ~/Software/dots/dotfiles/alacritty/alacritty.toml"
 alias venv="source venv/bin/activate"
 
 # VIM
-alias vrc="vim ~/Software/dots/dotfiles/astronvim/lua/user/init.lua"
+alias vrc="vim ~/Software/dots/dotfiles/nvim/init.lua"
 alias vim=nvim
 alias vimdiff='vim -d'
 alias gg="vim -c \":exe 'normal ;gg'\""

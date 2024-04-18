@@ -42,9 +42,9 @@ return {
           pattern = "python",
           callback = function()
             local map = {
-              ["<leader>rf"] = { '<cmd>SlimeSend0 "python3 " . expand("%:p") . "\\n"<cr>', "Run File" },
-              ["<leader>rp"] = { "<cmd>SlimeSend1 python3<cr>", "Run Python" },
-              ["<leader>re"] = { "<cmd>SlimeSend1 exit()<cr>", "Exit Python" },
+              ["<Leader>rf"] = { '<cmd>SlimeSend0 "python3 " . expand("%:p") . "\\n"<cr>', "Run File" },
+              ["<Leader>rp"] = { "<cmd>SlimeSend1 python3<cr>", "Run Python" },
+              ["<Leader>re"] = { "<cmd>SlimeSend1 exit()<cr>", "Exit Python" },
             }
             require("which-key").register(map)
           end,
@@ -57,9 +57,9 @@ return {
           pattern = "javascript",
           callback = function()
             local map = {
-              ["<leader>rf"] = { '<cmd>SlimeSend0 "node " . expand("%:p") . "\\n"<cr>', "Run File" },
-              ["<leader>rp"] = { "<cmd>SlimeSend1 node<cr>", "Run node" },
-              ["<leader>re"] = { "<cmd>SlimeSend1 .exit<cr>", "Exit node" },
+              ["<Leader>rf"] = { '<cmd>SlimeSend0 "node " . expand("%:p") . "\\n"<cr>', "Run File" },
+              ["<Leader>rp"] = { "<cmd>SlimeSend1 node<cr>", "Run node" },
+              ["<Leader>re"] = { "<cmd>SlimeSend1 .exit<cr>", "Exit node" },
             }
             require("which-key").register(map)
           end,
@@ -72,7 +72,7 @@ return {
           pattern = "typescript",
           callback = function()
             local map = {
-              ["<leader>rf"] = { '<cmd>SlimeSend0 "ts-node " . expand("%:p") . "\\n"<cr>', "Run File" },
+              ["<Leader>rf"] = { '<cmd>SlimeSend0 "ts-node " . expand("%:p") . "\\n"<cr>', "Run File" },
             }
             require("which-key").register(map)
           end,
@@ -85,7 +85,7 @@ return {
           pattern = "go",
           callback = function()
             local map = {
-              ["<leader>rf"] = { '<cmd>SlimeSend0 "go run " . expand("%:p") . "\\n"<cr>', "Run File" },
+              ["<Leader>rf"] = { '<cmd>SlimeSend0 "go run " . expand("%:p") . "\\n"<cr>', "Run File" },
             }
             require("which-key").register(map)
           end,
@@ -98,9 +98,9 @@ return {
           pattern = "rust",
           callback = function()
             local map = {
-              ["<leader>rb"] = { "<cmd>SlimeSend1 cargo build<cr>", "Build Project" },
-              ["<leader>rr"] = { "<cmd>SlimeSend1 cargo run<cr>", "Run Project" },
-              ["<leader>rd"] = { "<cmd>cargo doc --open<cr>", "Get Documentation" },
+              ["<Leader>rb"] = { "<cmd>SlimeSend1 cargo build<cr>", "Build Project" },
+              ["<Leader>rr"] = { "<cmd>SlimeSend1 cargo run<cr>", "Run Project" },
+              ["<Leader>rd"] = { "<cmd>cargo doc --open<cr>", "Get Documentation" },
             }
             require("which-key").register(map)
           end,
@@ -201,11 +201,11 @@ return {
         ["m"] = { "q" },
         [","] = { "Q" },
         -- Extra Functions
-        ["<leader>gg"] = {
+        ["<Leader>gg"] = {
           function() require("astrocore").toggle_term_cmd "lazygit -ucd ~/.config/lazygit" end,
           desc = "Lazygit",
         },
-        ["<leader>ld"] = {
+        ["<Leader>ld"] = {
           function() require("astrocore").toggle_term_cmd "lazydocker" end,
           desc = "LazyDocker",
         },
@@ -236,7 +236,7 @@ return {
       },
       v = {
         -- Remove Mapping
-        ["<leader>/"] = false,
+        ["<Leader>/"] = false,
         -- Navigation
         ["w"] = { "b" },
         ["W"] = { "B" },

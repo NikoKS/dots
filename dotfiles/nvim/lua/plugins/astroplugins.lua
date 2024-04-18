@@ -22,7 +22,7 @@ return {
     opts = {
       window = {
         mappings = {
-          ["<space>"] = "toggle_node",
+          ["<Space>"] = "toggle_node",
         },
       },
       filesystem = {
@@ -61,7 +61,7 @@ return {
             ["<S-Tab>"] = actions.move_selection_previous,
             ["<S-j>"] = actions.preview_scrolling_down,
             ["<S-k>"] = actions.preview_scrolling_up,
-            ["<space>"] = actions.toggle_selection,
+            ["<Space>"] = actions.toggle_selection,
             ["w"] = function() vim.cmd [[execute "normal! b"]] end,
             ["W"] = function() vim.cmd [[execute "normal! B"]] end,
           },
