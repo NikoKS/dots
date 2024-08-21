@@ -7,6 +7,9 @@ return {
   opts = {
     diagnostics = {
       virtual_text = false,
+      float = {
+        focusable = false,
+      },
     },
 
     options = {
