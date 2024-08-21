@@ -39,7 +39,7 @@ return {
     "akinsho/git-conflict.nvim",
     event = "VeryLazy",
     config = function()
-      require("which-key").register { ["<Leader>c"] = { desc = " Conflict" } }
+      require("which-key").add { { "<Leader>c", group = " Conflict" } }
       require("git-conflict").setup {
         default_mappings = {
           ours = "<Leader>co",

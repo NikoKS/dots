@@ -41,12 +41,11 @@ return {
           desc = "Custom config for python files",
           pattern = "python",
           callback = function()
-            local map = {
-              ["<Leader>rf"] = { '<cmd>SlimeSend0 "python3 " . expand("%:p") . "\\n"<cr>', "Run File" },
-              ["<Leader>rp"] = { "<cmd>SlimeSend1 python3<cr>", "Run Python" },
-              ["<Leader>re"] = { "<cmd>SlimeSend1 exit()<cr>", "Exit Python" },
+            require("which-key").add {
+              { "<Leader>re", "<cmd>SlimeSend1 exit()<cr>", desc = "Exit Python" },
+              { "<Leader>rf", '<cmd>SlimeSend0 "python3 " . expand("%:p") . "\\n"<cr>', desc = "Run File" },
+              { "<Leader>rp", "<cmd>SlimeSend1 python3<cr>", desc = "Run Python" },
             }
-            require("which-key").register(map)
           end,
         },
       },
@@ -56,12 +55,11 @@ return {
           desc = "Custom config for js files",
           pattern = "javascript",
           callback = function()
-            local map = {
-              ["<Leader>rf"] = { '<cmd>SlimeSend0 "node " . expand("%:p") . "\\n"<cr>', "Run File" },
-              ["<Leader>rp"] = { "<cmd>SlimeSend1 node<cr>", "Run node" },
-              ["<Leader>re"] = { "<cmd>SlimeSend1 .exit<cr>", "Exit node" },
+            require("which-key").add {
+              { "<Leader>re", "<cmd>SlimeSend1 .exit<cr>", desc = "Exit node" },
+              { "<Leader>rf", '<cmd>SlimeSend0 "node " . expand("%:p") . "\\n"<cr>', desc = "Run File" },
+              { "<Leader>rp", "<cmd>SlimeSend1 node<cr>", desc = "Run node" },
             }
-            require("which-key").register(map)
           end,
         },
       },
@@ -71,10 +69,9 @@ return {
           desc = "Custom config for ts files",
           pattern = "typescript",
           callback = function()
-            local map = {
-              ["<Leader>rf"] = { '<cmd>SlimeSend0 "ts-node " . expand("%:p") . "\\n"<cr>', "Run File" },
+            require("which-key").add {
+              { "<Leader>rf", '<cmd>SlimeSend0 "ts-node " . expand("%:p") . "\\n"<cr>', desc = "Run File" },
             }
-            require("which-key").register(map)
           end,
         },
       },
@@ -84,10 +81,9 @@ return {
           desc = "Custom config for go files",
           pattern = "go",
           callback = function()
-            local map = {
-              ["<Leader>rf"] = { '<cmd>SlimeSend0 "go run " . expand("%:p") . "\\n"<cr>', "Run File" },
+            require("which-key").add {
+              { "<Leader>rf", '<cmd>SlimeSend0 "go run " . expand("%:p") . "\\n"<cr>', desc = "Run File" },
             }
-            require("which-key").register(map)
           end,
         },
       },
@@ -97,12 +93,11 @@ return {
           desc = "Custom config for rust files",
           pattern = "rust",
           callback = function()
-            local map = {
-              ["<Leader>rb"] = { "<cmd>SlimeSend1 cargo build<cr>", "Build Project" },
-              ["<Leader>rr"] = { "<cmd>SlimeSend1 cargo run<cr>", "Run Project" },
-              ["<Leader>rd"] = { "<cmd>cargo doc --open<cr>", "Get Documentation" },
+            require("which-key").add {
+              { "<Leader>rb", "<cmd>SlimeSend1 cargo build<cr>", desc = "Build Project" },
+              { "<Leader>rd", "<cmd>cargo doc --open<cr>", desc = "Get Documentation" },
+              { "<Leader>rr", "<cmd>SlimeSend1 cargo run<cr>", desc = "Run Project" },
             }
-            require("which-key").register(map)
           end,
         },
       },
