@@ -41,6 +41,7 @@ local nonremote = {
   { import = "astrocommunity.pack.tailwindcss" },
   { import = "astrocommunity.pack.toml" },
   { import = "astrocommunity.pack.docker" },
+  { import = "astrocommunity.pack.xml" },
   { import = "astrocommunity.pack.terraform" },
 }
 

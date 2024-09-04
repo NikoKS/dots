@@ -59,13 +59,23 @@ return {
     config = function()
       vim.cmd [[
   		let g:slime_paste_file = tempname()
-  		let g:slime_default_config = {"socket_name": "default", "target_pane": "{last}"}
+  		let g:slime_default_config = {"socket_name": "default", "target_pane": "{bottom-right}"}
 			]]
       vim.g["slime_target"] = "tmux"
       vim.g["slime_dont_ask_default"] = 1
       vim.g["autosource_disable_autocmd"] = 1
       vim.keymap.set("v", "<cr>", "<Plug>SlimeRegionSend")
-      vim.keymap.set("n", "<leader>rw", '<cmd>SlimeSend0 "cd " . getcwd() . "\\n"<cr>')
+      require("which-key").add {
+        { "<Leader>r", group = " Run" },
+        { "<Leader>rw", '<cmd>SlimeSend0 "cd " . getcwd() . "\\n"<cr>', desc = "Change to Working Directory" },
+        { "<Leader>rc", '<cmd>SlimeSend0 "\x03"<cr>', desc = "Ctrl-C" },
+        {
+          "<Leader>rl",
+          "<cmd>SlimeSend1 docker compose logs -f | rg 'WARNING|ERROR|CRITICAL' <cr>",
+          desc = "Docker Compose Logs",
+        },
+        {},
+      }
     end,
   },
   { "jenterkin/vim-autosource", lazy = false },
@@ -85,4 +95,14 @@ return {
       { "nvim-lua/plenary.nvim" },
     },
   },
+  -- {
+  --   "amitds1997/remote-nvim.nvim",
+  --   version = "*", -- Pin to GitHub releases
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim", -- For standard functions
+  --     "MunifTanjim/nui.nvim", -- To build the plugin UI
+  --     "nvim-telescope/telescope.nvim", -- For picking b/w different remote methods
+  --   },
+  --   config = true,
+  -- },
 }

@@ -154,7 +154,7 @@ return {
         ["q"] = "<nop>", -- <nop> for vim defaults
         -- General/Utility
         ["r"] = { "<C-r>" }, -- Redo
-        ["R"] = { "<cmd>e!<CR>" },
+        ["R"] = { "<cmd>LspRestart|e!<CR>" },
         ["#"] = { "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>" },
         [" "] = { "za" },
         ["<Leader>a"] = { "<cmd>AerialToggle<cr>", desc = "Toggle Aerial" },
