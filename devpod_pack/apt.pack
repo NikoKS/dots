@@ -3,6 +3,7 @@ git
 zsh
 stow
 snapd
+sudo
 
 # python
 python3

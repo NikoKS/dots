@@ -9,13 +9,12 @@ source ./lib/core.sh
 
 if [[ $DEVPOD ]]; then
 	# For Devpod
-	install_devpod
-	sudo apt update && sudo apt -y upgrade
-	install_pack 'sudo apt install -y' ./devpod_pack/apt.pack
-	install_packs 'sudo snap install' ./devpod_pack/snap.pack
+	apt-get update && apt-get -y upgrade
+	install_pack 'apt-get install -y' ./devpod_pack/apt.pack
+	install_packs 'snap install' ./devpod_pack/snap.pack
 	python3 -m pip install --upgrade pip
 	install_pack 'python3 -m pip install' ./packages/pip.pack
-	sudo snap alias tmux-non-dead.tmux tmux # set alias to tmux snap
+	snap alias tmux-non-dead.tmux tmux # set alias to tmux snap
 	link_dotfiles
 	source_bashrc
 	install_lazygit_source "$HOME"/Software/lazygit
