@@ -6,16 +6,11 @@ tmux_plugins_dir=$config_dir/tmux/plugins
 zsh_dir=$config_dir/zsh
 
 # install latest nvim appimage
-# argument: nvim install directory
 function install_nvim_appimage() {
-	mkdir -p "$1"
-	pushd "$1" || return
-	lastversion --asset neovim/neovim --filter appimage$ -d nvim.AppImage
-	chmod u+x nvim.AppImage
-	./nvim.AppImage --appimage-extract 1>/dev/null
+	wget https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+	chmod +x ./nvim.appimage
 	mkdir -p "$local_bin"
-	ln -fs "$(pwd)"/squashfs-root/AppRun "$local_bin"/nvim
-	popd || return
+	sudo mv nvim.appimage "$local_bin"/nvim
 }
 
 # install latest tmux appimage
@@ -127,7 +122,7 @@ function install_helm_ubuntu() {
 
 # install tmux plugin using tpm
 function install_tmux_plugin() {
-	mkdir -p plugins_dir
+	mkdir -p "$tmux_plugins_dir"
 	clone_or_pull https://github.com/tmux-plugins/tpm.git "$tmux_plugins_dir"/tpm
 	tmux new-session -d "sleep 5" && sleep 1
 	tmux source "$config_dir"/tmux/tmux.conf

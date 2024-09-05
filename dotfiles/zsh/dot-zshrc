@@ -142,7 +142,7 @@ alias d="tmux detach"
 # Zoxide
 eval "$(_ZO_ECHO=1 zoxide init --cmd j zsh)"
 
-if ! [[ $SSH_TTY ]]; then
+if ! [[ $SSH_TTY || $DEVPOD]]; then
   # Pyenv
   export PYENV_ROOT="$HOME/.config/pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
