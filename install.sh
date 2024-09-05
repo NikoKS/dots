@@ -13,7 +13,6 @@ if [[ $DEVPOD ]]; then
 	install_pack 'apt-get install -y' ./packages/devpod.pack
 	link_dotfiles
 	source_bashrc
-	install_tmux_plugin
 	install_zsh_plugin
 elif [[ $SSH_TTY ]]; then
 	# For Ubuntu linux
