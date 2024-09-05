@@ -41,3 +41,9 @@ function create_zshenv() {
 		echo "export ZDOTDIR=$HOME/.config/zsh" >>"$HOME"/.zshenv
 	fi
 }
+
+function create_user_nikolas() {
+	adduser nikolas --disabled-password --gecos ""
+	su - nikolas
+	cd
+}
