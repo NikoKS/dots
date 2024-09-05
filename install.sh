@@ -9,6 +9,8 @@ source ./lib/core.sh
 
 if [[ $DEVPOD ]]; then
 	# For Devpod
+	adduser nikolas --disabled-password --gecos ""
+	su - nikolas
 	apt-get update && apt-get -y upgrade
 	install_pack 'apt-get install -y' ./packages/devpod.pack
 	link_dotfiles
