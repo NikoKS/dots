@@ -45,9 +45,14 @@ return {
           pattern = "python",
           callback = function()
             require("which-key").add {
-              { "<Leader>re", "<cmd>SlimeSend1 exit()<cr>", desc = "Exit Python" },
-              { "<Leader>rf", '<cmd>SlimeSend0 "python3 " . expand("%:p") . "\\n"<cr>', desc = "Run File" },
-              { "<Leader>rp", "<cmd>SlimeSend1 python3<cr>", desc = "Run Python" },
+              { "<Leader>re", "<cmd>SlimeSend1 exit()<cr>", desc = "Exit Python", buffer = true },
+              {
+                "<Leader>rf",
+                '<cmd>SlimeSend0 "python3 " . expand("%:p") . "\\n"<cr>',
+                desc = "Run File",
+                buffer = true,
+              },
+              { "<Leader>rp", "<cmd>SlimeSend1 python3<cr>", desc = "Run Python", buffer = true },
             }
           end,
         },
@@ -59,9 +64,9 @@ return {
           pattern = "javascript",
           callback = function()
             require("which-key").add {
-              { "<Leader>re", "<cmd>SlimeSend1 .exit<cr>", desc = "Exit node" },
-              { "<Leader>rf", '<cmd>SlimeSend0 "node " . expand("%:p") . "\\n"<cr>', desc = "Run File" },
-              { "<Leader>rp", "<cmd>SlimeSend1 node<cr>", desc = "Run node" },
+              { "<Leader>re", "<cmd>SlimeSend1 .exit<cr>", desc = "Exit node", buffer = true },
+              { "<Leader>rf", '<cmd>SlimeSend0 "node " . expand("%:p") . "\\n"<cr>', desc = "Run File", buffer = true },
+              { "<Leader>rp", "<cmd>SlimeSend1 node<cr>", desc = "Run node", buffer = true },
             }
           end,
         },
@@ -73,7 +78,12 @@ return {
           pattern = "typescript",
           callback = function()
             require("which-key").add {
-              { "<Leader>rf", '<cmd>SlimeSend0 "ts-node " . expand("%:p") . "\\n"<cr>', desc = "Run File" },
+              {
+                "<Leader>rf",
+                '<cmd>SlimeSend0 "ts-node " . expand("%:p") . "\\n"<cr>',
+                desc = "Run File",
+                buffer = true,
+              },
             }
           end,
         },
@@ -85,7 +95,12 @@ return {
           pattern = "go",
           callback = function()
             require("which-key").add {
-              { "<Leader>rf", '<cmd>SlimeSend0 "go run " . expand("%:p") . "\\n"<cr>', desc = "Run File" },
+              {
+                "<Leader>rf",
+                '<cmd>SlimeSend0 "go run " . expand("%:p") . "\\n"<cr>',
+                desc = "Run File",
+                buffer = true,
+              },
             }
           end,
         },
@@ -97,9 +112,9 @@ return {
           pattern = "rust",
           callback = function()
             require("which-key").add {
-              { "<Leader>rb", "<cmd>SlimeSend1 cargo build<cr>", desc = "Build Project" },
-              { "<Leader>rd", "<cmd>cargo doc --open<cr>", desc = "Get Documentation" },
-              { "<Leader>rr", "<cmd>SlimeSend1 cargo run<cr>", desc = "Run Project" },
+              { "<Leader>rb", "<cmd>SlimeSend1 cargo build<cr>", desc = "Build Project", buffer = true },
+              { "<Leader>rd", "<cmd>cargo doc --open<cr>", desc = "Get Documentation", buffer = true },
+              { "<Leader>rr", "<cmd>SlimeSend1 cargo run<cr>", desc = "Run Project", buffer = true },
             }
           end,
         },
