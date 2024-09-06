@@ -9,9 +9,8 @@ source ./lib/core.sh
 
 if [[ $DEVPOD ]]; then
 	# For Devpod
-	apt-get update && apt-get -y upgrade
-	install_pack 'apt-get install -y' ./packages/devpod.pack
-	create_user_nikolas
+	sudo apt-get update && sudo apt-get -y upgrade
+	install_pack 'sudo apt-get install -y' ./packages/devpod.pack
 	link_dotfiles
 	source_bashrc
 	install_zsh_plugin
