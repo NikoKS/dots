@@ -13,6 +13,7 @@ if [[ $DEVPOD ]]; then
 	install_pack 'sudo apt-get install -y' ./packages/devpod.pack
 	link_dotfiles
 	source_bashrc
+	create_zshenv
 	install_zsh_plugin
 elif [[ $SSH_TTY ]]; then
 	# For Ubuntu linux
