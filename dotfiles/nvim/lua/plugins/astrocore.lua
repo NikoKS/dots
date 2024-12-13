@@ -172,7 +172,6 @@ return {
         ["R"] = { "<cmd>LspRestart|e!<CR>" },
         ["#"] = { "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>" },
         [" "] = { "za" },
-        ["<Leader>a"] = { "<cmd>AerialToggle<cr>", desc = "Toggle Aerial" },
         ["?"] = { "<cmd>lua vim.lsp.buf.hover()<cr>" },
         ["="] = { "<c-w>=" },
         ["<C-f>"] = { "<cmd>Telescope find_files<cr>", desc = "Find File" },

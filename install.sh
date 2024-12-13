@@ -15,13 +15,13 @@ if [[ $DEVPOD ]]; then
 	create_zshenv
 	install_zsh_plugin
 elif [[ $SSH_TTY ]]; then
-	# For Ubuntu linux
+	# For Debian/Ubuntu linux
 	sudo -v
 	sudo apt update && sudo apt -y upgrade
 	install_pack 'sudo apt install -y' ./packages/apt.pack
 	install_packs 'sudo snap install' ./packages/snap.pack
 	install_pack 'sudo npm i -g' ./packages/npm.pack
-	install_pack 'python3 -m pip install' ./packages/pip.pack
+	install_pack 'python3 -m pip install --break-system-packages' ./packages/pip.pack
 	sudo snap alias tmux-non-dead.tmux tmux # set alias to tmux snap
 	link_dotfiles
 	source_bashrc

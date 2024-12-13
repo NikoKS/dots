@@ -17,15 +17,15 @@ local plugins = {
     "junegunn/vim-easy-align",
     config = function() vim.keymap.set("x", "<Leader>a", "<Plug>(EasyAlign)", { desc = "Easy Align" }) end,
   },
-}
-
-local nonremote = {
-  { import = "astrocommunity.scrolling.mini-animate" },
   { import = "astrocommunity.utility.noice-nvim" },
   {
     "folke/noice.nvim",
     opts = { presets = { lsp_doc_border = true } },
   },
+}
+
+local nonremote = {
+  { import = "astrocommunity.scrolling.mini-animate" },
 
   -- Language
   { import = "astrocommunity.pack.svelte" },
