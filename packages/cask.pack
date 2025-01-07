@@ -1,9 +1,15 @@
-# list of brew casks to install
-whatsapp
+# list of essential brew casks to install
+alacritty
+aldente
 bettertouchtool
 docker
+devpod
+google-chrome
+raycast
 spotify
 surfshark
+the-unarchiver
 obsidian
-firefox-developer-edition
-alacritty
+vscodium
+whatsapp
+webtorrent

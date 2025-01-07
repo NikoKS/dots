@@ -162,7 +162,6 @@ return {
         ["<Leader>/"] = false,
         ["<Leader>c"] = false,
         ["<Leader>C"] = false,
-        ["<Leader>o"] = false,
         ["<Leader>h"] = false,
         ["<Leader>q"] = false,
         ["<Leader>Q"] = false,
@@ -172,6 +171,7 @@ return {
         ["R"] = { "<cmd>LspRestart|e!<CR>" },
         ["#"] = { "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>" },
         [" "] = { "za" },
+        ["<Leader>o"] = { "<cmd>AerialToggle<cr>", desc = "Toggle Outline" },
         ["?"] = { "<cmd>lua vim.lsp.buf.hover()<cr>" },
         ["="] = { "<c-w>=" },
         ["<C-f>"] = { "<cmd>Telescope find_files<cr>", desc = "Find File" },
@@ -224,12 +224,15 @@ return {
         -- Extra Functions
         ["<Leader>gg"] = {
           function()
-            require("astrocore").toggle_term_cmd { cmd = "lazygit -ucd ~/.config/lazygit", direction = "float" }
+            require("astrocore").toggle_term_cmd {
+              cmd = "lazygit -ucf ~/.config/lazygit/config.yml",
+              direction = "float",
+            }
           end,
           desc = "Lazygit",
         },
         ["<Leader>ld"] = {
-          function() require("astrocore").toggle_term_cmd "lazydocker" end,
+          function() require("astrocore").toggle_term_cmd { cmd = "lazydocker", direction = "float" } end,
           desc = "LazyDocker",
         },
         ["<CR>"] = {
