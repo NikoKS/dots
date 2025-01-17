@@ -29,6 +29,7 @@ foreground = "0xf0f3f6"
 [font]
 size = 14
 
+# Font from https://github.com/shaunsingh/SFMono-Nerd-Font-Ligaturized
 [font.bold]
 family = "Liga SFMono Nerd Font"
 style = "Bold"

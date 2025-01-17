@@ -1,6 +1,6 @@
 // ~/Library/Containers/net.televator.Vimari.SafariExtension/Data/Library/Application Support/userSettings.json
 {
-  "excludedUrls": "",
+  "excludedUrls": "localhost",
   "linkHintCharacters": "asdfjklqwerzxc",
   "detectByCursorStyle": false,
   "scrollSize": 150,
@@ -24,10 +24,11 @@
     "goBack": "backspace",
     "goForward": "\\",
     "reload": "r",
-    "tabForward": "w",
-    "tabBack": "q",
+    "tabForward": "shift+]",
+    "tabBack": "shift+[",
     "closeTab": "x",
     "openTab": "t",
-    "visitPreviousTab": "b"
+    "visitPreviousTab": "b",
+    "copyCurrentUrl": "x x"
   }
 }

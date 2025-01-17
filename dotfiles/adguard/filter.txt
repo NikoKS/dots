@@ -5,3 +5,8 @@ youtube.com##ytd-browse[page-subtype=home]
 youtube.com##.ytd-popup-container.style-scope > .yt-mealbar-promo-renderer.style-scope
 youtube.com##.ytp-suggestion-panel
 youtube.com##.ytp-autonav-endscreen-upnext-container
+youtube.com##body > tp-yt-iron-overlay-backdrop
+reddit.com##shreddit-app.overflow-visible.pt-\[var\(--page-y-padding\)\]:nth-child(3) > div.grid-container.theme-rpl.grid:nth-child(24) > div.subgrid-container.m\:col-start-2.box-border.flex.flex-col.order-2.w-full.m\:w-\[1120px\].xs\:px-md.m\:px-lg.mx-auto:first-child
+reddit.com##shreddit-app.overflow-visible.pt-\[var\(--page-y-padding\)\]:nth-child(3) > div.grid-container.theme-rpl.grid:nth-child(59) > div.subgrid-container.m\:col-start-2.box-border.flex.flex-col.order-2.w-full.m\:w-\[1120px\].xs\:px-md.m\:px-lg.mx-auto:first-child
+youtube.com###shorts-container
+reddit.com###left-sidebar > nav.z-\[2\].box-border.flex.flex-col.mt-0.mb-0.pt-md.shrink-0.s\:shrink.w-full.min-h-screen-without-header.select-none
