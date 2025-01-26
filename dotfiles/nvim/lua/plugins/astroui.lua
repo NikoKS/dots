@@ -16,6 +16,11 @@ return {
           NeoTreeNormal = { bg = bg_alt },
           -- StatusLine
           StatusLine = { bg = bg_alt },
+          -- Transparent
+          Normal = { bg = "none" },
+          NormalNC = { bg = "none" },
+          WinBar = { bg = "none" },
+          WinBarNC = { bg = "none" },
         }
         return highlights
       end,

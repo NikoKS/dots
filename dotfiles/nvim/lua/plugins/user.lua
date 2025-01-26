@@ -83,7 +83,7 @@ return {
     "Exafunction/codeium.vim",
     event = "User AstroFile",
     config = function()
-      vim.keymap.set("i", "<S-CR>", function() return vim.fn["codeium#Accept"]() end, { expr = true })
+      vim.keymap.set("i", "<C-Y>", function() return vim.fn["codeium#Accept"]() end, { expr = true })
     end,
   },
   {

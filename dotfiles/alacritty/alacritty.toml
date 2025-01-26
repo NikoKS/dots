@@ -61,12 +61,14 @@ chars = "\u0001"
 key = "Return"
 mods = "Control"
 
+# Binded to Ctrl-Y because shift return is not behaving
 [[keyboard.bindings]]
-chars = "\u001B[13;2u"
+chars = "\u0019"
 key = "Return"
 mods = "Shift"
 
 [window]
+blur = true
 decorations = "buttonless"
-opacity = 1
+opacity = 0.65
 title = "Terminal"

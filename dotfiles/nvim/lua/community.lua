@@ -3,7 +3,9 @@ local plugins = {
   "AstroNvim/astrocommunity",
 
   -- Colorscheme
-  { import = "astrocommunity.colorscheme.github-nvim-theme" },
+  { import = "astrocommunity.colorscheme.github-nvim-theme", opts = {
+    transparent = true,
+  } },
 
   -- utility
   { import = "astrocommunity.project.project-nvim" },

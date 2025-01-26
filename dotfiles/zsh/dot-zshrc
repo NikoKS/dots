@@ -139,6 +139,9 @@ alias ta="t a -t"
 alias d="tmux detach"
 
 ################ MODULES #####################
+# ENV
+source $HOME/.apikeys
+
 # Zoxide
 eval "$(_ZO_ECHO=1 zoxide init --cmd j zsh)"
 
