@@ -1,7 +1,6 @@
 # Pyhton Development cache
 __pycache__
 .mypy*
-*.lock
 venv*/
 
 # Node

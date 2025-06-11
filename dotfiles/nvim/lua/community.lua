@@ -17,7 +17,7 @@ local plugins = {
   { import = "astrocommunity.syntax.vim-easy-align" },
   {
     "junegunn/vim-easy-align",
-    config = function() vim.keymap.set("x", "<Leader>a", "<Plug>(EasyAlign)", { desc = "Easy Align" }) end,
+    config = function() vim.keymap.set("x", "<Leader>e", "<Plug>(EasyAlign)", { desc = "Easy Align" }) end,
   },
   { import = "astrocommunity.utility.noice-nvim" },
   {

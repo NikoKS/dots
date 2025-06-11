@@ -105,6 +105,7 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 ################# EXPORTS ####################
 export XDG_STATE_HOME=$HOME/.local/state
+export XDG_CONFIG_HOME=$HOME/.config
 export EDITOR=nvim
 export MANPAGER="nvim +Man!"
 export FZF_DEFAULT_OPTS='--bind=shift-tab:up,tab:down'
@@ -167,6 +168,9 @@ if [ -z "$SSH_TTY" ] && [ -z "$DEVPOD" ]; then
   # Gcloud
   if [ -f ~/Software/google-cloud-sdk/completion.zsh.inc ]; then source ~/Software/google-cloud-sdk/completion.zsh.inc; fi
   export PATH=$HOME/Software/google-cloud-sdk/bin:$PATH
+
+  # Talhelper
+  source <(talhelper completion zsh)
 fi
 
 ########### ADDED EXTERNALLY #################
