@@ -30,7 +30,7 @@ local mapping = {
   ["q"] = { { "cmd", "shift" }, "[" }, -- tab left
   ["w"] = { { "cmd", "shift" }, "]" }, -- tab right
   ["r"] = { "cmd", "r" },              -- reload tab
-  ["x"] = { "cmd", "w" },              -- close tab
+  -- ["x"] = { "cmd", "w" },              -- close tab
   ["t"] = { "cmd", "t" },              -- new tab
   ["o"] = { "cmd", "l" },              -- open
   ["\x7f"] = { "cmd", "[" },           -- history back (backspace)
@@ -52,8 +52,8 @@ local mapping = {
   -- mouse
   ["zz"] = "cmdMoveMouseToCenter",
   -- clipboard
-  ["yy"] = "cmdCopyPageUrlToClipboard",
-  ["yf"] = "cmdCopyLinkUrlToClipboard",
+  ["xx"] = "cmdCopyPageUrlToClipboard",
+  ["xf"] = "cmdCopyLinkUrlToClipboard",
 }
 
 local config = {

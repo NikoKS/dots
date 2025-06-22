@@ -23,6 +23,10 @@ return {
       window = {
         mappings = {
           ["<Space>"] = "toggle_node",
+          ["<C-f>"] = "noop",
+          ["f"] = "noop",
+          ["F"] = "noop",
+          ["/"] = "noop",
         },
       },
       filesystem = {

@@ -19,10 +19,15 @@ printf '\n'
 PS1="
 %B%{$fg[cyan]%}%n %{$fg[green]%}%~ →%{$reset_color%}%b "
 
-# History in cache directory:
+# Combine history across sessions
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=~/.cache/zsh/hist
+HISTFILE=~/.config/zsh/.zsh_history
+setopt APPEND_HISTORY          # append new commands to the history file, don’t overwrite it
+setopt INC_APPEND_HISTORY      # write each command to the history file as soon as it’s run
+setopt SHARE_HISTORY           # share history across all sessions: merge after each command
+setopt HIST_IGNORE_DUPS        # skip duplicates in the history
+setopt HIST_REDUCE_BLANKS      # remove superfluous blanks before saving
 
 # Setting for the new UTF-8 terminal support
 export LC_CTYPE=en_US.UTF-8

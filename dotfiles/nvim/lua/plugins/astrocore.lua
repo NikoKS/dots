@@ -153,6 +153,16 @@ return {
           end,
         },
       },
+      toggleterm_neotree = {
+        {
+          event = "TermClose",
+          desc = "Refresh neo-tree when toggleterm closes",
+          pattern = "term://*",
+          callback = function()
+            vim.schedule(function() require("neo-tree.sources.git_status").refresh() end)
+          end,
+        },
+      },
     },
 
     mappings = {
