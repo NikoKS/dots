@@ -15,7 +15,8 @@ git:
     colorArg: always
     pager: delta --dark --paging=never
 os:
-  edit: "nvr --nostart --servername $NVIM --remote-silent -l {{filename}}"
+  edit: '[ -z "$NVIM" ] && (nvim -- {{filename}}) || (nvim --server "$NVIM" --remote-send "<C-\><C-N>:q!<CR>" && nvim --server "$NVIM" --remote {{filename}})'
+  editInTerminal: true
   openCommand: ""
 quitOnTopLevelReturn: true
 promptToReturnFromSubprocess: false
@@ -28,11 +29,12 @@ keybinding:
     select: "<enter>"
   commits:
     checkoutCommit: "<enter>"
-    viewResetOptions: "b"
+    viewResetOptions: "r"
+    renameCommit: ""
   stash:
     popStash: "p"
-customCommands:
-  - key: "o"
-    context: "commitFiles"
-    command: "nvr --nostart --servername $NVIM -l -c 'Gedit {{.SelectedLocalCommit.Sha}}:{{.SelectedCommitFile.Name}}'"
-    description: "open file on this commit"
+# customCommands:
+#   - key: "o"
+#     context: "commitFiles"
+#     command: "nvim --server $NVIM --remote-send 'q'; nvim --server $NVIM --remote-send ':Gedit {{.SelectedLocalCommit.Sha}}:{{.SelectedCommitFile.Name}} <CR>'"
+#     description: "open file on this commit"

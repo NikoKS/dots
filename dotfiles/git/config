@@ -7,7 +7,8 @@
 [mergetool]
   keepBackup = false
 [mergetool "nvim"]
-  cmd = nvr --nostart --servername $NVIM -l \"$MERGED\"
+  cmd = ""
+  keepBackup = false
 [core]
 	excludesFile = ~/.config/git/gitignore
 	editor = nvim
