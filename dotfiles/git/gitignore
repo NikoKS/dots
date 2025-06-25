@@ -9,3 +9,4 @@ node_modules
 # Other Development cache
 .vim*
 *.log
+.DS_Store*
