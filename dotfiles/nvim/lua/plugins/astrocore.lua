@@ -236,6 +236,7 @@ return {
           function()
             require("astrocore").toggle_term_cmd {
               cmd = "lazygit -ucf ~/.config/lazygit/config.yml",
+              display_name = "lazygit",
               direction = "float",
             }
           end,
