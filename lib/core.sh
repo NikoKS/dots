@@ -13,6 +13,7 @@ function link_dotfiles() {
 	mkdir -p "$config_dir"/nvim
 	mkdir -p "$config_dir"/alacritty
 	mkdir -p "$config_dir"/k9s
+	mkdir -p "$config_dir"/spicetify
 
 	# stow
 	stow --dotfiles -vDt "$config_dir" dotfiles
