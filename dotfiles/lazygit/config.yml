@@ -11,9 +11,9 @@ gui:
     # use blue for other authors
     "*": "#81a1c1"
 git:
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never
 os:
   edit: '[ -z "$NVIM" ] && (nvim -- {{filename}}) || (nvim --server "$NVIM" --remote-send "<C-\><C-N>:q!<CR>" && nvim --server "$NVIM" --remote {{filename}})'
   editInTerminal: true

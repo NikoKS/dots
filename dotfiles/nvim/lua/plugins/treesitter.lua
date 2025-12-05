@@ -1,0 +1,27 @@
+---@type LazySpec
+return {
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = { "lua", "sql" },
+      auto_install = true,
+      textobjects = {
+        select = {
+          enable = true,
+          lookahead = true,
+          keymaps = {
+            aa = "@parameter.outer",
+            ia = "@parameter.inner",
+            aA = "@attribute.outer",
+            iA = "@attribute.inner",
+          },
+        },
+      },
+    },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    event = "User AstroFile",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+  },
+}

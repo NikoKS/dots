@@ -1,5 +1,31 @@
 ---@type LazySpec
 return {
+
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "BufRead",
+    config = function() require("lsp_signature").setup() end,
+  },
+
+  -- customize dashboard options
+  {
+    "folke/snacks.nvim",
+    opts = {
+      dashboard = {
+        preset = {
+          header = table.concat({
+            "███    ██ ██    ██ ██ ███    ███",
+            "████   ██ ██    ██ ██ ████  ████",
+            "██ ██  ██ ██    ██ ██ ██ ████ ██",
+            "██  ██ ██  ██  ██  ██ ██  ██  ██",
+            "██   ████   ████   ██ ██      ██",
+          }, "\n"),
+        },
+      },
+    },
+  },
+
+  { "max397574/better-escape.nvim", enabled = false },
   {
     "smoka7/hop.nvim",
     event = "User AstroFile",
@@ -79,20 +105,4 @@ return {
     end,
   },
   { "jenterkin/vim-autosource", lazy = false },
-  {
-    "Exafunction/codeium.vim",
-    event = "User AstroFile",
-    config = function()
-      vim.keymap.set("i", "<C-Y>", function() return vim.fn["codeium#Accept"]() end, { expr = true })
-    end,
-  },
-  {
-    "anurag3301/nvim-platformio.lua",
-    event = "User AstroFile",
-    dependencies = {
-      { "akinsho/nvim-toggleterm.lua" },
-      { "nvim-telescope/telescope.nvim" },
-      { "nvim-lua/plenary.nvim" },
-    },
-  },
 }

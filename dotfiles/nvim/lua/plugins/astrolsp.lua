@@ -3,39 +3,25 @@ return {
   "AstroNvim/astrolsp",
   ---@type AstroLSPOpts
   opts = {
+    -- Configuration table of features provided by AstroLSP
+    features = {
+      codelens = true, -- enable/disable codelens refresh on start
+      inlay_hints = false, -- enable/disable inlay hints on start
+      semantic_tokens = true, -- enable/disable semantic token highlighting
+    },
+    -- customize lsp formatting options
     formatting = {
+      -- control auto formatting on save
       format_on_save = {
-        enabled = true,
-        ignore_filetypes = {
+        enabled = true, -- enable or disable format on save globally
+        ignore_filetypes = { -- disable format on save for specified filetypes
           "python",
         },
       },
     },
+    -- mappings to be set up on attaching of a language server
     mappings = {
-      n = {
-        ["K"] = false,
-        -- ["<leader>lD"] = false,
-        -- ["<leader>ld"] = false,
-        -- ["<leader>ls"] = false,
-        -- ["<leader>lR"] = { "<cmd>LspRestart<cr>", desc = "Restart Lsp" },
-        -- Telescope
-        ["<leader>fs"] = { "<cmd>Telescope lsp_document_symbols<cr>", desc = "Search symbols" },
-        ["<leader>ff"] = { "<cmd>Telescope resume<cr>", desc = "Resume last search" },
-        ["<leader>fd"] = { "<cmd>Telescope diagnostics<cr>", desc = "Find diagnostic" },
-      },
+      n = {},
     },
-    -- config = {
-    --   yamlls = {
-    --     settings = {
-    --       yaml = {
-    --         schemas = {
-    --           ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-    --           ["../path/relative/to/file.yml"] = "/.github/workflows/*",
-    --           ["/path/from/root/of/project"] = "/.github/workflows/*",
-    --         },
-    --       },
-    --     },
-    --   },
-    -- },
   },
 }
