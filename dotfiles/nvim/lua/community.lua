@@ -25,6 +25,7 @@ local plugins = {
     opts = { presets = { lsp_doc_border = true } },
   },
   { import = "astrocommunity.lsp.lsp-signature-nvim" },
+  { import = "astrocommunity.git.neogit" },
 }
 
 local nonremote = {
