@@ -51,10 +51,9 @@ return {
         ["q"] = "<nop>", -- <nop> for vim defaults
         -- General/Utility
         ["r"] = { "<C-r>" }, -- Redo
-        ["R"] = { "<cmd>execute'LspRestart'|e!<CR>" },
+        ["R"] = { "<cmd>execute'LspRestart'|e!<CR>", desc = "Restart LSP" },
         ["#"] = { "<cmd>normal gcc<cr>" },
         [" "] = { "za" },
-        ["<Leader>o"] = { "<cmd>AerialToggle<cr>", desc = "Toggle Outline" },
         ["?"] = { "<cmd>lua vim.lsp.buf.hover()<cr>" },
         ["="] = { "<c-w>=" },
         ["<C-f>"] = { function() require("snacks").picker.files() end, desc = "Find File" },

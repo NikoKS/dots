@@ -1,13 +1,7 @@
 ---@type LazySpec
 return {
 
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "BufRead",
-    config = function() require("lsp_signature").setup() end,
-  },
-
-  -- customize dashboard options
+  -- CUSTOMIZATION
   {
     "folke/snacks.nvim",
     opts = {
@@ -25,7 +19,11 @@ return {
     },
   },
 
+  -- DISABLE
   { "max397574/better-escape.nvim", enabled = false },
+  { "stevearc/aerial.nvim", enabled = false },
+
+  -- ADDITIONAL
   {
     "smoka7/hop.nvim",
     event = "User AstroFile",
