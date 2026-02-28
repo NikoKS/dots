@@ -16,6 +16,19 @@ return {
           }, "\n"),
         },
       },
+      indent = {
+        chunk = {
+          -- when enabled, scopes will be rendered as chunks, except for the
+          -- top-level scope which will be rendered as a scope.
+          enabled = true,
+        },
+        -- filter for buffers to enable indent guides
+        ---@param buf number
+        ---@param win number
+        filter = function(buf, win)
+          return vim.g.snacks_indent ~= false and vim.b[buf].snacks_indent ~= false and vim.bo[buf].buftype == ""
+        end,
+      },
     },
   },
 
