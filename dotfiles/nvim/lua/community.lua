@@ -12,7 +12,14 @@ local plugins = {
   { import = "astrocommunity.motion.nvim-surround" },
   {
     "kylechui/nvim-surround",
-    opts = { keymaps = { normal = "s", visual = "s" } },
+    config = function()
+      vim.keymap.set("n", "s", "<Plug>(nvim-surround-normal)", {
+        desc = "Add a surrounding pair around a motion (normal mode)",
+      })
+      vim.keymap.set("x", "s", "<Plug>(nvim-surround-visual)", {
+        desc = "Add a surrounding pair around a visual selection",
+      })
+    end,
   },
   { import = "astrocommunity.syntax.vim-easy-align" },
   {
@@ -25,7 +32,7 @@ local plugins = {
     opts = { presets = { lsp_doc_border = true } },
   },
   { import = "astrocommunity.lsp.lsp-signature-nvim" },
-  { import = "astrocommunity.git.neogit" },
+  -- { import = "astrocommunity.git.neogit" },
 }
 
 local nonremote = {
@@ -51,7 +58,7 @@ local nonremote = {
             desc = "Toggle embedded",
           }
           maps.n["<Leader>" .. "a"] = {
-            function() require("opencode").ask "@cursor: " end,
+            function() require("opencode").ask "@this: " end,
             desc = "Ask about this",
           }
           maps.n[prefix .. "+"] = {
@@ -59,7 +66,7 @@ local nonremote = {
             desc = "Add buffer to prompt",
           }
           maps.n[prefix .. "e"] = {
-            function() require("opencode").prompt "Explain @cursor and its context" end,
+            function() require("opencode").prompt "Explain @this and its context" end,
             desc = "Explain this code",
           }
           maps.n[prefix .. "n"] = {
@@ -81,7 +88,7 @@ local nonremote = {
 
           maps.v[prefix] = { desc = require("astroui").get_icon("OpenCode", 1, true) .. "OpenCode" }
           maps.v["<Leader>" .. "a"] = {
-            function() require("opencode").ask "@selection: " end,
+            function() require("opencode").ask "@this: " end,
             desc = "Ask about selection",
           }
           maps.v[prefix .. "+"] = {
@@ -108,20 +115,21 @@ local nonremote = {
   },
   -- Language
   { import = "astrocommunity.pack.svelte" },
-  { import = "astrocommunity.pack.astro" },
   { import = "astrocommunity.pack.typescript" },
+  { import = "astrocommunity.pack.prettier" },
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.pack.yaml" },
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.lua" },
-  { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.bash" },
   { import = "astrocommunity.pack.tailwindcss" },
   { import = "astrocommunity.pack.toml" },
   { import = "astrocommunity.pack.docker" },
   { import = "astrocommunity.pack.xml" },
   { import = "astrocommunity.pack.terraform" },
+  { import = "astrocommunity.pack.markdown" },
+  { import = "astrocommunity.pack.nginx" },
 }
 
 -- Plugins excluded in remote environment

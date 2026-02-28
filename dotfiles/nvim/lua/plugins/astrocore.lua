@@ -142,6 +142,7 @@ return {
         ["<s-tab>"] = {
           function() require("nvim-treesitter-refactor.navigation").goto_previous_usage() end,
         },
+        ["<Leader>fr"] = { function() require("snacks").picker.lsp_references() end, desc = "Find LSP references" },
       },
       v = {
         -- Remove Mapping
