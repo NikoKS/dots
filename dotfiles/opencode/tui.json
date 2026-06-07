@@ -1,0 +1,17 @@
+{
+  "$schema": "https://opencode.ai/tui.json",
+  "keybinds": {
+    "leader": "ctrl+o",
+    "app_exit": "ctrl+c,ctrl+d,<leader>q",
+    "editor_open": "<leader>e",
+    "model_list": "<leader>m",
+    "sidebar_toggle": "<leader>l",
+    "session_list": "<leader>s",
+    "command_list": "<leader>c",
+    "messages_half_page_up": "ctrl+alt+u,shift+k",
+    "messages_half_page_down": "ctrl+alt+d,shift+j"
+  },
+  "scroll_acceleration": {
+    "enabled": true
+  }
+}
