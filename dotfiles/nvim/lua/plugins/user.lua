@@ -33,6 +33,29 @@ return {
           return vim.g.snacks_indent ~= false and vim.b[buf].snacks_indent ~= false and vim.bo[buf].buftype == ""
         end,
       },
+      picker = {
+        win = {
+          input = {
+            keys = {
+              ["<Tab>"] = { "cycle_win", mode = { "n", "i" } },
+              ["J"] = { "preview_scroll_down", mode = { "n", "i" } },
+              ["K"] = { "preview_scroll_up", mode = { "n", "i" } },
+            },
+          },
+          list = {
+            keys = {
+              ["<Tab>"] = { "cycle_win", mode = { "n", "x" } },
+              ["J"] = { "preview_scroll_down", mode = { "n", "x" } },
+              ["K"] = { "preview_scroll_up", mode = { "n", "x" } },
+            },
+          },
+          preview = {
+            keys = {
+              ["<Tab>"] = { "cycle_win", mode = { "n", "x" } },
+            },
+          },
+        },
+      },
     },
   },
 
