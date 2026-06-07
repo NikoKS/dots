@@ -111,16 +111,18 @@ return {
         -- Extra Functions
         ["<Leader>gg"] = {
           function()
-            require("astrocore").toggle_term_cmd {
-              cmd = "lazygit -ucf ~/.config/lazygit/config.yml",
-              display_name = "lazygit",
-              direction = "float",
-            }
+            require("snacks").terminal("lazygit -ucf ~/.config/lazygit/config.yml", {
+              win = { position = "float", enter = true },
+            })
           end,
           desc = "Lazygit",
         },
         ["<Leader>ld"] = {
-          function() require("astrocore").toggle_term_cmd { cmd = "lazydocker", direction = "float" } end,
+          function()
+            require("snacks").terminal("lazydocker", {
+              win = { position = "float", enter = true },
+            })
+          end,
           desc = "LazyDocker",
         },
         ["<CR>"] = {
@@ -250,10 +252,10 @@ return {
           end,
         },
       },
-      toggleterm_neotree = {
+      neotree_term = {
         {
           event = "TermClose",
-          desc = "Refresh neo-tree when toggleterm closes",
+          desc = "Refresh neo-tree when terminal closes",
           pattern = "term://*",
           callback = function()
             vim.schedule(function() require("neo-tree.sources.git_status").refresh() end)

@@ -39,6 +39,7 @@ return {
   -- DISABLE
   { "max397574/better-escape.nvim", enabled = false },
   { "stevearc/aerial.nvim", enabled = false },
+  { "akinsho/toggleterm.nvim", enabled = false },
 
   -- ADDITIONAL
   {
