@@ -153,7 +153,7 @@ return {
       local snacks_terminal_opts = {
         win = {
           position = "right",
-          enter = false,
+          enter = true,
         },
       }
 
