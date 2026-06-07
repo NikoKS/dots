@@ -33,6 +33,7 @@ local plugins = {
   },
   { import = "astrocommunity.lsp.lsp-signature-nvim" },
   -- { import = "astrocommunity.git.neogit" },
+  { import = "astrocommunity.git.codediff-nvim" },
 }
 
 local nonremote = {
