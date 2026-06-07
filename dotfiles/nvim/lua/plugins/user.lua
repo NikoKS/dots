@@ -72,10 +72,10 @@ return {
       },
     },
   },
-  {
-    "tpope/vim-fugitive",
-    event = "User AstroFile",
-  },
+  -- {
+  --   "tpope/vim-fugitive",
+  --   event = "User AstroFile",
+  -- },
   {
     "akinsho/git-conflict.nvim",
     event = "VeryLazy",
@@ -120,4 +120,73 @@ return {
     end,
   },
   { "jenterkin/vim-autosource", lazy = false },
+  {
+    "nickjvandyke/opencode.nvim",
+    version = "*", -- Latest stable release
+    dependencies = {
+      {
+        -- `snacks.nvim` integration is recommended, but optional
+        ---@module "snacks" <- Loads `snacks.nvim` types for configuration intellisense
+        "folke/snacks.nvim",
+        optional = true,
+        opts = {
+          input = {}, -- Enhances `ask()`
+          picker = { -- Enhances `select()`
+            actions = {
+              opencode_send = function(...) return require("opencode").snacks_picker_send(...) end,
+            },
+            win = {
+              input = {
+                keys = {
+                  ["<a-a>"] = { "opencode_send", mode = { "n", "i" } },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+    config = function()
+      local opencode_cmd = "opencode --port"
+      ---@type snacks.terminal.Opts
+      local snacks_terminal_opts = {
+        win = {
+          position = "right",
+          enter = false,
+        },
+      }
+
+      ---@type opencode.Opts
+      vim.g.opencode_opts = {
+        server = {
+          start = function() require("snacks.terminal").open(opencode_cmd, snacks_terminal_opts) end,
+        },
+      }
+
+      vim.o.autoread = true
+
+      require("which-key").add { { "<Leader>o", group = "Opencode" } }
+
+      vim.keymap.set(
+        { "n", "t" },
+        "<leader>oo",
+        function() require("snacks.terminal").toggle(opencode_cmd, snacks_terminal_opts) end,
+        { desc = "Toggle opencode" }
+      )
+
+      vim.keymap.set(
+        { "n", "x" },
+        "<leader>oa",
+        function() require("opencode").ask "@this: " end,
+        { desc = "Ask opencode about line" }
+      )
+
+      vim.keymap.set(
+        { "n", "x" },
+        "<leader>ob",
+        function() require("opencode").ask "@buffer: " end,
+        { desc = "Ask opencode about buffer" }
+      )
+    end,
+  },
 }
