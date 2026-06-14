@@ -145,72 +145,39 @@ return {
   },
   { "jenterkin/vim-autosource", lazy = false },
   {
-    "nickjvandyke/opencode.nvim",
-    version = "*", -- Latest stable release
-    dependencies = {
-      {
-        -- `snacks.nvim` integration is recommended, but optional
-        ---@module "snacks" <- Loads `snacks.nvim` types for configuration intellisense
-        "folke/snacks.nvim",
-        optional = true,
-        opts = {
-          input = {}, -- Enhances `ask()`
-          picker = { -- Enhances `select()`
-            actions = {
-              opencode_send = function(...) return require("opencode").snacks_picker_send(...) end,
-            },
-            win = {
-              input = {
-                keys = {
-                  ["<a-a>"] = { "opencode_send", mode = { "n", "i" } },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
+    "carderne/pi-nvim",
     config = function()
-      local opencode_cmd = "opencode --port"
-      ---@type snacks.terminal.Opts
-      local snacks_terminal_opts = {
-        win = {
-          position = "right",
-          enter = true,
+      require("pi-nvim").setup {
+        set_default_keymaps = false,
+      }
+      require("which-key").add {
+        { "<Leader>a", group = "AI" },
+        {
+          "<Leader>ai",
+          function() require("snacks").terminal("pi", { win = { position = "right", enter = true } }) end,
+          desc = "Open pi",
+        },
+        {
+          "<Leader>as",
+          function()
+            local keys = vim.api.nvim_replace_termcodes("V:PiSendSelection<CR>", true, false, true)
+            vim.api.nvim_feedkeys(keys, "nx", false)
+          end,
+          mode = { "n" },
+          desc = "Send line to pi",
+        },
+        {
+          "<Leader>as",
+          "<cmd>PiSendSelection<cr>",
+          mode = { "v" },
+          desc = "Send selection to pi",
+        },
+        {
+          "<Leader>ab",
+          "<cmd>PiSendBuffer<cr>",
+          desc = "Send Buffer to pi",
         },
       }
-
-      ---@type opencode.Opts
-      vim.g.opencode_opts = {
-        server = {
-          start = function() require("snacks.terminal").open(opencode_cmd, snacks_terminal_opts) end,
-        },
-      }
-
-      vim.o.autoread = true
-
-      require("which-key").add { { "<Leader>o", group = "Opencode" } }
-
-      vim.keymap.set(
-        { "n", "t" },
-        "<leader>oo",
-        function() require("snacks.terminal").toggle(opencode_cmd, snacks_terminal_opts) end,
-        { desc = "Toggle opencode" }
-      )
-
-      vim.keymap.set(
-        { "n", "x" },
-        "<leader>oa",
-        function() require("opencode").ask "@this: " end,
-        { desc = "Ask opencode about line" }
-      )
-
-      vim.keymap.set(
-        { "n", "x" },
-        "<leader>ob",
-        function() require("opencode").ask "@buffer: " end,
-        { desc = "Ask opencode about buffer" }
-      )
     end,
   },
 }

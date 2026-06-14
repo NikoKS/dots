@@ -53,6 +53,7 @@ return {
         ["<Leader>h"] = false,
         ["<Leader>q"] = false,
         ["<Leader>Q"] = false,
+        ["<Leader>o"] = false,
         ["q"] = "<nop>", -- <nop> for vim defaults
         -- General/Utility
         ["r"] = { "<C-r>" }, -- Redo

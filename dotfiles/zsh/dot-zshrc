@@ -120,6 +120,7 @@ export GOPATH=$HOME/.local/go
 export PATH=$GOPATH/bin:$PATH
 export PYTHONPYCACHEPREFIX=/tmp
 export PATH=$HOME/.cargo/bin:$PATH
+export PI_CODING_AGENT_DIR="$HOME/.config/pi/agent"
 
 ################ ALIASES #####################
 # General

@@ -14,6 +14,7 @@ function link_dotfiles() {
 	mkdir -p "$config_dir"/alacritty
 	mkdir -p "$config_dir"/k9s
 	mkdir -p "$config_dir"/spicetify
+	mkdir -p "$config_dir"/pi/agent
 
 	# stow
 	stow --dotfiles -vDt "$config_dir" dotfiles
