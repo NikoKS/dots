@@ -154,7 +154,17 @@ return {
         { "<Leader>a", group = "AI" },
         {
           "<Leader>ai",
-          function() require("snacks").terminal("pi", { win = { position = "right", enter = true } }) end,
+          function()
+            require("snacks").terminal("pi", {
+              win = {
+                position = "right",
+                enter = true,
+                wo = {
+                  winhighlight = "Normal:Normal,NormalNC:Normal,SignColumn:Normal,NormalFloat:Normal",
+                },
+              },
+            })
+          end,
           desc = "Open pi",
         },
         {
@@ -176,6 +186,11 @@ return {
           "<Leader>ab",
           "<cmd>PiSendBuffer<cr>",
           desc = "Send Buffer to pi",
+        },
+        {
+          "<Leader>aa",
+          "<cmd>PiSend<cr>",
+          desc = "Send to pi",
         },
       }
     end,
