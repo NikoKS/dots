@@ -85,13 +85,6 @@ return {
     },
   },
   {
-    "folke/which-key.nvim",
-    opts = function(_, opts)
-      opts.spec = opts.spec or {}
-      table.insert(opts.spec, { "<Leader>c", group = " Conflict" })
-    end,
-  },
-  {
     "nvim-neo-tree/neo-tree.nvim",
     opts = function(_, opts)
       opts.window = opts.window or {}
