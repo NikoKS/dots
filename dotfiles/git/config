@@ -2,13 +2,12 @@
 	name = NikoKS
 	email = nikolas.kur@gmail.com
 [merge]
-	tool = nvim
-  conflictstyle = diff3
+	tool = codediff
 [mergetool]
-  keepBackup = false
-[mergetool "nvim"]
-  cmd = ""
-  keepBackup = false
+	keepBackup = false
+[mergetool "codediff"]
+	cmd = $HOME/Software/dots/dotfiles/git/bin/codediff-mergetool "$MERGED"
+	keepBackup = false
 [core]
 	excludesFile = ~/.config/git/gitignore
 	editor = nvim

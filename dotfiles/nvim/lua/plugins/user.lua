@@ -55,8 +55,41 @@ return {
             },
           },
         },
+        sources = {
+          git_log = {
+            confirm = function(picker, item)
+              if not item or not item.commit then return end
+
+              picker:close()
+              vim.schedule(function() vim.cmd("CodeDiff file " .. item.commit) end)
+            end,
+          },
+          git_log_file = {
+            confirm = function(picker, item)
+              if not item or not item.commit then return end
+
+              picker:close()
+              vim.schedule(function() vim.cmd("CodeDiff file " .. item.commit) end)
+            end,
+          },
+          git_log_line = {
+            confirm = function(picker, item)
+              if not item or not item.commit then return end
+
+              picker:close()
+              vim.schedule(function() vim.cmd("CodeDiff file " .. item.commit) end)
+            end,
+          },
+        },
       },
     },
+  },
+  {
+    "folke/which-key.nvim",
+    opts = function(_, opts)
+      opts.spec = opts.spec or {}
+      table.insert(opts.spec, { "<Leader>c", group = " Conflict" })
+    end,
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -108,28 +141,6 @@ return {
         desc = "Hop char 1 backward",
       },
     },
-  },
-  -- {
-  --   "tpope/vim-fugitive",
-  --   event = "User AstroFile",
-  -- },
-  {
-    "akinsho/git-conflict.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("which-key").add { { "<Leader>c", group = " Conflict" } }
-      require("git-conflict").setup {
-        default_mappings = {
-          ours = "<Leader>co",
-          theirs = "<Leader>ct",
-          none = "<Leader>cn",
-          both = "<Leader>cb",
-          next = "]c",
-          prev = "[c",
-        },
-        disable_diagnostics = true,
-      }
-    end,
   },
   {
     "jpalardy/vim-slime",
@@ -191,7 +202,7 @@ return {
         },
         {
           "<Leader>as",
-          "<cmd>PiSendSelection<cr>",
+          "<cmd>'<,'>PiSendSelection<cr>",
           mode = { "v" },
           desc = "Send selection to pi",
         },

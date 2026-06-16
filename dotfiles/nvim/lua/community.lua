@@ -37,6 +37,13 @@ local plugins = {
   },
   { import = "astrocommunity.lsp.lsp-signature-nvim" },
   { import = "astrocommunity.git.codediff-nvim" },
+  {
+    "folke/which-key.nvim",
+    opts = function(_, opts)
+      opts.spec = opts.spec or {}
+      table.insert(opts.spec, { "<Leader>c", group = " Conflict" })
+    end,
+  },
 }
 
 local nonremote = {

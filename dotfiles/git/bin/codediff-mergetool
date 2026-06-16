@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+file=${1:-${MERGED:-}}
+if [[ -z "$file" ]]; then
+  echo "codediff-mergetool: missing merge file" >&2
+  exit 1
+fi
+
+file=$(cd "$(dirname "$file")" && pwd -P)/$(basename "$file")
+
+if [[ -n "${NVIM:-}" ]]; then
+  vim_file=${file//\'/\'\'}
+  nvim --server "$NVIM" --remote-expr "execute('CodeDiff merge ' . fnameescape('$vim_file'))" >/dev/null
+else
+  exec nvim -- "$file" -c "execute 'CodeDiff merge ' . fnameescape(expand('%:p'))"
+fi
