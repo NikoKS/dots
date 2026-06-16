@@ -1,8 +1,10 @@
 {
   "lastChangelogVersion": "0.79.3",
   "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.4-mini",
+  "defaultModel": "gpt-5.5",
+  "theme": "gh-dark",
   "packages": [
-    "npm:pi-nvim"
+    "npm:pi-nvim",
+    "npm:pi-gh-dark-theme"
   ]
 }

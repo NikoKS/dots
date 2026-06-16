@@ -1,0 +1,8 @@
+{
+  "name": "pi-extensions",
+  "private": true,
+  "dependencies": {
+    "pi-gh-dark-theme": "^0.1.0",
+    "pi-nvim": "^0.2.1"
+  }
+}
