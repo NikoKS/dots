@@ -97,6 +97,12 @@ return {
       opts.filesystem.window.mappings["f"] = false
     end,
   },
+  {
+    "mrjones2014/smart-splits.nvim",
+    opts = {
+      at_edge = "stop",
+    },
+  },
 
   -- DISABLE
   { "max397574/better-escape.nvim", enabled = false },
@@ -195,7 +201,7 @@ return {
         },
         {
           "<Leader>as",
-          "<cmd>'<,'>PiSendSelection<cr>",
+          ":PiSendSelection<cr>",
           mode = { "v" },
           desc = "Send selection to pi",
         },

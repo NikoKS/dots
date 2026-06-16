@@ -57,7 +57,7 @@ return {
         ["q"] = "<nop>", -- <nop> for vim defaults
         -- General/Utility
         ["r"] = { "<C-r>" }, -- Redo
-        ["R"] = { "<cmd>execute'LspRestart'|e!<CR>", desc = "Restart LSP" },
+        ["R"] = { "<cmd>e!<CR>", desc = "Refresh file" },
         ["#"] = { "<cmd>normal gcc<cr>" },
         [" "] = { "za" },
         ["?"] = { "<cmd>lua vim.lsp.buf.hover()<cr>" },
