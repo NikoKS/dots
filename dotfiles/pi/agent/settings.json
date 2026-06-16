@@ -6,7 +6,9 @@
   "packages": [
     "npm:pi-nvim",
     "npm:pi-gh-dark-theme",
-    "npm:pi-vim"
+    "npm:pi-vim",
+    "npm:pi-lens",
+    "npm:pi-web-access"
   ],
   "defaultThinkingLevel": "low"
 }
