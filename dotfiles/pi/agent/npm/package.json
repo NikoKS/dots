@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "pi-gh-dark-theme": "^0.1.0",
-    "pi-nvim": "^0.2.1"
+    "pi-nvim": "^0.2.1",
+    "pi-vim": "^0.12.1"
   }
 }

@@ -5,6 +5,8 @@
   "theme": "gh-dark",
   "packages": [
     "npm:pi-nvim",
-    "npm:pi-gh-dark-theme"
-  ]
+    "npm:pi-gh-dark-theme",
+    "npm:pi-vim"
+  ],
+  "defaultThinkingLevel": "low"
 }
