@@ -58,6 +58,19 @@ return {
       },
     },
   },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = function(_, opts)
+      opts.window = opts.window or {}
+      opts.window.mappings = opts.window.mappings or {}
+      opts.window.mappings["<C-f>"] = false
+
+      opts.filesystem = opts.filesystem or {}
+      opts.filesystem.window = opts.filesystem.window or {}
+      opts.filesystem.window.mappings = opts.filesystem.window.mappings or {}
+      opts.filesystem.window.mappings["f"] = false
+    end,
+  },
 
   -- DISABLE
   { "max397574/better-escape.nvim", enabled = false },
