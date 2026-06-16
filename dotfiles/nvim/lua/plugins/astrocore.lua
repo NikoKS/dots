@@ -62,7 +62,10 @@ return {
         [" "] = { "za" },
         ["?"] = { "<cmd>lua vim.lsp.buf.hover()<cr>" },
         ["="] = { "<c-w>=" },
-        ["<C-f>"] = { function() require("snacks").picker.files() end, desc = "Find File" },
+        ["<C-f>"] = {
+          function() require("snacks").picker.files() end,
+          desc = "Find File",
+        },
         -- Quit
         ["qq"] = { ":q<cr>", silent = true },
         ["qw"] = { "ZZ", silent = true },
@@ -150,7 +153,10 @@ return {
         ["<s-tab>"] = {
           function() require("nvim-treesitter-refactor.navigation").goto_previous_usage() end,
         },
-        ["<Leader>fr"] = { function() require("snacks").picker.lsp_references() end, desc = "Find LSP references" },
+        ["<Leader>fr"] = {
+          function() require("snacks").picker.lsp_references() end,
+          desc = "Find LSP references",
+        },
       },
       v = {
         -- Remove Mapping
@@ -199,7 +205,12 @@ return {
           callback = function()
             require("which-key").add {
               { "<Leader>re", "<cmd>SlimeSend1 .exit<cr>", desc = "Exit node", buffer = true },
-              { "<Leader>rf", '<cmd>SlimeSend0 "node " . expand("%:p") . "\\n"<cr>', desc = "Run File", buffer = true },
+              {
+                "<Leader>rf",
+                '<cmd>SlimeSend0 "node " . expand("%:p") . "\\n"<cr>',
+                desc = "Run File",
+                buffer = true,
+              },
               { "<Leader>rp", "<cmd>SlimeSend1 node<cr>", desc = "Run node", buffer = true },
             }
           end,

@@ -56,6 +56,9 @@ return {
           },
         },
         sources = {
+          files = {
+            hidden = true,
+          },
           git_log = {
             confirm = function(picker, item)
               if not item or not item.commit then return end
@@ -103,6 +106,22 @@ return {
       at_edge = "stop",
     },
   },
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = function(_, opts)
+      local on_attach = opts.on_attach
+      opts.on_attach = function(bufnr)
+        if on_attach then on_attach(bufnr) end
+
+        vim.keymap.set(
+          "n",
+          "<Leader>gd",
+          function() vim.cmd "CodeDiff file HEAD" end,
+          { buffer = bufnr, desc = "CodeDiff current file with HEAD", silent = true }
+        )
+      end
+    end,
+  },
 
   -- DISABLE
   { "max397574/better-escape.nvim", enabled = false },
@@ -143,7 +162,7 @@ return {
   },
   {
     "jpalardy/vim-slime",
-    event = "User AstroFile",
+    lazy = false,
     config = function()
       vim.cmd [[
   		let g:slime_paste_file = tempname()
