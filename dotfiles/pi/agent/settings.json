@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.79.3",
+  "lastChangelogVersion": "0.79.6",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.5",
   "theme": "gh-dark",
@@ -8,7 +8,8 @@
     "npm:pi-gh-dark-theme",
     "npm:pi-vim",
     "npm:pi-lens",
-    "npm:pi-web-access"
+    "npm:pi-web-access",
+    "git:github.com/joelhooks/pi-skill-interpolation"
   ],
   "defaultThinkingLevel": "low"
 }
