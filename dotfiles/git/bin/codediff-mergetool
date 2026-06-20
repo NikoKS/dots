@@ -10,8 +10,19 @@ fi
 file=$(cd "$(dirname "$file")" && pwd -P)/$(basename "$file")
 
 if [[ -n "${NVIM:-}" ]]; then
+  wait_file=$(mktemp "${TMPDIR:-/tmp}/codediff-mergetool.XXXXXX")
+  rm -f "$wait_file"
+  trap 'rm -f "$wait_file"' EXIT
+
   vim_file=${file//\'/\'\'}
-  nvim --server "$NVIM" --remote-expr "execute('CodeDiff merge ' . fnameescape('$vim_file'))" >/dev/null
+  vim_wait_file=${wait_file//\'/\'\'}
+  nvim --server "$NVIM" --remote-expr \
+    "execute('augroup CodeDiffMergetoolWait | autocmd! | autocmd User CodeDiffClose call writefile([''done''], ''$vim_wait_file'') | augroup END') . execute('CodeDiff merge ' . fnameescape('$vim_file'))" \
+    >/dev/null
+
+  while [[ ! -e "$wait_file" ]]; do
+    sleep 0.1
+  done
 else
   exec nvim -- "$file" -c "execute 'CodeDiff merge ' . fnameescape(expand('%:p'))"
 fi
