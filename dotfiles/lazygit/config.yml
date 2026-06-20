@@ -16,9 +16,7 @@ git:
       pager: delta --dark --paging=never
 os:
   edit: '[ -z "$NVIM" ] && (nvim -- {{filename}}) || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote {{filename}})'
-  # editPreset: nvim-remote
   editInTerminal: false
-  openCommand: ""
 quitOnTopLevelReturn: true
 promptToReturnFromSubprocess: false
 notARepository: "skip"
@@ -34,8 +32,14 @@ keybinding:
     renameCommit: ""
   stash:
     popStash: "p"
-# customCommands:
-#   - key: "o"
-#     context: "commitFiles"
-#     command: "nvim --server $NVIM --remote-send 'q'; nvim --server $NVIM --remote-send ':Gedit {{.SelectedLocalCommit.Sha}}:{{.SelectedCommitFile.Name}} <CR>'"
-#     description: "open file on this commit"
+customCommands:
+  - key: "o"
+    context: "commitFiles"
+    command: "nvim --server $NVIM --remote-send '<C-\\><C-n>:close<CR>'; nvim --server $NVIM --remote-send ':Gshow {{.SelectedCommit.Hash}} {{.SelectedCommitFilePath}}<CR>'"
+    description: "open file on this commit"
+    output: none
+  - key: "o"
+    context: "localBranches"
+    command: "nvim --server $NVIM --remote-send '<C-\\><C-n>:close<CR>'; nvim --server $NVIM --remote-send ':Gshow {{.SelectedLocalBranch.Name}}<CR>'"
+    description: "open current file on this branch"
+    output: none
