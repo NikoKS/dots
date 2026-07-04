@@ -121,6 +121,7 @@ export PATH=$GOPATH/bin:$PATH
 export PYTHONPYCACHEPREFIX=/tmp
 export PATH=$HOME/.cargo/bin:$PATH
 export PI_CODING_AGENT_DIR="$HOME/.config/pi/agent"
+export PI_LENS_CONFIG_PATH="$HOME/.config/pi-lens/config.json"
 
 ################ ALIASES #####################
 # General

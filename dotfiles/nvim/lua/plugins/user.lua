@@ -98,6 +98,7 @@ return {
       opts.filesystem.window = opts.filesystem.window or {}
       opts.filesystem.window.mappings = opts.filesystem.window.mappings or {}
       opts.filesystem.window.mappings["f"] = false
+      opts.filesystem.window.mappings["/"] = false
     end,
   },
   {
