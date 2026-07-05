@@ -193,6 +193,45 @@ return {
       require("pi-nvim").setup {
         set_default_keymaps = false,
       }
+
+      local function send_line_diagnostic_to_pi()
+        local bufnr = 0
+        local cursor = vim.api.nvim_win_get_cursor(0)
+        local lnum = cursor[1] - 1
+        local diagnostics = vim.diagnostic.get(bufnr, { lnum = lnum })
+
+        if vim.tbl_isempty(diagnostics) then
+          vim.notify("No diagnostic on current line", vim.log.levels.INFO)
+          return
+        end
+
+        table.sort(diagnostics, function(a, b)
+          return (a.severity or vim.diagnostic.severity.HINT) < (b.severity or vim.diagnostic.severity.HINT)
+        end)
+
+        local diagnostic = diagnostics[1]
+        local severity = vim.diagnostic.severity[diagnostic.severity] or "UNKNOWN"
+        local file = vim.fn.expand("%:p")
+        local line = vim.api.nvim_buf_get_lines(bufnr, lnum, lnum + 1, false)[1] or ""
+        local source = diagnostic.source and (" [" .. diagnostic.source .. "]") or ""
+        local code = diagnostic.code and (" (" .. diagnostic.code .. ")") or ""
+        local ft = vim.bo.filetype
+
+        local message = string.format(
+          "Explain this diagnostic and suggest a fix.\n\nFile: %s:%d\nDiagnostic: %s%s%s: %s\n\nLine:\n```%s\n%s\n```",
+          file,
+          lnum + 1,
+          severity,
+          source,
+          code,
+          diagnostic.message,
+          ft,
+          line
+        )
+
+        require("pi-nvim").prompt(message)
+      end
+
       require("which-key").add {
         { "<Leader>a", group = "AI" },
         {
@@ -224,6 +263,11 @@ return {
           ":PiSendSelection<cr>",
           mode = { "v" },
           desc = "Send selection to pi",
+        },
+        {
+          "<Leader>ad",
+          send_line_diagnostic_to_pi,
+          desc = "Explain line diagnostic",
         },
         {
           "<Leader>ab",
