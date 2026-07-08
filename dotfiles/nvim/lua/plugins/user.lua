@@ -124,6 +124,31 @@ return {
       end
     end,
   },
+  {
+    "vuki656/package-info.nvim",
+    opts = {
+      -- Disable the plugin's unconditional BufEnter autostart; we add a guarded
+      -- one below so CodeDiff/package.json merge views don't run `npm outdated`.
+      autostart = false,
+    },
+    config = function(_, opts)
+      require("package-info").setup(opts)
+
+      vim.api.nvim_create_autocmd("BufEnter", {
+        group = vim.api.nvim_create_augroup("PackageInfoAutostart", { clear = true }),
+        pattern = "package.json",
+        callback = function()
+          local bufname = vim.api.nvim_buf_get_name(0)
+          if bufname:match "^codediff://" then return end
+
+          local ok, lifecycle = pcall(require, "codediff.ui.lifecycle")
+          if ok and lifecycle.get_session(vim.api.nvim_get_current_tabpage()) then return end
+
+          require("package-info").show()
+        end,
+      })
+    end,
+  },
 
   -- DISABLE
   { "max397574/better-escape.nvim", enabled = false },
