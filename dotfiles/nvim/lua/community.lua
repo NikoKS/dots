@@ -12,7 +12,6 @@ local plugins = {
   } },
 
   -- utility
-  { import = "astrocommunity.project.project-nvim" },
   { import = "astrocommunity.motion.nvim-surround" },
   {
     "kylechui/nvim-surround",

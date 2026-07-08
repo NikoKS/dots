@@ -58,6 +58,7 @@ return {
         sources = {
           files = {
             hidden = true,
+            ignored = true,
           },
           git_log = {
             confirm = function(picker, item)
@@ -205,13 +206,16 @@ return {
           return
         end
 
-        table.sort(diagnostics, function(a, b)
-          return (a.severity or vim.diagnostic.severity.HINT) < (b.severity or vim.diagnostic.severity.HINT)
-        end)
+        table.sort(
+          diagnostics,
+          function(a, b)
+            return (a.severity or vim.diagnostic.severity.HINT) < (b.severity or vim.diagnostic.severity.HINT)
+          end
+        )
 
         local diagnostic = diagnostics[1]
         local severity = vim.diagnostic.severity[diagnostic.severity] or "UNKNOWN"
-        local file = vim.fn.expand("%:p")
+        local file = vim.fn.expand "%:p"
         local line = vim.api.nvim_buf_get_lines(bufnr, lnum, lnum + 1, false)[1] or ""
         local source = diagnostic.source and (" [" .. diagnostic.source .. "]") or ""
         local code = diagnostic.code and (" (" .. diagnostic.code .. ")") or ""
@@ -252,8 +256,10 @@ return {
         {
           "<Leader>as",
           function()
-            local keys = vim.api.nvim_replace_termcodes("V:PiSendSelection<CR>", true, false, true)
-            vim.api.nvim_feedkeys(keys, "nx", false)
+            local view = vim.fn.winsaveview()
+            vim.cmd "normal! V\027"
+            vim.cmd "'<,'>PiSendSelection"
+            vim.fn.winrestview(view)
           end,
           mode = { "n" },
           desc = "Send line to pi",
