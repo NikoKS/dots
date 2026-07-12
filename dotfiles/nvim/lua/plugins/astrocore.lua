@@ -162,6 +162,10 @@ return {
           function() require("snacks").picker.lsp_references() end,
           desc = "Find LSP references",
         },
+        ["<Leader>fd"] = {
+          function() require("snacks").picker.diagnostics_buffer() end,
+          desc = "Find buffer diagnostics",
+        },
       },
       v = {
         -- Remove Mapping
@@ -183,6 +187,17 @@ return {
       },
     },
     autocmds = {
+      markdown = {
+        {
+          event = "FileType",
+          desc = "Enable wrapping for Markdown files",
+          pattern = { "markdown", "markdown.mdx" },
+          callback = function()
+            vim.opt_local.wrap = true
+            vim.opt_local.linebreak = true
+          end,
+        },
+      },
       python = {
         {
           event = "FileType",

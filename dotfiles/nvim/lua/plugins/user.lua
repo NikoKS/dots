@@ -301,9 +301,9 @@ return {
           desc = "Explain line diagnostic",
         },
         {
-          "<Leader>ab",
-          "<cmd>PiSendBuffer<cr>",
-          desc = "Send Buffer to pi",
+          "<Leader>af",
+          "<cmd>PiSendFile<cr>",
+          desc = "Send file path to pi",
         },
         {
           "<Leader>aa",

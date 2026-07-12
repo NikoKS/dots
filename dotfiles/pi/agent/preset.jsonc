@@ -1,0 +1,27 @@
+{
+  "cycleShortcut": "tab",
+  "presets": {
+    "default": {
+      "provider": "openai-codex",
+      "model": "gpt-5.6-luna",
+      "thinkingLevel": "low",
+      "tools": [
+        "read",
+        "bash",
+        "edit",
+        "write"
+      ]
+    },
+    "powerful": {
+      "provider": "openai-codex",
+      "model": "gpt-5.6-sol",
+      "thinkingLevel": "medium",
+      "tools": [
+        "read",
+        "bash",
+        "edit",
+        "write"
+      ]
+    }
+  }
+}

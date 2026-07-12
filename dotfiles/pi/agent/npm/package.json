@@ -2,6 +2,7 @@
   "name": "pi-extensions",
   "private": true,
   "dependencies": {
+    "@richardgill/pi-preset": "^0.0.8",
     "pi-gh-dark-theme": "^0.1.0",
     "pi-lens": "^3.8.53",
     "pi-mcp-adapter": "^2.10.0",
