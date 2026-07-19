@@ -29,15 +29,19 @@ return {
         -- filter for buffers to enable indent guides
         ---@param buf number
         ---@param win number
-        filter = function(buf, win)
+        filter = function(buf, _)
           return vim.g.snacks_indent ~= false and vim.b[buf].snacks_indent ~= false and vim.bo[buf].buftype == ""
         end,
       },
       picker = {
+        actions = {
+          cycle_win_back = require "functions.picker_cycle_win_back",
+        },
         win = {
           input = {
             keys = {
               ["<Tab>"] = { "cycle_win", mode = { "n", "i" } },
+              ["<S-Tab>"] = { "cycle_win_back", mode = { "n", "i" } },
               ["J"] = { "preview_scroll_down", mode = { "n", "i" } },
               ["K"] = { "preview_scroll_up", mode = { "n", "i" } },
             },
@@ -45,6 +49,7 @@ return {
           list = {
             keys = {
               ["<Tab>"] = { "cycle_win", mode = { "n", "x" } },
+              ["<S-Tab>"] = { "cycle_win_back", mode = { "n", "x" } },
               ["J"] = { "preview_scroll_down", mode = { "n", "x" } },
               ["K"] = { "preview_scroll_up", mode = { "n", "x" } },
             },
@@ -52,6 +57,7 @@ return {
           preview = {
             keys = {
               ["<Tab>"] = { "cycle_win", mode = { "n", "x" } },
+              ["<S-Tab>"] = { "cycle_win_back", mode = { "n", "x" } },
             },
           },
         },
@@ -220,75 +226,18 @@ return {
         set_default_keymaps = false,
       }
 
-      local function send_line_diagnostic_to_pi()
-        local bufnr = 0
-        local cursor = vim.api.nvim_win_get_cursor(0)
-        local lnum = cursor[1] - 1
-        local diagnostics = vim.diagnostic.get(bufnr, { lnum = lnum })
-
-        if vim.tbl_isempty(diagnostics) then
-          vim.notify("No diagnostic on current line", vim.log.levels.INFO)
-          return
-        end
-
-        table.sort(
-          diagnostics,
-          function(a, b)
-            return (a.severity or vim.diagnostic.severity.HINT) < (b.severity or vim.diagnostic.severity.HINT)
-          end
-        )
-
-        local diagnostic = diagnostics[1]
-        local severity = vim.diagnostic.severity[diagnostic.severity] or "UNKNOWN"
-        local file = vim.fn.expand "%:p"
-        local line = vim.api.nvim_buf_get_lines(bufnr, lnum, lnum + 1, false)[1] or ""
-        local source = diagnostic.source and (" [" .. diagnostic.source .. "]") or ""
-        local code = diagnostic.code and (" (" .. diagnostic.code .. ")") or ""
-        local ft = vim.bo.filetype
-
-        local message = string.format(
-          "Explain this diagnostic and suggest a fix.\n\nFile: %s:%d\nDiagnostic: %s%s%s: %s\n\nLine:\n```%s\n%s\n```",
-          file,
-          lnum + 1,
-          severity,
-          source,
-          code,
-          diagnostic.message,
-          ft,
-          line
-        )
-
-        require("pi-nvim").prompt(message)
-      end
+      local snacks_terminal = require "functions.snacks_terminal"
 
       require("which-key").add {
         { "<Leader>a", group = "AI" },
         {
           "<Leader>ai",
-          function()
-            require("snacks").terminal("pi", {
-              win = {
-                position = "right",
-                enter = true,
-                wo = {
-                  winhighlight = "Normal:Normal,NormalNC:Normal,SignColumn:Normal,NormalFloat:Normal",
-                },
-              },
-            })
-          end,
+          snacks_terminal.open_pi,
           desc = "Open pi",
         },
         {
           "<Leader>as",
-          function()
-            local win = vim.api.nvim_get_current_win()
-            local view = vim.fn.winsaveview()
-            vim.cmd "normal! V\027"
-            vim.cmd "'<,'>PiSendSelection"
-            if vim.api.nvim_win_is_valid(win) then
-              vim.api.nvim_win_call(win, function() vim.fn.winrestview(view) end)
-            end
-          end,
+          snacks_terminal.send_line_to_pi,
           mode = { "n" },
           desc = "Send line to pi",
         },
@@ -300,7 +249,7 @@ return {
         },
         {
           "<Leader>ad",
-          send_line_diagnostic_to_pi,
+          snacks_terminal.send_line_diagnostic_to_pi,
           desc = "Explain line diagnostic",
         },
         {
