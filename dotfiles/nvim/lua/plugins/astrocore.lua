@@ -151,12 +151,12 @@ return {
             if require("luasnip").jumpable() then
               require("luasnip").jump(1)
             else
-              require("nvim-treesitter-refactor.navigation").goto_next_usage()
+              require "functions.goto_lsp_usage"(1)
             end
           end,
         },
         ["<s-tab>"] = {
-          function() require("nvim-treesitter-refactor.navigation").goto_previous_usage() end,
+          function() require "functions.goto_lsp_usage"(-1) end,
         },
         ["<Leader>fr"] = {
           function() require("snacks").picker.lsp_references() end,

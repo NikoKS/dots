@@ -8,6 +8,6 @@
     "pi-mcp-adapter": "^2.10.0",
     "pi-nvim": "^0.2.1",
     "pi-vim": "^0.12.1",
-    "pi-web-access": "^0.10.7"
+    "pi-web-access": "^0.13.0"
   }
 }

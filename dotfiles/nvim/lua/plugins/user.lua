@@ -281,10 +281,13 @@ return {
         {
           "<Leader>as",
           function()
+            local win = vim.api.nvim_get_current_win()
             local view = vim.fn.winsaveview()
             vim.cmd "normal! V\027"
             vim.cmd "'<,'>PiSendSelection"
-            vim.fn.winrestview(view)
+            if vim.api.nvim_win_is_valid(win) then
+              vim.api.nvim_win_call(win, function() vim.fn.winrestview(view) end)
+            end
           end,
           mode = { "n" },
           desc = "Send line to pi",
