@@ -104,9 +104,8 @@ return {
       },
       neotree_term = {
         {
-          event = "TermClose",
-          desc = "Refresh neo-tree when terminal closes",
-          pattern = "term://*",
+          event = "WinLeave",
+          desc = "Refresh neo-tree when leaving any window",
           callback = function()
             vim.schedule(function() require("neo-tree.sources.git_status").refresh() end)
           end,

@@ -41,6 +41,7 @@ return {
     options = {
       opt = { -- vim.opt.<key>
         relativenumber = false, -- sets vim.opt.relativenumber
+        foldminlines = 2,
         clipboard = "",
         iskeyword = vim.opt.iskeyword + { "-" },
       },

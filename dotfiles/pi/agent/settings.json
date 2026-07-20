@@ -11,7 +11,8 @@
     "npm:pi-web-access",
     "git:github.com/joelhooks/pi-skill-interpolation",
     "npm:pi-mcp-adapter",
-    "npm:@richardgill/pi-preset"
+    "npm:@richardgill/pi-preset",
+    "npm:pi-knowledge"
   ],
   "defaultThinkingLevel": "low"
 }

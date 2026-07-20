@@ -51,6 +51,31 @@ return {
         ["U"] = { "J" }, -- Up the line
         ["M"] = { "zz" },
         ["b"] = { "<cmd>b#<cr>" },
+        ["zr"] = false,
+        ["zl"] = { "zr", desc = "Fold less" },
+        ["zL"] = { "zR", desc = "Open all folds" },
+        ["zz"] = {
+          function()
+            local fold_level = vim.fn.foldlevel "."
+            if fold_level == 0 then return end
+
+            local view = vim.fn.winsaveview()
+            local line = 1
+            local last_line = vim.api.nvim_buf_line_count(0)
+            while line <= last_line do
+              if vim.fn.foldlevel(line) == fold_level then
+                vim.cmd(line .. "normal! zc")
+                local fold_end = vim.fn.foldclosedend(line)
+                line = fold_end >= line and fold_end + 1 or line + 1
+              else
+                line = line + 1
+              end
+            end
+            vim.fn.winrestview(view)
+          end,
+          desc = "Close folds at cursor level",
+        },
+        ["zo"] = { "zO", desc = "Open fold recursively" },
         -- Git
         ["<Leader>gh"] = false,
         ["<Leader>gR"] = {
