@@ -9,6 +9,9 @@ return {
   ---@type AstroUIOpts
   opts = {
     colorscheme = "github_dark_default",
+    folding = {
+      methods = { "treesitter", "indent" },
+    },
     highlights = {
       init = function()
         local get_hlgroup = require("astroui").get_hlgroup

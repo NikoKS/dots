@@ -163,33 +163,31 @@ return {
 
   -- ADDITIONAL
   {
-    "smoka7/hop.nvim",
+    "folke/flash.nvim",
     event = "User AstroFile",
     opts = {
-      keys = "etovxqpdygfblzhckisuran",
+      modes = { char = { enabled = false } },
     },
     keys = {
       {
         "f",
         function()
-          require("hop").hint_char1 {
-            direction = require("hop.hint").HintDirection.AFTER_CURSOR,
-            current_line_only = false,
+          require("flash").jump {
+            search = { forward = true, wrap = false, multi_window = false, max_length = 1 },
           }
         end,
         mode = { "n", "x" },
-        desc = "Hop char 1 forward",
+        desc = "Flash character forward",
       },
       {
         "F",
         function()
-          require("hop").hint_char1 {
-            direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
-            current_line_only = false,
+          require("flash").jump {
+            search = { forward = false, wrap = false, multi_window = false, max_length = 1 },
           }
         end,
         mode = { "n", "x" },
-        desc = "Hop char 1 backward",
+        desc = "Flash character backward",
       },
     },
   },
