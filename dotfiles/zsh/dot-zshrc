@@ -122,6 +122,8 @@ export PYTHONPYCACHEPREFIX=/tmp
 export PATH=$HOME/.cargo/bin:$PATH
 export PI_CODING_AGENT_DIR="$HOME/.config/pi/agent"
 export PI_LENS_CONFIG_PATH="$HOME/.config/pi-lens/config.json"
+export FIRECRAWL_API_URL="https://firecrawl.nmhome.my.id/v1"                                                                
+export FIRECRAWL_API_KEY="self-hosted"                                                                                      
 
 ################ ALIASES #####################
 # General
@@ -178,6 +180,13 @@ if [ -z "$SSH_TTY" ] && [ -z "$DEVPOD" ]; then
 
   # Talhelper
   source <(talhelper completion zsh)
+
+  # pnpm
+  export PNPM_HOME="/Users/nikolassetiawan/Library/pnpm"
+  case ":$PATH:" in
+    *":$PNPM_HOME/bin:"*) ;;
+    *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+  esac
 fi
 
 ########### ADDED EXTERNALLY #################

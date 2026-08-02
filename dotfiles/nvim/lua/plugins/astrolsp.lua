@@ -26,7 +26,12 @@ return {
     },
     -- mappings to be set up on attaching of a language server
     mappings = {
-      n = {},
+      n = {
+        ["<Leader>lR"] = {
+          function() require("snacks").picker.lsp_references() end,
+          desc = "Search LSP references",
+        },
+      },
     },
   },
 }
