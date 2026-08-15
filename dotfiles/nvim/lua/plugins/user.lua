@@ -246,6 +246,12 @@ return {
           desc = "Send selection to pi",
         },
         {
+          "<Leader>ac",
+          snacks_terminal.copy_selection_with_context,
+          mode = { "v" },
+          desc = "Copy selection with context",
+        },
+        {
           "<Leader>ad",
           snacks_terminal.send_line_diagnostic_to_pi,
           desc = "Explain line diagnostic",

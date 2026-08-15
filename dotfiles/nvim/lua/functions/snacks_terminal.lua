@@ -20,6 +20,28 @@ function M.send_line_to_pi()
   if vim.api.nvim_win_is_valid(win) then vim.api.nvim_win_call(win, function() vim.fn.winrestview(view) end) end
 end
 
+function M.copy_selection_with_context()
+  vim.cmd "normal! \027"
+  local selection = require("pi-nvim.ui").capture_selection()
+
+  if not selection then
+    vim.notify("Empty selection", vim.log.levels.WARN)
+    return
+  end
+
+  local context = string.format(
+    "From %s lines %d-%d:\n```%s\n%s\n```",
+    selection.file,
+    selection.start_line,
+    selection.end_line,
+    selection.ft,
+    selection.text
+  )
+
+  vim.fn.setreg("+", context)
+  vim.notify("Copied selection with file context", vim.log.levels.INFO)
+end
+
 function M.send_line_diagnostic_to_pi()
   local bufnr = 0
   local cursor = vim.api.nvim_win_get_cursor(0)

@@ -2,13 +2,14 @@
   "name": "pi-extensions",
   "private": true,
   "dependencies": {
-    "@narumitw/pi-firecrawl": "^0.41.0",
+    "@narumitw/pi-firecrawl": "^0.50.0",
     "@richardgill/pi-preset": "^0.0.8",
+    "pi-claude-bridge": "^0.7.0",
     "pi-gh-dark-theme": "^0.1.0",
-    "pi-knowledge": "^0.7.0",
-    "pi-lens": "^3.8.73",
+    "pi-knowledge": "^0.8.0",
+    "pi-lens": "^4.0.0",
     "pi-nvim": "^0.2.1",
     "pi-vim": "^0.14.1",
-    "pi-web-access": "^0.17.1"
+    "pi-web-access": "^0.23.0"
   }
 }

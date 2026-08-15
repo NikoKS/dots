@@ -10,3 +10,5 @@ node_modules
 .vim*
 *.log
 .DS_Store*
+
+**/.claude/settings.local.json
